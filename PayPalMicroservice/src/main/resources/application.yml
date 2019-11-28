@@ -9,6 +9,13 @@ eureka:
     lease:
       duration: 5
   instance:
+    hostName: localhost
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/info
+    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/health
+    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
     preferIpAddress: true
@@ -18,7 +25,7 @@ eureka:
 server:
   servlet:
     context-path: /api
-  port: 8084
+  port: 8085
   ssl:
     key-store: classpath:stores/keystore.p12
     key-store-password: pass147
