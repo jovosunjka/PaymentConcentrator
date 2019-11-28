@@ -23,8 +23,8 @@ eureka:
 
 
 server:
-  servlet:
-    context-path: /api
+  #servlet:
+    #context-path: /api
   port: 8085
   ssl:
     key-store: classpath:stores/keystore.p12
