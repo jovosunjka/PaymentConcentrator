@@ -79,7 +79,7 @@ public class CertificateGeneratorServiceImpl implements CertificateGeneratorServ
 	//@EventListener(ApplicationReadyEvent.class)
 	private void makeCertificate() {
 		try {
-			createCertificate("card_payment_microservice");
+			createCertificate(alias);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -263,7 +263,7 @@ public class CertificateGeneratorServiceImpl implements CertificateGeneratorServ
         SubjectData subjectData = generateSubjectData(commonName, publicKeyOfSubject);
 
         X509Certificate certificateX509 = generateCertificate(subjectData, issuerData);
-        keyStorePassword = "pass789".toCharArray();
+        
         loadKeyStore(null, keyStorePassword);
         write(commonName, issuerData.getPrivateKey(), keyStorePassword, certificateX509);
         saveKeyStore(keyStoreResource.getFile(), keyStorePassword);

@@ -21,11 +21,7 @@ import com.rmj.PaymentMicroservice.model.TransactionStatus;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-
-    //private final String microservicesUrl = "http://localhost:1111/registration/microservices";
-
-    //@Autowired
-    //private RestTemplate restTemplate;
+;
     
 	@Value("${proxy-server.url}")
 	private String proxyServerUrl;
@@ -82,6 +78,16 @@ public class PaymentServiceImpl implements PaymentService {
 		String microserviceBackendUrl = proxyServerUrl.concat("/").concat(paymentType).concat("/payment/frontend-url");
 		ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.getForEntity(microserviceBackendUrl, RedirectUrlDTO.class);
 		return responseEntity.getBody().getRedirectUrl();
+	}
+
+	@Override
+	public void transactionCompleted(long transactionId, String status) {
+		Transaction transaction = transactionService.getTransaction(transactionId);
+		TransactionStatus statusEnum = TransactionStatus.valueOf(status);
+		transaction.setStatus(statusEnum);
+		transactionService.save(transaction);
+		
+		restTemplate.getForEntity(transaction.getCallbackUrl(), Void.class);
 	}
 
 }

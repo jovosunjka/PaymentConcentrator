@@ -4,6 +4,7 @@ package com.rmj.PaymentMicroservice.controller;
 import com.rmj.PaymentMicroservice.dto.PayDTO;
 import com.rmj.PaymentMicroservice.dto.PaymentTypeDTO;
 import com.rmj.PaymentMicroservice.dto.RedirectUrlDTO;
+import com.rmj.PaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PaymentMicroservice.dto.TransactionDTO;
 import com.rmj.PaymentMicroservice.model.Transaction;
 import com.rmj.PaymentMicroservice.service.PaymentService;
@@ -49,4 +50,12 @@ public class PaymentController {
         String frontendUrl = paymentService.getMicroserviceFrontendUrl(paymentType);
     	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/transaction-completed", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity transactionCompleted(@RequestBody TransactionCompletedDTO transactionCompletedDTO) {
+    	paymentService.transactionCompleted(transactionCompletedDTO.getMerchantOrderId(), transactionCompletedDTO.getStatus());
+    	return new ResponseEntity(HttpStatus.OK);
+    }
+    
+    
 }

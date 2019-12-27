@@ -5,4 +5,4 @@ u pem formatu
 openssl x509 -in MegaTravelClient.cer -inform DER -out MegaTravelClient.pem -outform PEM
 openssl pkcs12 -export -in MegaTravelClient.pem -inkey localhost.key.pem -out client_keystore.p12
 
-Enter Export Password:client
+openssl rsa -in <Encrypted key filename>  -out < desired output file name>
