@@ -42,9 +42,10 @@ server:
 
 spring:
   application:
+    #konekcija na bazu je jdbc:h2:mem:myDb
     name: pt_bitcoin-microservice # stavljamo prefiks "pt_" (pt = payment type) da bismo znali razlikovati mikroservise
     # koji se odnose na tipove placanja od ostalih mikorservisa
-  #Spring DataSource
+#Spring DataSource
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:myDb;DB_CLOSE_ON_EXIT=FALSE
@@ -72,4 +73,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
 
-#konekcija na bazu je jdbc:h2:mem:myDb
+
