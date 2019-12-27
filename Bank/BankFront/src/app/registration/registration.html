@@ -1,0 +1,21 @@
+<div>
+    <h1>WELCOME</h1>
+
+
+    <!-- <form >
+      <label for="cardNumber">Card number:</label>
+      <span class="fa fa-user"></span><input type="number" placeholder="CardNumber" name="cardNumber" ngModel/>
+      <label for="pin">PIN:</label>
+      <span class="fa fa-user"></span><input placeholder="Pin" name="pin" type="password" ngModel/>
+    
+      <input type="submit" value="Proceed" click="register()"/>
+      
+    </form> -->
+
+    <form [formGroup]="userGroup" (ngSubmit)="register()">
+      <p>CardNumber:</p><input Placeholder="cardNumber" type="number" formControlName="cardNumber"/> <br>
+      <br><p >PIN:</p><input Placeholder="Pin" type="number" formControlName="pin"/> <br>
+  </form>
+  <br><button (click)="register()">Proceed </button><br>
+  <p>Response: {{text}}</p>
+</div>
