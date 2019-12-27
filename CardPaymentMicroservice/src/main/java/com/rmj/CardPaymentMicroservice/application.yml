@@ -1,6 +1,5 @@
 frontend.url: https://localhost:4203
 
-
 eureka:
   client:
     serviceUrl:
