@@ -1,9 +1,16 @@
 
+proxy-server.url: https://localhost:8762
+
+token:
+   header: X-Auth-Token
+   secret: myXAuthSecret
+   expiration: 1800000
+
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka
+      defaultZone: http://localhost:8761/eureka
     healthcheck:
       enabled: true
     lease:
@@ -13,9 +20,9 @@ eureka:
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
-    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/info
-    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/health
-    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/
+    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/info
+    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/${spring.application.name}/health
+    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
     preferIpAddress: true
@@ -24,16 +31,17 @@ eureka:
 
 server:
   #servlet:
-    #context-path: /api
+    #context-path: /${spring.application.name} #/api
   port: 8083
   ssl:
+    key-store-2: classpath:stores/keystore.jks
     key-store: classpath:stores/keystore.p12
     key-store-password: pass258
     key-store-type: PKCS12
     key-alias: payment_microservice
-    # trust-store: classpath:stores/truststore.p12
-    # trust-store-password: pass456
-    # trust-store-type: PKCS12
+    trust-store: classpath:stores/truststore.p12
+    trust-store-password: pass456
+    trust-store-type: PKCS12
     protocol: TLS
     enabled-protocols: TLSv1.2
     ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -48,5 +56,32 @@ server:
 
 
 spring:
-  application:
-    name: payment-microservice
+   application.name: payment-microservice
+   #Spring DataSource
+   datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    #korisno ako je konekcija dugo u idle stanju
+    testWhileIdle: true
+    validationQuery: SELECT 1
+   #Ukljucivanje konzole
+   h2:
+    console:
+      enabled: true
+      #Putanja na kojoj ce konzola biti dostupna
+      path: /h2-console
+   #JPA-Hibernate - prikazuje SQL upite
+   jpa:
+    show-sql: true
+    #kreira tabele na osnovu anotacija @Entity i kada aplikacija zavrsi sa radom, dropuje ih
+    hibernate:
+      ddl-auto: create-drop
+      #bira najbolje konvencije imenovanja za tabele i polja u bazi
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    #optimizacija za h2 upite
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        

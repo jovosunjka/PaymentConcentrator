@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4202 --ssl true --ssl-key ssl/paypal_microservice_frontend_private_key.pem  --ssl-cert ssl/paypal_microservice_frontend_certificate.pem --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

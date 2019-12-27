@@ -1,0 +1,57 @@
+server:
+  port: 8762
+  ssl:
+    key-store: classpath:stores/keystore.p12
+    key-store-password: pass671
+    key-store-type: PKCS12
+    key-alias: proxy_server
+    trust-store: classpath:stores/truststore.p12
+    trust-store-password: pass761
+    trust-store-type: PKCS12
+    protocol: TLS
+    enabled-protocols: TLSv1.2
+    ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+    # Za definisanje ovoga, treba prethodno iskoristi kod u PkiApplication klasi, koja izlistava sve podrzane
+    # chipers u Javi instaliranoj na nasem racunaru
+    # Kod je pronadjen na: https://stackoverflow.com/questions/48934210/java-ssl-error-cannot-support-tls-ecdhe-rsa-with-aes-256-gcm-sha384
+    client-auth: want
+    # for two way authentication, use value: need
+  
+spring:
+  application:
+    name: proxy-server
+
+eureka:
+  client:
+    registerWithEureka: false #true
+    fetchRegistry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/ 
+      # Jovo: ova aplikacija (proxy-server) nije uspevala da se javi eureka serveru
+      # dok nisam vratio port za eureka server na 8761 (default-ni port za eureka server) 
+  instance:
+    hostname: localhost
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    preferIpAddress: true
+    
+
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  retryable: true
+  routes.discovery:
+     path: /discovery/**
+     url: http://localhost:8761
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+ribbon:
+  ReadTimeout: 100000
+  ConnectTimeout: 100000

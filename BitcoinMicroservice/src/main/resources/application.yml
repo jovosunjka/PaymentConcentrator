@@ -3,7 +3,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka
+      defaultZone: http://localhost:8761/eureka
     healthcheck:
       enabled: true
     lease:
@@ -16,8 +16,8 @@ eureka:
 
 
 server:
-  servlet:
-    context-path: /api
+  #servlet:
+    #context-path: /api
   port: 8086
   ssl:
     key-store: classpath:stores/keystore.p12
@@ -42,4 +42,5 @@ server:
 
 spring:
   application:
-    name: bitcoin-microservice
+    name: pt_bitcoin-microservice # stavljamo prefiks "pt_" (pt = payment type) da bismo znali razlikovati mikroservise
+                                  # koji se odnose na tipove placanja od ostalih mikorservisa

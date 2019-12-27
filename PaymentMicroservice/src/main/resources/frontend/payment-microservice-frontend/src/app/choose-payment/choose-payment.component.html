@@ -1,8 +1,10 @@
-<div>
-  <b>Payment types:</b>
-  <ul>
-    <li *ngFor="let paymentType of paymentTypes">
-      <a href="{{paymentType.url}}">{{paymentType.name}}</a>
-    </li>
-  </ul>
-</div>
+<form>
+  <div>
+    <label for="id_payment">Payment:</label>
+    <select id="id_payment" [(ngModel)]="chosenPaymentType" name="chosenPaymentType">
+      <option  *ngFor="let paymentType of paymentTypes" [ngValue]="paymentType.name">{{paymentType.name}}</option>
+    </select>
+  </div>
+  <br/>
+  <button class="btn btn-lg btn-primary" (click)="choosePayment()">Choose Payment</button>
+</form>

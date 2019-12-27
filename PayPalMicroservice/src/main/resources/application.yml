@@ -1,9 +1,9 @@
-
+frontend.url: https://localhost:4202
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1111/eureka
+      defaultZone: http://localhost:8761/eureka
     healthcheck:
       enabled: true
     lease:
@@ -49,4 +49,5 @@ server:
 
 spring:
   application:
-    name: paypal-microservice
+    name: pt_paypal-microservice # stavljamo prefiks "pt_" (pt = payment type) da bismo znali razlikovati mikroservise
+                                  # koji se odnose na tipove placanja od ostalih mikorservisa
