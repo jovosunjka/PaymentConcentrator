@@ -20,7 +20,6 @@ export class RegistrationComponent implements OnInit{
     userGroup = this.fb.group({
         cardNumber :  ['', Validators.required],
         pin :  ['', Validators.required],
-        amount: 1000,
         });
         
     ngOnInit(){}
