@@ -51,3 +51,30 @@ spring:
   application:
     name: pt_paypal-microservice # stavljamo prefiks "pt_" (pt = payment type) da bismo znali razlikovati mikroservise
                                   # koji se odnose na tipove placanja od ostalih mikorservisa
+#Spring DataSource
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:myDb;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: sa
+    #korisno ako je konekcija dugo u idle stanju
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  #Ukljucivanje konzole
+  h2:
+    console:
+      enabled: true
+      #Putanja na kojoj ce konzola biti dostupna
+      path: /h2-console
+  #JPA-Hibernate - prikazuje SQL upite
+  jpa:
+    show-sql: true
+    #kreira tabele na osnovu anotacija @Entity i kada aplikacija zavrsi sa radom, dropuje ih
+    hibernate:
+      ddl-auto: create-drop
+      #bira najbolje konvencije imenovanja za tabele i polja u bazi
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    #optimizacija za h2 upite
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect

@@ -71,12 +71,12 @@ public class ZuulHttpClientConfig {
                 .build();
 
         final HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        httpClientBuilder.setSSLContext(sslContext);
+        //httpClientBuilder.setSSLContext(sslContext);
         // Jovo: ovo sam dodao jer je proxy-server nesto zezao prilikom verifikacije payment-microservice sertifikata, 
         // jer je hostname sa koga je dolazio sertifikat: 192.168.56.1 iako je ocekivan 127.0.0.1 (localhost),
         // a u sertifikatu je za subject alternative names definisan samo : localhost
-        //SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
-        //httpClientBuilder.setSSLSocketFactory(sslSocketFactory);
+        SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+        httpClientBuilder.setSSLSocketFactory(sslSocketFactory);
         return httpClientBuilder.build();
     }
 

@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.rmj.PayPalMicroservice.dto.RedirectUrlDTO;
+import com.rmj.PayPalMicroservice.dto.transactionDTO;
+import com.rmj.PayPalMicroservice.repository.TransactionRepository;
 import com.rmj.PayPalMicroservice.service.PaymentService;
 
 @CrossOrigin
@@ -16,6 +18,9 @@ public class PaymentController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Autowired
+	private TransactionRepository repository;
 
 	
 	@RequestMapping(value = "/frontend-url", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -30,5 +35,19 @@ public class PaymentController {
     {
         return new ResponseEntity(HttpStatus.CREATED);
     }
+    
+    @RequestMapping(path = "/saveTransaction", method = RequestMethod.POST)
+    public ResponseEntity saveTransaction(@RequestBody transactionDTO executeTransaction)
+    {
+    	repository.save(executeTransaction);
+    	System.out.println("sacuvana paypal transakcija u bazu");
+        return new ResponseEntity(HttpStatus.OK);
+    }
 
+    @RequestMapping(path = "/getAllTransaction", method = RequestMethod.GET)
+    public ResponseEntity getAllTransaction()
+    {
+    	
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+    }
 }
