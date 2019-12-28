@@ -1,4 +1,4 @@
-
+frontend.url: https://localhost:4206
 
 eureka:
   client:

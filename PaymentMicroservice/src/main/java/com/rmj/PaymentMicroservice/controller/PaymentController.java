@@ -52,15 +52,25 @@ public class PaymentController {
     	paymentType = paymentType.toLowerCase();
     	paymentService.saveChosenPayment(transactionId, paymentType);
         String frontendUrl = paymentService.getMicroserviceFrontendUrl(transactionId, paymentType);
-    	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+    	/*
+    	String frontendUrl = "";
+    	if(paymentType.equalsIgnoreCase("pt_paypal-microservice")) {
+    		paymentService.saveChosenPayment(transactionId, paymentType);
+    		frontendUrl = paymentService.getMicroserviceFrontendUrl(paymentType);
+    	}
+    	else {
+    		frontendUrl = "https://localhost:4206";
+    	}
+    	*/
+        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/transaction-completed", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity transactionCompleted(@RequestBody TransactionCompletedDTO transactionCompletedDTO) {
     	paymentService.transactionCompleted(transactionCompletedDTO.getMerchantOrderId(), transactionCompletedDTO.getStatus());
     	return new ResponseEntity(HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/transactions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TransactionDTOs> getTransactions(@RequestParam("transactionIds") String transactionIdsStr) {
     	String[] transactionIds = transactionIdsStr.split(",");
