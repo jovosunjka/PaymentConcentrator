@@ -9,7 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // ovo smo ubacili da bismo u controllerima mogli
+//@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // ovo smo ubacili da bismo u controllerima mogli
 													//koristiti anotaciju @PreAuthorize
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

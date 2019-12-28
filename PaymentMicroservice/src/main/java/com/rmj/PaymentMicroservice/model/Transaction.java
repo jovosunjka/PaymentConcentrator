@@ -54,15 +54,15 @@ public class Transaction {
 	}
 	
 	public Transaction(Long merchantOrderId, double amount, Currency currency, LocalDateTime merchantTimestamp,
-			LocalDateTime timestamp, String redirectUrl, String callbackUrl, TransactionStatus status) {
+					String redirectUrl, String callbackUrl) {
 		this.merchantOrderId = merchantOrderId;
 		this.amount = amount;
 		this.currency = currency;
 		this.merchantTimestamp = merchantTimestamp;
-		this.timestamp = timestamp;
+		this.timestamp = LocalDateTime.now();
 		this.redirectUrl = redirectUrl;
 		this.callbackUrl = callbackUrl;
-		this.status = status;
+		this.status = TransactionStatus.PENDING;
 	}
 
 	public Long getId() {

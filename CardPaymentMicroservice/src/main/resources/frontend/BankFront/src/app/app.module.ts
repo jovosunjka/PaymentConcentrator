@@ -10,9 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes =[
-  {path: "" ,component: RegistrationComponent},
-  {path: "registration" ,component: RegistrationComponent},
-  {path: "**" , redirectTo:"registration"}
+   	{path: "registration/:transactionId" ,component: RegistrationComponent},
+   	{
+      path: '', // localhost:4200 redirect to localhost:4200/registration
+      redirectTo: '/registration',
+      pathMatch: 'full'
+  	}
 ]
 
 @NgModule({

@@ -1,4 +1,5 @@
 
+transaction-completed.url:  https://localhost:8083/payment/transaction-completed
 proxy-server.url: https://localhost:8762
 
 token:

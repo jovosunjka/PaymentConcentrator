@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../User';
 
@@ -10,10 +10,11 @@ export class AuthHttpService
       
     }
 
-    check(user: User): Observable<any>
+    check(transactionId: number, user: User): Observable<any>
     {
+        const headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-        return this.http.post("https://localhost:8080/api/bank/check",user,{responseType: 'text'});
+        return this.http.post("https://localhost:8080/api/bank/check?transactionId=" + transactionId,user,{headers});
 
     }
 

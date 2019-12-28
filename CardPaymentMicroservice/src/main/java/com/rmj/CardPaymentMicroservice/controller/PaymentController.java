@@ -6,6 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.rmj.CardPaymentMicroservice.dto.BankAccountDTO;
+import com.rmj.CardPaymentMicroservice.dto.PayDTO;
 import com.rmj.CardPaymentMicroservice.dto.RedirectUrlDTO;
 import com.rmj.CardPaymentMicroservice.service.PaymentService;
 
@@ -18,12 +20,26 @@ public class PaymentController {
 	private PaymentService paymentService;
 
 	
-	@RequestMapping(value = "/frontend-url", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RedirectUrlDTO> getFrontendUrl()
+	@RequestMapping(value = "/frontend-url", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
+																			produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RedirectUrlDTO> getFrontendUrl(@RequestBody PayDTO payDTO)
     {
-		String frontendUrl = paymentService.getFrontendUrl();
+		Long transactionId = paymentService.makeTransaction(payDTO.getMerchantOrderId(), payDTO.getAmount(), payDTO.getCurrency(),
+														payDTO.getTimestamp(), payDTO.getRedirectUrl(), payDTO.getCallbackUrl());
+		String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId;
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
+	
+	
+	@RequestMapping(value = "/pay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
+												produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RedirectUrlDTO> pay(@RequestParam("transactionId") Long transactionId, 
+														@RequestBody BankAccountDTO bankAccountDTO)
+	{
+	
+	String frontendUrl = paymentService.pay(transactionId, bankAccountDTO);
+	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+	}
 	
 
 }

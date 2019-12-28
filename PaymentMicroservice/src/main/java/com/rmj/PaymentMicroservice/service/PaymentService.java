@@ -16,8 +16,10 @@ public interface PaymentService {
 
 	void saveChosenPayment(Long transactionId, String paymentType);
 
-	String getMicroserviceFrontendUrl(String paymentType);
+	String getMicroserviceFrontendUrl(Long transactionId, String paymentType);
 
 	void transactionCompleted(long transactionId, String status);
+
+	List<Transaction> getTransactions(String[] transactionIds);
 	
 }

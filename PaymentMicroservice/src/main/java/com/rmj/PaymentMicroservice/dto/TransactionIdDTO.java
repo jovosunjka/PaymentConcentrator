@@ -1,9 +1,9 @@
 package com.rmj.PaymentMicroservice.dto;
 
-public class TransactionDTO {
+public class TransactionIdDTO {
     private Long id;
 
-    public TransactionDTO(Long id) {
+    public TransactionIdDTO(Long id) {
     	this.id = id;
     }
 

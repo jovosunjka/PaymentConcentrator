@@ -6,6 +6,8 @@ import com.rmj.PaymentMicroservice.dto.PaymentTypeDTO;
 import com.rmj.PaymentMicroservice.dto.RedirectUrlDTO;
 import com.rmj.PaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PaymentMicroservice.dto.TransactionDTO;
+import com.rmj.PaymentMicroservice.dto.TransactionDTOs;
+import com.rmj.PaymentMicroservice.dto.TransactionIdDTO;
 import com.rmj.PaymentMicroservice.model.Transaction;
 import com.rmj.PaymentMicroservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
@@ -30,10 +34,10 @@ public class PaymentController {
 
     @RequestMapping(value = "/pay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
     															produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<TransactionDTO> pay(@RequestBody PayDTO payDTO) {
+    public ResponseEntity<TransactionIdDTO> pay(@RequestBody PayDTO payDTO) {
     	Transaction transaction = paymentService.pay(payDTO.getMerchantOrderId(), payDTO.getAmount(), payDTO.getCurrency(),
     			payDTO.getTimestamp(), payDTO.getRedirectUrl(), payDTO.getCallbackUrl());
-        return new ResponseEntity<TransactionDTO>(new TransactionDTO(transaction.getId()), HttpStatus.CREATED);
+        return new ResponseEntity<TransactionIdDTO>(new TransactionIdDTO(transaction.getId()), HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/types", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -47,7 +51,7 @@ public class PaymentController {
     															@RequestParam("paymentType") String paymentType) {
     	paymentType = paymentType.toLowerCase();
     	paymentService.saveChosenPayment(transactionId, paymentType);
-        String frontendUrl = paymentService.getMicroserviceFrontendUrl(paymentType);
+        String frontendUrl = paymentService.getMicroserviceFrontendUrl(transactionId, paymentType);
     	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
     
@@ -57,5 +61,13 @@ public class PaymentController {
     	return new ResponseEntity(HttpStatus.OK);
     }
     
-    
+    @RequestMapping(value = "/transactions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TransactionDTOs> getTransactions(@RequestParam("transactionIds") String transactionIdsStr) {
+    	String[] transactionIds = transactionIdsStr.split(",");
+    	List<Transaction> transactions = paymentService.getTransactions(transactionIds);
+    	List<TransactionDTO> transactionDTOs = transactions.stream()
+    				.map(t -> new TransactionDTO(t))
+    				.collect(Collectors.toList());
+    	return new ResponseEntity<TransactionDTOs>(new TransactionDTOs(transactionDTOs), HttpStatus.OK);
+    }
 }
