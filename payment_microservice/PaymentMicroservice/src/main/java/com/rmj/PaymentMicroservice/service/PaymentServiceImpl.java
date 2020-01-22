@@ -104,7 +104,7 @@ public class PaymentServiceImpl implements PaymentService {
 	public String getMicroserviceFrontendUrl(Long transactionId, String paymentType) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
 		//"https://localhost:8084"
-		String microserviceBackendUrl = /*proxyServerUrl.concat("/").concat(paymentType)*/ "https://localhost:8084".concat("/payment/frontend-url");
+		String microserviceBackendUrl = proxyServerUrl.concat("/").concat(paymentType)/*"https://localhost:8086"*/.concat("/payment/frontend-url");
 		//ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.getForEntity(microserviceBackendUrl, RedirectUrlDTO.class);
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

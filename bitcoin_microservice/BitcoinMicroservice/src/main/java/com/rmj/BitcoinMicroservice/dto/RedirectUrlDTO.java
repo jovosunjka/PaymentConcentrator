@@ -1,4 +1,4 @@
-package models;
+package com.rmj.BitcoinMicroservice.dto;
 
 public class RedirectUrlDTO {
 	
