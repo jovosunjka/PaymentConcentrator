@@ -25,10 +25,11 @@ eureka:
   client:
     registerWithEureka: false #true
     fetchRegistry: true
-    service-url:
-      default-zone: http://localhost:8761/eureka/ 
-      # Jovo: ova aplikacija (proxy-server) nije uspevala da se javi eureka serveru
-      # dok nisam vratio port za eureka server na 8761 (default-ni port za eureka server) 
+    #service-url:
+    serviceUrl:
+      #default-zone:
+      defaultZone: https://localhost:8761/eureka/
+
   instance:
     hostname: localhost
     nonSecurePortEnabled: false
@@ -44,7 +45,8 @@ zuul:
   retryable: true
   routes.discovery:
      path: /discovery/**
-     url: http://localhost:8761
+     url: https://localhost:8761
+  sslHostnameValidationEnabled: false
 
 hystrix:
   command:
