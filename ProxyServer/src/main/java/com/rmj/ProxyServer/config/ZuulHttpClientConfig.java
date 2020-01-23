@@ -56,7 +56,7 @@ public class ZuulHttpClientConfig {
                 .requestFactory(() -> new HttpComponentsClientHttpRequestFactory(client))
                 .build();
     }*/
-    
+
     @Bean
     public CloseableHttpClient zuulHttpClient() throws Throwable {
     	// TrustSelfSignedStrategy

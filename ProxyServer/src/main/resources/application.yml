@@ -55,3 +55,6 @@ hystrix:
 ribbon:
   ReadTimeout: 100000
   ConnectTimeout: 100000
+  IsSecure: true
+  # Jovo: dok nisam dodao "IsSecure: true", nije bilo moguce poslati request od payment microservice-a
+  # do bitcoin microservice preko proxy server-a (stalno je vracao Bad Request, 400)
