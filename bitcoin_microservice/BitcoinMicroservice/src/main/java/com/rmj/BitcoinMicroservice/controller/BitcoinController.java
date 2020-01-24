@@ -20,6 +20,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.rmj.BitcoinMicroservice.dto.RedirectUrlDTO;
 import com.rmj.BitcoinMicroservice.models.Order;
 import com.rmj.BitcoinMicroservice.models.PaymentResponse;
 import com.rmj.BitcoinMicroservice.repository.OrderRepository;
@@ -39,12 +40,12 @@ public class BitcoinController {
     }
     
 
-    @RequestMapping(path = "/createPay", method = RequestMethod.GET)
-    public RedirectView  pay(@RequestParam String username) {
+    @RequestMapping(path = "/createPay", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RedirectUrlDTO>  pay(@RequestParam String username) {
     	
         String returnUrl = this.createPayment(username);
         
-    	return new RedirectView(returnUrl);
+    	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(returnUrl), HttpStatus.OK);
     }
     
     @RequestMapping(path = "/allOrders", method = RequestMethod.GET)
@@ -67,9 +68,10 @@ public class BitcoinController {
 		map.add("price_amount", "100005");
 		map.add("price_currency", "USD");
 		map.add("receive_currency", "USD");
-		map.add("cancel_url", "http://example.com/account/orders.");
+		map.add("cancel_url", "http://example.com/account/orders.");	//dodati odgovaraju endpoint na koji 
 		map.add("success_url", "http://example.com/account/orders.");
-
+		//postoji i callback url opcija
+		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
 		String returnUrl = "";
 		try {

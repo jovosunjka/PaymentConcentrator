@@ -1,9 +1,9 @@
-frontend.url: https://localhost:4206
+frontend.url: https://localhost:4206/payBitcoin
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: https://localhost:8761/eureka
     healthcheck:
       enabled: true
     lease:
