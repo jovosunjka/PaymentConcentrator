@@ -17,6 +17,8 @@ INSERT INTO `user` (`id`,`name`,`username`,`password`) VALUES (4, 'Magazine3','m
 
 INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES (1, 1);
 INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES (2, 2);
+INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES (3, 2);
+INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES (4, 2);
 
 INSERT INTO `form_fields_for_payment_type` (`id`,`payment_type`,`form_fields`) VALUES (1, 'card-payment','account number');
 INSERT INTO `form_fields_for_payment_type` (`id`,`payment_type`,`form_fields`) VALUES (2, 'paypal','paypal account');

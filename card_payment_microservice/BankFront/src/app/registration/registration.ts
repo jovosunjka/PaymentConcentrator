@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit{
     ngOnInit() {
         if (this.route.snapshot.params.transactionId) {
             this.transactionId = this.route.snapshot.params.transactionId;
-          }
+        }
     }
 
     register()

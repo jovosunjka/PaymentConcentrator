@@ -2,7 +2,6 @@ package com.rmj.CardPaymentMicroservice.service;
 
 import java.time.LocalDateTime;
 
-import com.rmj.CardPaymentMicroservice.dto.BankAccountDTO;
 import com.rmj.CardPaymentMicroservice.model.Currency;
 
 public interface PaymentService {
@@ -12,5 +11,5 @@ public interface PaymentService {
 	Long makeTransaction(Long merchantOrderId, double amount, Currency currency, LocalDateTime timestamp,
 			String redirectUrl, String callbackUrl);
 
-	String pay(Long transactionId, BankAccountDTO bankAccountDTO);
+	String pay(Long transactionId, int cardNumber, int pin);
 }

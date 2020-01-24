@@ -1,4 +1,4 @@
-frontend.url: https://localhost:4203
+frontend.url: https://localhost:4203/registration
 
 
 eureka:
