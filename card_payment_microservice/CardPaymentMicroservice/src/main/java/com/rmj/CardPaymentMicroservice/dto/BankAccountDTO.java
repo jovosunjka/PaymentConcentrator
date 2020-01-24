@@ -4,7 +4,7 @@ package com.rmj.CardPaymentMicroservice.dto;
 public class BankAccountDTO {
     private int cardNumber;
     private int pin;
-    private int amount;
+    private double amount;
     private String name;
     private String surname;
 
@@ -24,11 +24,11 @@ public class BankAccountDTO {
         this.pin = pin;
     }
 
-    public int getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -52,7 +52,7 @@ public class BankAccountDTO {
 
     public BankAccountDTO(){}
 
-    public BankAccountDTO(int cardNumber, int pin, int amount, String name, String surname)
+    public BankAccountDTO(int cardNumber, int pin, double amount, String name, String surname)
     {
         this.cardNumber = cardNumber;
         this.pin = pin;

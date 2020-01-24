@@ -15,6 +15,7 @@ import { format } from 'url';
 export class RegistrationComponent implements OnInit{
     text:string;
     transactionId: number;
+    amount: Int32Array;
 
 
     constructor(private http: AuthHttpService, private router: Router, private ngZone: NgZone, private fb: FormBuilder, private route: ActivatedRoute){}
@@ -27,14 +28,17 @@ export class RegistrationComponent implements OnInit{
     ngOnInit() {
         if (this.route.snapshot.params.transactionId) {
             this.transactionId = this.route.snapshot.params.transactionId;
-          }
+            this.amount = this.route.snapshot.params.amount;
+        }
     }
 
     register()
     {
         let user = this.userGroup.value;
+        console.log("aaa")
+        console.log(this.amount)
 
-        this.http.check(this.transactionId, user).subscribe(
+        this.http.check(this.transactionId, user,this.amount).subscribe(
             redirectUrlDto =>{
                 this.ngZone.runOutsideAngular(() => {
                     window.location.href = redirectUrlDto.redirectUrl;

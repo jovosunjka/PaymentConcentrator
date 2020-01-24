@@ -27,7 +27,7 @@ public class BankServiceImpl implements BankService {
     @EventListener(ApplicationReadyEvent.class)
     public void OnStart()
     {
-        add(1234567890,1234,50000,"Igor","Resman");
+        add(1234567890,1234,2500,"Igor","Resman");
         add(987654321,4321,90000,"Marko","Mijatovic");
         add(1357902468,1234,70000,"Jovo","Sunjka");
 

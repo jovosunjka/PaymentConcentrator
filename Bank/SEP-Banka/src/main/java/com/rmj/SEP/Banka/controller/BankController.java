@@ -33,6 +33,14 @@ public class BankController {
                 {
                     if(accounts.get(i).getAmount()>= user.getAmount())
                     {
+                    	int pom = 0;
+                    	
+                    	pom = accounts.get(i).getAmount() - user.getAmount();
+                    	
+                    	accounts.get(i).setAmount(pom);
+                    	
+                    	serviceRepo.save(accounts.get(i));
+                    	
                         return ResponseEntity.status(HttpStatus.OK).body("Transaction is acceptable!");
                     }
                     else

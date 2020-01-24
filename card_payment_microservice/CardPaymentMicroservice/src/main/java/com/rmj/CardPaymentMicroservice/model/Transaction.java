@@ -22,7 +22,7 @@ public class Transaction {
 	@Column(name = "merchant_order_id", unique = true, nullable = false)
 	private Long merchantOrderId;
 	
-	@Column(name = "card_number", unique = true, nullable = true)
+	@Column(name = "card_number", unique = false, nullable = true)
 	private String cardNumber;
 	
 	// pin code ne bi trebalo da cuvamo
