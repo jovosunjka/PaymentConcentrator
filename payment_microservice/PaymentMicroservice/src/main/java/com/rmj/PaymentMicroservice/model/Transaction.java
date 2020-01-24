@@ -19,7 +19,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name = "merchant_order_id", unique = true, nullable = false)
+	@Column(name = "merchant_order_id", unique = false, nullable = false)
 	private Long merchantOrderId;
 	
 	@Column(name = "amount", unique = false, nullable = false)

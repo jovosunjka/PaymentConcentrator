@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.rmj.CardPaymentMicroservice.dto.BankAccountDTO;
+import com.rmj.CardPaymentMicroservice.dto.CardNumberAndPinDTO;
 import com.rmj.CardPaymentMicroservice.dto.PayDTO;
 import com.rmj.CardPaymentMicroservice.dto.RedirectUrlDTO;
 import com.rmj.CardPaymentMicroservice.service.PaymentService;
@@ -35,10 +36,10 @@ public class PaymentController {
 	@RequestMapping(value = "/pay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
 												produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<RedirectUrlDTO> pay(@RequestParam("transactionId") Long transactionId, 
-														@RequestBody BankAccountDTO bankAccountDTO)
+														@RequestBody CardNumberAndPinDTO cardNumberAndPinDTO)
 	{
 	
-	String frontendUrl = paymentService.pay(transactionId, bankAccountDTO);
+	String frontendUrl = paymentService.pay(transactionId, cardNumberAndPinDTO.getCardNumber(), cardNumberAndPinDTO.getPin());
 	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
 	}
 	

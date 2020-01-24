@@ -10,12 +10,9 @@ export class AuthHttpService
       
     }
 
-    check(transactionId: number, user: User, amount: Int32Array): Observable<any>
+    check(transactionId: number, user: User): Observable<any>
     {
         const headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-        user.amount = amount;
-        console.log(transactionId);
-        console.log(user);
 
         return this.http.post("https://localhost:8084/payment/pay?transactionId=" + transactionId,user,{headers}) as Observable<any>
 

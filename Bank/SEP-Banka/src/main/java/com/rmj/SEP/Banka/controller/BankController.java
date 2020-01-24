@@ -1,8 +1,8 @@
 package com.rmj.SEP.Banka.controller;
 
+import com.rmj.SEP.Banka.dto.BankAccountDTO;
 import com.rmj.SEP.Banka.models.BankAccount;
 import com.rmj.SEP.Banka.repository.BankServiceInterface;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class BankController {
 
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public ResponseEntity Check(@RequestBody BankAccount user)
+    public ResponseEntity Check(@RequestBody BankAccountDTO user)
     {
         List<BankAccount> accounts = new ArrayList<>();
         accounts = serviceRepo.findAll();
@@ -33,7 +33,7 @@ public class BankController {
                 {
                     if(accounts.get(i).getAmount()>= user.getAmount())
                     {
-                    	int pom = 0;
+                    	double pom = 0;
                     	
                     	pom = accounts.get(i).getAmount() - user.getAmount();
                     	

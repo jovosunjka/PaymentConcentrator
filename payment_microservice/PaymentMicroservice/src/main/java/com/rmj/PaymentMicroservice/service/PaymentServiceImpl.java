@@ -124,10 +124,7 @@ public class PaymentServiceImpl implements PaymentService {
 		TransactionStatus statusEnum = TransactionStatus.valueOf(status.toUpperCase());
 		transaction.setStatus(statusEnum);
 		transactionService.save(transaction);
-		
-		//restTemplate.getForEntity(transaction.getCallbackUrl(), Void.class);
-		
-		
+	
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         

@@ -46,13 +46,15 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public String pay(Long transactionId, BankAccountDTO bankAccountDTO) {
+	public String pay(Long transactionId, int cardNumber, int pin) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
-		transaction.setCardNumber(""+bankAccountDTO.getCardNumber());
-		transactionService.save(transaction);
+		transaction.setCardNumber("" + cardNumber);
+		transaction = transactionService.save(transaction);
 		
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        BankAccountDTO bankAccountDTO = new BankAccountDTO(cardNumber, pin, transaction.getAmount());
         HttpEntity<BankAccountDTO> httpEntity = new HttpEntity<BankAccountDTO>(bankAccountDTO, headers);
         String bankUrl = "https://localhost:8080/api/bank/check";
         ResponseEntity<String> responseEntity = restTemplate.exchange(bankUrl, HttpMethod.POST, httpEntity, String.class);
