@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.rmj.PaymentMicroservice.model.FormFieldsForPaymentType;
+import com.rmj.PaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -119,11 +121,16 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public void transactionCompleted(long transactionId, String status) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
-		TransactionStatus statusEnum = TransactionStatus.valueOf(status);
+		TransactionStatus statusEnum = TransactionStatus.valueOf(status.toUpperCase());
 		transaction.setStatus(statusEnum);
 		transactionService.save(transaction);
+	
+		HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        HttpEntity<TransactionCompletedDTO> httpEntity2 = new HttpEntity<TransactionCompletedDTO>(new TransactionCompletedDTO(transaction.getMerchantOrderId(), status), headers);
+    	restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity2, Void.class);
 		
-		restTemplate.getForEntity(transaction.getCallbackUrl(), Void.class);
 	}
 
 	@Override

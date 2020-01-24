@@ -1,4 +1,4 @@
-package com.rmj.CardPaymentMicroservice.dto;
+package com.rmj.SEP.Banka.dto;
 
 
 public class BankAccountDTO {

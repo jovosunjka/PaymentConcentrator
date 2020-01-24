@@ -14,7 +14,7 @@ export class AuthHttpService
     {
         const headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-        return this.http.post("https://localhost:8084/payment/pay?transactionId=" + transactionId,user,{headers});
+        return this.http.post("https://localhost:8084/payment/pay?transactionId=" + transactionId,user,{headers}) as Observable<any>
 
     }
 
