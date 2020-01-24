@@ -79,4 +79,6 @@ export class ButtonComponent implements OnInit {
   all(){
     this.serviceSave.allTransaction().subscribe();
   }
+
+  
 }

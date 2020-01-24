@@ -7,6 +7,7 @@ import { ButtonComponent } from './button/button.component';
 import { RouterModule, Routes } from '@angular/router';
 import { saveTransactionService } from './services/saveTransactionService';
 import { HttpClientModule } from '@angular/common/http';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 const routes: Routes = [
   { path: 'button/:transactionId', component: ButtonComponent },
@@ -14,13 +15,18 @@ const routes: Routes = [
       path: '', // localhost:4200 redirect to localhost:4200/button
       redirectTo: '/button',
       pathMatch: 'full'
+  },
+  {
+    path: 'subscription',
+    component: SubscriptionsComponent
   }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ButtonComponent,
+    SubscriptionsComponent
   ],
   imports: [
     BrowserModule,

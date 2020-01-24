@@ -1,6 +1,6 @@
 @echo off
 
-:: "%CD%" vraca putanju do trenutnog direktorijuma (current directory)
+ "%CD%" vraca putanju do trenutnog direktorijuma (current directory)
 
 start "EurekaServer" java -jar %CD%\EurekaServer\target\EurekaServer-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\EurekaServer\target\classes\stores\keystore.p12
 echo WAIT FOR THE EURKEA SERVER TO FINISH RUNNING...
@@ -19,9 +19,9 @@ start "PayPalMicroservice" java -jar %CD%\pay_pal_microservice\PayPalMicroservic
 pause
 echo PayPalMicroservice is running!
 
-:: start "BitcoinMicroservice" java -jar %CD%\bitcoin_microservice\BitcoinMicroservice\target\BitcoinMicroservice-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\bitcoin_microservice\BitcoinMicroservice\target\classes\stores\keystore.p12
-:: pause
-:: echo BitcoinMicroservice is running!
+ start "BitcoinMicroservice" java -jar %CD%\bitcoin_microservice\BitcoinMicroservice\target\BitcoinMicroservice-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\bitcoin_microservice\BitcoinMicroservice\target\classes\stores\keystore.p12
+ pause
+ echo BitcoinMicroservice is running!
 
 :: start "CardPaymentMicroservice" java -jar %CD%\card_payment_microservice\CardPaymentMicroservice\target\CardPaymentMicroservice-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\card_payment_microservice\CardPaymentMicroservice\target\classes\stores\keystore.p12
 :: pause
