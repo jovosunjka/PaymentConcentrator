@@ -113,7 +113,6 @@ public class PaymentServiceImpl implements PaymentService {
         		transaction.getMerchantTimestamp(), transaction.getRedirectUrl(), callbackUrl);
         HttpEntity<PayDTO> httpEntity = new HttpEntity<PayDTO>(payDTO, headers);
         ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(microserviceBackendUrl, HttpMethod.POST, httpEntity, RedirectUrlDTO.class);
-        System.out.println("LINK KA FRONTU " + responseEntity.getBody().getRedirectUrl());
 		return responseEntity.getBody().getRedirectUrl();
 	}
 

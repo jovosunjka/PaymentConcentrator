@@ -19,7 +19,6 @@ export class ButtonComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.params.transactionId) {
       this.transactionId = this.route.snapshot.params.transactionId;
-      console.log("Broj transakcije stigle sa bekenda: " + this.transactionId);
     }
 
   }
