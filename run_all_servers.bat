@@ -31,8 +31,8 @@ echo ProxyServer is running!
 :: pause
 :: echo Bank is running!
 
-:: start "ScienceCenter" java -jar %CD%\..\..\science_center_workspace\ScienceCenterRepository\ScienceCenter\target\ScienceCenter-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\..\..\science_center_workspace\ScienceCenterRepository\ScienceCenter\target\classes\stores\keystore.p12
-:: pause
-:: echo ScienceCenter is running!
+start "ScienceCenter" java -jar %CD%\..\..\science_center_workspace\ScienceCenterRepository\ScienceCenter\target\ScienceCenter-0.0.1-SNAPSHOT.jar --server.ssl.key-store=file:\%CD%\..\..\science_center_workspace\ScienceCenterRepository\ScienceCenter\target\classes\stores\keystore.p12
+pause
+echo ScienceCenter is running!
 
 pause

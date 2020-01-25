@@ -1,9 +1,0 @@
-com\rmj\SEP\Banka\repository\BankServiceInterface.class
-com\rmj\SEP\Banka\Services\BankServiceImpl.class
-com\rmj\SEP\Banka\exceptions\NotFoundException.class
-com\rmj\SEP\Banka\controller\BankController.class
-com\rmj\SEP\Banka\Services\BankService.class
-com\rmj\SEP\Banka\exceptions\MyExceptionHandler.class
-com\rmj\SEP\Banka\exceptions\AlredyExistException.class
-com\rmj\SEP\Banka\models\BankAccount.class
-com\rmj\SEP\Banka\SepBankaApplication.class
