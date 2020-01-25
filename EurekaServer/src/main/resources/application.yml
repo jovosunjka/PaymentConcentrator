@@ -7,9 +7,9 @@ server:
     key-store-password: pass000
     key-store-type: PKCS12
     key-alias: eureka_server
-    #trust-store: classpath:stores/truststore.p12
-    #trust-store-password: pass999
-    #trust-store-type: PKCS12
+    trust-store: classpath:stores/truststore.p12
+    trust-store-password: pass999
+    trust-store-type: PKCS12
     protocol: TLS
     enabled-protocols: TLSv1.2
     ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -19,16 +19,19 @@ server:
     client-auth: want
     # for two way authentication, use value: need
 
+# https://github.com/piomin/sample-secure-eureka-discovery/blob/master/secure-app/src/main/resources/application.yml
+
 eureka:
   instance:
     hostname: localhost
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
-    preferIpAddress: true
-
+    #preferIpAddress: true
+    homePageUrl: https://${eureka.instance.hostname}:${server.port}/
+    statusPageUrl: https://${eureka.instance.hostname}:${server.port}/admin/info
   client:
     registerWithEureka: false
     fetchRegistry: false
-    #serviceUrl:
-      #defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/
+    serviceUrl:
+      defaultZone: https://${eureka.instance.hostname}:${server.port}/eureka/

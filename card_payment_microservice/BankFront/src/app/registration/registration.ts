@@ -21,7 +21,9 @@ export class RegistrationComponent implements OnInit{
 
     userGroup = this.fb.group({
         cardNumber :  ['', Validators.required],
-        pin :  ['', Validators.required],
+        securityCode :  ['', Validators.required],
+        cardHolder: ['', Validators.required],
+        expirationDate: ['',Validators.required]
         });
         
     ngOnInit() {

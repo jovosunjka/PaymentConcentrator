@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return authenticationTokenFilter;
 	}
 
+	// https://zoltanaltfatter.com/2018/05/15/spring-cloud-discovery-with-spring-boot-admin/
 	
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {

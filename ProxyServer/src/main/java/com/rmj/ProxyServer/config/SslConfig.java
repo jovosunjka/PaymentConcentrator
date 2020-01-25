@@ -2,10 +2,7 @@ package com.rmj.ProxyServer.config;
 
 import com.netflix.discovery.DiscoveryClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +14,11 @@ import javax.net.ssl.SSLContext;
 
 @Configuration
 public class SslConfig {
+    @Value("${server.ssl.key-store}")
+    private Resource keyStore;
+
+    @Value("${server.ssl.key-store-password}")
+    private char[] keyStorePassword;
 
 //     @Value("${server.ssl.trust-store}")
 //     private Resource trustStore;
@@ -29,6 +31,7 @@ public class SslConfig {
     public DiscoveryClient.DiscoveryClientOptionalArgs getTrustStoredEurekaClient(SSLContext sslContext) {
         DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
         args.setSSLContext(sslContext);
+        args.setHostnameVerifier(new NoopHostnameVerifier());
         return args;
     }
 
@@ -36,6 +39,7 @@ public class SslConfig {
     public SSLContext sslContext() throws Exception {
         System.out.println("*********************** initialize ssl context bean with keystore {} ");
         return new SSLContextBuilder()
+                .loadKeyMaterial(keyStore.getFile(), keyStorePassword, keyStorePassword)
                 .loadTrustMaterial(null, new TrustSelfSignedStrategy())
                 //.loadTrustMaterial(trustStore.getFile(), trustStorePassword)
                 .build();

@@ -50,6 +50,10 @@ public class User {
         this.accounts = accounts;
     }
 
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
     public Long getId() {
         return id;
     }

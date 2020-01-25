@@ -39,7 +39,7 @@ public class PaymentController {
 														@RequestBody CardNumberAndPinDTO cardNumberAndPinDTO)
 	{
 	
-	String frontendUrl = paymentService.pay(transactionId, cardNumberAndPinDTO.getCardNumber(), cardNumberAndPinDTO.getPin());
+	String frontendUrl = paymentService.pay(transactionId, cardNumberAndPinDTO.getCardNumber(), cardNumberAndPinDTO.getSecurityCode(),cardNumberAndPinDTO.getCardHolder(),cardNumberAndPinDTO.getExpirationDate());
 	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
 	}
 	

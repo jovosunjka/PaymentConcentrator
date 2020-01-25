@@ -20,17 +20,18 @@ public class BankAccount {
     @Column(name = "cardNumber", unique = true, nullable = false)
     private int cardNumber;
 
-    @Column(name = "pin", unique = false, nullable = false)
-    private int pin;
+    @Column(name = "securityCode", unique = false, nullable = false)
+    private int securityCode;
 
     @Column(name = "amount", unique = false, nullable = false)
     private double amount;
 
-    @Column(name = "name", unique =  false, nullable = false)
-    private String name;
+    @Column(name = "cardHolder", unique =  false, nullable = false)
+    private String cardHolder;
+    
+    @Column(name = "expirationDate", unique= false, nullable= false)
+    private String expirationDate;
 
-    @Column(name = "surname", unique = false,nullable = false)
-    private String surname;
     
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "bank_account_transactions", joinColumns = {
@@ -41,17 +42,26 @@ public class BankAccount {
     
     public BankAccount(){}
 
-    public BankAccount(int accountNumber, int cardNumber, int pin, int amount, String name, String surname)
+    public BankAccount(int accountNumber, int cardNumber, int securityCode, int amount, String cardHolder,String expirationDate)
     {
     	this.accountNumber = accountNumber;
         this.cardNumber = cardNumber;
-        this.pin = pin;
+        this.securityCode = securityCode;
         this.amount = amount;
-        this.name = name;
-        this.surname = surname;
+        this.cardHolder = cardHolder;
+        this.expirationDate = expirationDate;
         this.transactions = new ArrayList<Transaction>();
     }
     
+    public String getExpirationDate()
+    {
+    	return expirationDate;
+    }
+    
+    public void setExpirationDate(String expirationDate)
+    {
+    	this.expirationDate = expirationDate;
+    }
     
 
     public Long getId() {
@@ -79,12 +89,12 @@ public class BankAccount {
     }
 
 
-    public int getPin() {
-        return pin;
+    public int getSecurityCode() {
+        return securityCode;
     }
 
-    public void setPin(int pin) {
-        this.pin = pin;
+    public void setSecurityCode(int securityCode) {
+        this.securityCode = securityCode;
     }
 
     public double getAmount() {
@@ -95,20 +105,12 @@ public class BankAccount {
         this.amount = amount;
     }
 
-    public String getName() {
-        return name;
+    public String getCardHolder() {
+        return cardHolder;
     }
 
-    public void setName(String name) {
-        name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        surname = surname;
+    public void setCardHolder(String cardHolder) {
+    	this.cardHolder = cardHolder;
     }
 
 	public List<Transaction> getTransactions() {
