@@ -1,5 +1,6 @@
-package com.rmj.PaymentMicroservice.security;
+package com.rmj.PayPalMicroservice.security;
 
+//import com.rmj.PayPalMicroservice.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.rmj.PaymentMicroservice.service.UserDetailsServiceImpl;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // ovo smo ubacili da bismo u controllerima mogli
 													//koristiti anotaciju @PreAuthorize
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
+	/*@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
 	@Autowired
@@ -46,10 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
 		authenticationTokenFilter.setAuthenticationManager(authenticationManagerBean());
 		return authenticationTokenFilter;
-	}
+	}*/
+
 
 	// https://zoltanaltfatter.com/2018/05/15/spring-cloud-discovery-with-spring-boot-admin/
-	
+
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
@@ -68,6 +68,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().permitAll();
 		
 		// Custom JWT based authentication
-		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		//httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

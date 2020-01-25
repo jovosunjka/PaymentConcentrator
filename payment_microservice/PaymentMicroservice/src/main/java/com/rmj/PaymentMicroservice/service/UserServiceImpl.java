@@ -2,6 +2,7 @@ package com.rmj.PaymentMicroservice.service;
 
 
 import com.rmj.PaymentMicroservice.model.PaymentAccount;
+import com.rmj.PaymentMicroservice.model.Role;
 import com.rmj.PaymentMicroservice.model.User;
 import com.rmj.PaymentMicroservice.repository.UserRepository;
 import com.rmj.PaymentMicroservice.service.UserService;
@@ -25,6 +26,8 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private RoleService roleService;
 
 
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
@@ -81,6 +84,8 @@ public class UserServiceImpl implements UserService {
 			return false;
 
 		User user = new User(name, username, passwordEncoder.encode(password), accounts);
+		Role role = roleService.getRole("PAYING");
+		user.addRole(role);
 		try {
 			userRepository.save(user);
 		} catch (Exception e) {

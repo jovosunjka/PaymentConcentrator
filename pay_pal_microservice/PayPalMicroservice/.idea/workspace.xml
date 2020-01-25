@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6876aab-8faa-4194-8920-65e203e0a111" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stores/truststore.p12" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/truststore.p12" beforeDir="false" afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/truststore.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/truststore.p12" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/truststore.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/RoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../run_all_servers.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../run_all_servers.bat" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,17 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="75" selection-start-line="75" selection-end-line="75" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="459">
+              <caret line="45" column="49" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -38,26 +50,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="833">
+              <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="50" column="92" selection-start-line="50" selection-start-column="92" selection-end-line="50" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -69,7 +84,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -87,6 +106,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>8761</find>
+      <find>secur</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,8 +119,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/AlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PayPalController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -139,6 +160,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,14 +227,29 @@
               <item name="PayPalMicroservice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="PayPalMicroservice" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PayPalMicroservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PayPalMicroservice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PayPalMicroservice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PayPalMicroservice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="stores" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -222,7 +260,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -238,6 +276,7 @@
       <recent name="com.rmj.PayPalMicroservice.config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice" />
       <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice" />
       <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\PayPalMicroservice\src\main\resources" />
     </key>
@@ -281,19 +320,19 @@
       <workItem from="1579712250136" duration="741000" />
       <workItem from="1579816941056" duration="124000" />
       <workItem from="1579866866915" duration="541000" />
-      <workItem from="1579867769965" duration="912000" />
+      <workItem from="1579867769965" duration="18923000" />
+      <workItem from="1579949003713" duration="3620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14375000" />
+    <option name="totallyTimeSpent" value="36006000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.497545" visible="true" weight="0.2647504" />
+      <window_info id="Structure" order="1" sideWeight="0.502455" side_tool="true" weight="0.2647504" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
@@ -301,9 +340,9 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45826513" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36006546" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -311,7 +350,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3289689" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -330,14 +369,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PayPalController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SecurityConfig.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/target/classes/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
+        <state relative-caret-position="-612" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java">
@@ -347,10 +396,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="425">
+          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -358,7 +407,11 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/MyExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -366,17 +419,44 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/AlreadyExistsException.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="459">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="7" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/TokenUtils.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/AuthenticationTokenFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="102">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="50" column="92" selection-start-line="50" selection-start-column="92" selection-end-line="50" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

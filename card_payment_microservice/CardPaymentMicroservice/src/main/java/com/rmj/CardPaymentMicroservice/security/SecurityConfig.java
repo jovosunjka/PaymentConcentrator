@@ -1,20 +1,12 @@
-package com.rmj.PaymentMicroservice.security;
+package com.rmj.CardPaymentMicroservice.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+//import com.rmj.PayPalMicroservice.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.rmj.PaymentMicroservice.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +14,7 @@ import com.rmj.PaymentMicroservice.service.UserDetailsServiceImpl;
 													//koristiti anotaciju @PreAuthorize
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
+	/*@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
 	@Autowired
@@ -46,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
 		authenticationTokenFilter.setAuthenticationManager(authenticationManagerBean());
 		return authenticationTokenFilter;
-	}
+	}*/
 
 	// https://zoltanaltfatter.com/2018/05/15/spring-cloud-discovery-with-spring-boot-admin/
 	
@@ -68,6 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().permitAll();
 		
 		// Custom JWT based authentication
-		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		//httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 }
