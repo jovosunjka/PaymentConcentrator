@@ -11,5 +11,5 @@ public interface PaymentService {
 	Long makeTransaction(Long merchantOrderId, double amount, Currency currency, LocalDateTime timestamp,
 			String redirectUrl, String callbackUrl);
 
-	String pay(Long transactionId, int cardNumber, int pin);
+	String pay(Long transactionId, int cardNumber, int pin, String cardHolder, String expirationDate);
 }
