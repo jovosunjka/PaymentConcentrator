@@ -7,7 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.rmj.PaymentMicroservice.model.FormFieldsForPaymentType;
+import com.rmj.PaymentMicroservice.exception.NotFoundException;
+import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
+import com.rmj.PaymentMicroservice.model.*;
 import com.rmj.PaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,6 @@ import com.netflix.discovery.shared.Application;
 import com.rmj.PaymentMicroservice.dto.PayDTO;
 import com.rmj.PaymentMicroservice.dto.PaymentTypeDTO;
 import com.rmj.PaymentMicroservice.dto.RedirectUrlDTO;
-import com.rmj.PaymentMicroservice.model.Currency;
-import com.rmj.PaymentMicroservice.model.Transaction;
-import com.rmj.PaymentMicroservice.model.TransactionStatus;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -50,7 +48,12 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Autowired
     private FormFieldsForPaymentTypeService formFieldsForPaymentTypeService;
-    
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PaymentAccountService paymentAccountService;
 
     
     @Override
@@ -103,19 +106,30 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public String getMicroserviceFrontendUrl(Long transactionId, String paymentType) {
+	public String getMicroserviceFrontendUrl(Long transactionId, String paymentType) throws UserNotFoundException, NotFoundException {
+    	User loggedUser = userService.getLoggedUser();
+    	String pType = paymentType.replace("pt_", "").replace("-microservice", "");
+    	PaymentAccount paymentAccount = loggedUser.getAccounts().stream()
+				.filter(a -> a.getType().equals(pType))
+				.findFirst()
+				.orElseThrow(() -> new NotFoundException("Payment account (type=".concat(pType).concat(") not found!")));
+
 		Transaction transaction = transactionService.getTransaction(transactionId);
-		//"https://localhost:8084"
-		String microserviceBackendUrl = proxyServerUrl.concat("/").concat(paymentType)/*"https://localhost:8086"*/.concat("/payment/frontend-url");
-		//ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.getForEntity(microserviceBackendUrl, RedirectUrlDTO.class);
+		String microserviceBackendUrl = proxyServerUrl.concat("/").concat(paymentType).concat("/payment/frontend-url");
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.set("paymentAccountUsername", paymentAccount.getUsername());
         String callbackUrl = transactionCompletedUrl;
         PayDTO payDTO = new PayDTO(transaction.getMerchantOrderId(), transaction.getAmount(), transaction.getCurrency(),
         		transaction.getMerchantTimestamp(), transaction.getRedirectUrl(), callbackUrl);
         HttpEntity<PayDTO> httpEntity = new HttpEntity<PayDTO>(payDTO, headers);
         ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(microserviceBackendUrl, HttpMethod.POST, httpEntity, RedirectUrlDTO.class);
-		return responseEntity.getBody().getRedirectUrl();
+
+        if (paymentAccount.getAccessToken() == null) {
+        	paymentAccount = paymentAccountService.getPaymentAccount(paymentAccount.getId());
+        	// osvezavamo
+		}
+        return responseEntity.getBody().getRedirectUrl() + "?token=" + paymentAccount.getAccessToken();
 	}
 
 	@Override
@@ -148,10 +162,26 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<FormFieldsForPaymentTypeDTO> getFormFieldsForPaymentTypes() {
 		List<String> paymentTypeNames = getPaymentTypeNames();
 		return paymentTypeNames.stream()
-				.map(ptn -> {
-					ptn = ptn.toLowerCase().replace("pt_", "").replace("-microservice", "");
-					FormFieldsForPaymentType fields = formFieldsForPaymentTypeService.getFormFieldsForPaymentType(ptn);
-					return new FormFieldsForPaymentTypeDTO(fields);
+				.map(ptName -> {
+					ptName = ptName.toLowerCase();
+					String ptn = ptName.replace("pt_", "").replace("-microservice", "");
+
+					FormFieldsForPaymentTypeDTO formFieldsForPaymentTypeDTO;
+					FormFieldsForPaymentType formFieldsForPaymentType;
+					try {
+						// prvo probaj naci u lokalnoj bazi
+						formFieldsForPaymentType = formFieldsForPaymentTypeService.getFormFieldsForPaymentType(ptn);
+						formFieldsForPaymentTypeDTO = new FormFieldsForPaymentTypeDTO(formFieldsForPaymentType);
+					} catch (Exception e) {
+						// ako ne nadjes u bazi, pitaj microservice, pa onda sacuvaj u lokalnoj bazi
+						formFieldsForPaymentTypeDTO = formFieldsForPaymentTypeService.getFormFieldsForPaymentTypeFromMicroservice(ptName);
+						List<FormField> formFields = formFieldsForPaymentTypeDTO.getFormFields().stream()
+															.map(ff -> new FormField(ff.getName(), ff.getType(), ff.getOptional()))
+															.collect(Collectors.toList());
+						formFieldsForPaymentType = new FormFieldsForPaymentType(formFieldsForPaymentTypeDTO.getPaymentType(), formFields);
+						formFieldsForPaymentTypeService.save(formFieldsForPaymentType);
+					}
+					return formFieldsForPaymentTypeDTO;
 				})
 				.collect(Collectors.toList());
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.rmj.BitcoinMicroservice.service.PaymentService;
@@ -20,15 +21,10 @@ import java.time.LocalDateTime;
 public class FrontController {
 	
 	@Autowired
-	private PaymentService paymentService;	
+	private PaymentService paymentService;
 
-	/*@RequestMapping(value = "/frontend-url", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RedirectUrlDTO> getFrontendUrl()
-    {
-		String frontendUrl = paymentService.getFrontendUrl();
-        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
-    }*/
 
+    @PreAuthorize("hasAuthority('PAY')")
     @RequestMapping(value = "/frontend-url", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RedirectUrlDTO> getFrontendUrl(@RequestBody PayDTO payDTO)

@@ -1,7 +1,10 @@
 package com.rmj.PayPalMicroservice.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.rmj.PayPalMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.PayPalMicroservice.model.FormField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,14 +20,12 @@ public class PaymentServiceImpl implements PaymentService {
 	@Value("${frontend.url}")
 	private String frontendUrl;
 
-	
-	
 	@Autowired
 	private TransactionService transactionService;
-	
+
 	@Autowired
-	private RestTemplate restTemplate;
-	
+	private FormFieldService formFieldService;
+
 	
 	@Override
 	public String getFrontendUrl() {
@@ -37,5 +38,11 @@ public class PaymentServiceImpl implements PaymentService {
 		Transaction transaction = new Transaction(merchantOrderId, amount, currency, timestamp, redirectUrl, callbackUrl);
 		transaction = transactionService.save(transaction);
 		return transaction.getId();
+	}
+
+	@Override
+	public FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType() {
+		List<FormField> formFields = formFieldService.getFormFields();
+		return new FormFieldsForPaymentTypeDTO(formFields);
 	}
 }

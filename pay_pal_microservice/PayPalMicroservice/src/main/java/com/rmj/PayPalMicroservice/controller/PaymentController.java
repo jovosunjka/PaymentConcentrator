@@ -1,9 +1,11 @@
 package com.rmj.PayPalMicroservice.controller;
 
+import com.rmj.PayPalMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.rmj.PayPalMicroservice.dto.PayDTO;
@@ -12,6 +14,8 @@ import com.rmj.PayPalMicroservice.dto.transactionDTO;
 import com.rmj.PayPalMicroservice.repository.TransactionDTORepository;
 import com.rmj.PayPalMicroservice.repository.TransactionRepository;
 import com.rmj.PayPalMicroservice.service.PaymentService;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -24,14 +28,8 @@ public class PaymentController {
 	@Autowired
 	private TransactionDTORepository repository;
 
-	
-	/*@RequestMapping(value = "/frontend-url", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RedirectUrlDTO> getFrontendUrl()
-    {
-		String frontendUrl = paymentService.getFrontendUrl();
-        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
-    }*/
-	
+
+    @PreAuthorize("hasAuthority('PAY')")
 	@RequestMapping(value = "/frontend-url", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<RedirectUrlDTO> getFrontendUrl(@RequestBody PayDTO payDTO)
@@ -61,5 +59,11 @@ public class PaymentController {
     {
     	
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/form-fields-for-payment-type", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FormFieldsForPaymentTypeDTO> getFormFieldsForPaymentTypes() {
+	    FormFieldsForPaymentTypeDTO formFieldsForPaymentTypeDTO = paymentService.getFormFieldsForPaymentType();
+        return new ResponseEntity<FormFieldsForPaymentTypeDTO>(formFieldsForPaymentTypeDTO, HttpStatus.OK);
     }
 }

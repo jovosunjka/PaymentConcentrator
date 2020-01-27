@@ -20,7 +20,10 @@ eureka:
     leaseExpirationDurationInSeconds: 2
     preferIpAddress: true
 
-
+token:
+  header: X-Auth-Token
+  secret: myXAuthSecret
+  expiration: 1800000
 
 server:
   #servlet:
@@ -56,7 +59,7 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:myDb;DB_CLOSE_ON_EXIT=FALSE
     username: sa
-    password: sa
+    password:
     #korisno ako je konekcija dugo u idle stanju
     testWhileIdle: true
     validationQuery: SELECT 1
