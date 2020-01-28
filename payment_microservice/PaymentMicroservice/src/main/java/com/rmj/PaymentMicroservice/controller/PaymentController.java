@@ -27,7 +27,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
 
-    @PreAuthorize("hasAuthority('PAY')")
+    //@PreAuthorize("hasAuthority('PAY')")
     @RequestMapping(value = "/pay", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
     															produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TransactionIdDTO> pay(@RequestBody PayDTO payDTO) {
