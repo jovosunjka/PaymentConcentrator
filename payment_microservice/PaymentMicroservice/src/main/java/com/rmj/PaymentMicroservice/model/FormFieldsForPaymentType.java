@@ -1,6 +1,7 @@
 package com.rmj.PaymentMicroservice.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "form_fields_for_payment_type")
@@ -13,14 +14,15 @@ public class FormFieldsForPaymentType {
     @Column(name = "payment_type", unique = true, nullable = false)
     private String paymentType;
 
-    @Column(name = "form_fields", unique = false, nullable = false)
-    private String formFields; // field_1,field_2,field_3,...
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<FormField> formFields;
+
 
     public FormFieldsForPaymentType() {
 
     }
 
-    public FormFieldsForPaymentType(String paymentType, String formFields) {
+    public FormFieldsForPaymentType(String paymentType, List<FormField> formFields) {
         this.paymentType = paymentType;
         this.formFields = formFields;
     }
@@ -41,11 +43,11 @@ public class FormFieldsForPaymentType {
         this.paymentType = paymentType;
     }
 
-    public String getFormFields() {
+    public List<FormField> getFormFields() {
         return formFields;
     }
 
-    public void setFormFields(String formFields) {
+    public void setFormFields(List<FormField> formFields) {
         this.formFields = formFields;
     }
 }

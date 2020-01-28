@@ -3,6 +3,8 @@ package com.rmj.PaymentMicroservice.controller;
 
 import com.rmj.PaymentMicroservice.dto.*;
 import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.PaymentMicroservice.exception.NotFoundException;
+import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
 import com.rmj.PaymentMicroservice.model.Transaction;
 import com.rmj.PaymentMicroservice.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,23 +50,22 @@ public class PaymentController {
         FormFieldsForPaymentTypesDTO retValue = new FormFieldsForPaymentTypesDTO(formFieldsForPaymentTypeDTOs);
         return new ResponseEntity<FormFieldsForPaymentTypesDTO>(retValue, HttpStatus.OK);
     }
-    
+
+    @PreAuthorize("hasAuthority('PAY')")
     @RequestMapping(value = "/choose-payment", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RedirectUrlDTO> choosePayment(@RequestParam("transactionId") Long transactionId,
+    public ResponseEntity choosePayment(@RequestParam("transactionId") Long transactionId,
     															@RequestParam("paymentType") String paymentType) {
     	paymentType = paymentType.toLowerCase();
     	paymentService.saveChosenPayment(transactionId, paymentType);
-        String frontendUrl = paymentService.getMicroserviceFrontendUrl(transactionId, paymentType);
-    	/*
-    	String frontendUrl = "";
-    	if(paymentType.equalsIgnoreCase("pt_paypal-microservice")) {
-    		paymentService.saveChosenPayment(transactionId, paymentType);
-    		frontendUrl = paymentService.getMicroserviceFrontendUrl(paymentType);
-    	}
-    	else {
-    		frontendUrl = "https://localhost:4206";
-    	}
-    	*/
+        String frontendUrl = null;
+        try {
+            frontendUrl = paymentService.getMicroserviceFrontendUrl(transactionId, paymentType);
+        } catch (UserNotFoundException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.UNAUTHORIZED);
+        } catch (NotFoundException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
 

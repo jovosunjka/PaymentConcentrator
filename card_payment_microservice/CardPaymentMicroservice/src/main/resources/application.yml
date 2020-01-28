@@ -15,6 +15,11 @@ eureka:
     preferIpAddress: true
 
 
+token:
+  header: X-Auth-Token
+  secret: myXAuthSecret
+  expiration: 1800000
+
 
 server:
   #servlet:

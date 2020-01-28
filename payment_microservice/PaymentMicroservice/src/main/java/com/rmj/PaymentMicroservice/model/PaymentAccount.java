@@ -14,8 +14,14 @@ public class PaymentAccount {
     @Column(name = "type", unique = false, nullable = false)
     private String type; // card payment, paypal, bitcoin, ...
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Property> properties;
+    @Column(name = "username", unique = true, nullable = false)
+    private String username;
+
+    @Column(name = "password", unique = false, nullable = false)
+    private String password;
+
+    @Column(name = "access_token", unique = true, nullable = true)
+    private String accessToken; //jwt token
 
     @Column(name = "currency", unique = false, nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -26,10 +32,20 @@ public class PaymentAccount {
 
     }
 
-    public PaymentAccount(String type, List<Property> properties, Currency currency) {
+    public PaymentAccount(String type, String username, String password, Currency currency) {
         this.type = type;
-        this.properties = properties;
+        this.username = username;
+        this.password = password;
+        this.accessToken = null;
         this.currency = currency;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getType() {
@@ -40,12 +56,28 @@ public class PaymentAccount {
         this.type = type;
     }
 
-    public List<Property> getProperties() {
-        return properties;
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdentifier(List<Property> properties) {
-        this.properties = properties;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
     public Currency getCurrency() {

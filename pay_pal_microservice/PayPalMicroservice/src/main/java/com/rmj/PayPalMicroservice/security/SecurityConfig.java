@@ -1,6 +1,6 @@
 package com.rmj.PayPalMicroservice.security;
 
-//import com.rmj.PayPalMicroservice.service.UserDetailsServiceImpl;
+import com.rmj.PayPalMicroservice.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 													//koristiti anotaciju @PreAuthorize
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	/*@Autowired
+	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 	
 	@Autowired
@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
 		authenticationTokenFilter.setAuthenticationManager(authenticationManagerBean());
 		return authenticationTokenFilter;
-	}*/
+	}
 
 
 	// https://zoltanaltfatter.com/2018/05/15/spring-cloud-discovery-with-spring-boot-admin/
@@ -56,7 +56,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.anonymous().disable()
 				.cors()
 				.and()
-				.csrf().disable()
+				.headers().frameOptions().disable() // dok ovo nisam dodao, nisam mogao da pristupim h2-console
+				// u browseru zbog spring-boot-starter-security dependency-ja
+				.and()
+				.csrf().disable() // dok ovo nisam dodao, nisam mogao da pristupim h2-console
+				// u browseru zbog spring-boot-starter-security dependency-ja
 				.exceptionHandling()
 				.and()
 				.sessionManagement()
@@ -68,6 +72,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().permitAll();
 		
 		// Custom JWT based authentication
-		//httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 	}
 }

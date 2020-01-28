@@ -1,8 +1,6 @@
 package com.rmj.PaymentMicroservice.dto;
 
 
-import com.rmj.PaymentMicroservice.model.PaymentAccount;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class RegistrationUserDTO {
 	private String username;
 	private String password;
 	private String repeatedPassword;
-	private List<PaymentAccount> payments = new ArrayList<PaymentAccount>();
+	private List<PaymentAccountDTO> payments = new ArrayList<PaymentAccountDTO>();
 	
 	public RegistrationUserDTO() {
 		
@@ -51,8 +49,8 @@ public class RegistrationUserDTO {
 		this.repeatedPassword = repeatedPassword;
 	}
 
-	public List<PaymentAccount> getPayments() { return payments; }
+	public List<PaymentAccountDTO> getPayments() { return payments; }
 
-	public void setPayments(List<PaymentAccount> payments) { this.payments = payments; }
+	public void setPayments(List<PaymentAccountDTO> payments) { this.payments = payments; }
 }
 
