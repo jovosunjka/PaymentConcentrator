@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BankService {
     List<Bank> getAllBanks();
+    void AddNewBank(Bank newBank);
 }

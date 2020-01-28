@@ -47,6 +47,8 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public String pay(Long transactionId, int cardNumber, int securityCode, String cardHolder, String expirationDate) {
+		
+		//dodati proveru brojeva kartice kupca i prodavca ako ne pripadaju istoj banci da se prebace na pcc
 		Transaction transaction = transactionService.getTransaction(transactionId);
 		transaction.setCardNumber("" + cardNumber);
 		transaction = transactionService.save(transaction);

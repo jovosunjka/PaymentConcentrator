@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,5 +100,23 @@ public class BankController {
 
         return ResponseEntity.status(HttpStatus.OK).body("Account list is empty");
 
+    }
+    
+    @RequestMapping(value = "/response", method = RequestMethod.POST)
+    public ResponseEntity Response(@RequestBody Long merchaintId, Long acquirerId, LocalDateTime acquirerTimestamp, Long paymentId)
+    {
+    	
+    	List<BankAccount> accounts = serviceRepo.findAll();
+    	
+    	for(BankAccount a: accounts)
+    	{
+    		if(a.getAccountNumber() == merchaintId)
+    		{
+    			//dodati deo gde se prodavcu dodaje novac na racun i kreirati novu transakciju
+    		}
+    	}
+    	
+    	
+    	return ResponseEntity.status(HttpStatus.OK).body("Transaction completed");
     }
 }

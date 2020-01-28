@@ -18,4 +18,11 @@ public class BankServiceImpl implements BankService {
         banks = bankRepository.findAll();
         return banks;
     }
+
+	@Override
+	public void AddNewBank(Bank newBank) {
+		bankRepository.save(newBank);
+	}
+    
+    
 }
