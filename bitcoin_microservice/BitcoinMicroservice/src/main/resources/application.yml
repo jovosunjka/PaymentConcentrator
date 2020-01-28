@@ -19,6 +19,7 @@ server:
   #servlet:
     #context-path: /api
   port: 8086
+  #address: 192.168.0.103
   ssl:
     key-store: classpath:stores/keystore.p12
     key-store-password: pass456

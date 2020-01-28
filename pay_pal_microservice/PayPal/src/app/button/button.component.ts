@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { saveTransactionService } from '../services/saveTransactionService';
 import { Transaction } from '../model/Transaction';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare let paypal: any;
 
@@ -13,8 +13,8 @@ declare let paypal: any;
 export class ButtonComponent implements OnInit {
 
   private transactionId: number;
-
-  constructor(private serviceSave: saveTransactionService, private route: ActivatedRoute) { }
+  transaction: Transaction;
+  constructor(private serviceSave: saveTransactionService, private route: ActivatedRoute, private routerRedirect: Router) { }
 
   ngOnInit() {
     if (this.route.snapshot.params.transactionId) {
@@ -35,6 +35,8 @@ export class ButtonComponent implements OnInit {
   ngAfterViewInit(): void {
     var c = 50; //cena u dolarima
     var v = this.serviceSave;
+    var router = this.routerRedirect;
+    
     this.loadExternalScript("https://www.paypalobjects.com/api/checkout.js").then(() => {
       paypal.Button.render({
         env: 'sandbox',
@@ -56,6 +58,7 @@ export class ButtonComponent implements OnInit {
           })
         },
         onAuthorize: function (data, actions) {
+          console.log("Izvrsenje placanja");
           return actions.payment.execute().then(function (payment) {
             // TODO
             // cart: "3VG18081MV5040101"
@@ -66,13 +69,34 @@ export class ButtonComponent implements OnInit {
             t.cart = payment.cart;
             t.create_time = payment.create_time;
             t.id = payment.id;
-            
+            t.state = payment.state;
             v.save(t).subscribe();
             console.log(payment);
+            //router.navigate(['showCreatedTransaction', {transaction: t}]);
           })
+        },
+        onCancel: function (data) {
+          console.log("Cancel Transaction");
+          
+          let t = new Transaction();
+            t.cart = "none";
+            t.create_time = "none";
+            t.id = data.paymentID;
+            t.state = "Invalid";
+            v.cancel(t).subscribe();
+        },
+        onError: function (data) {
+          console.log("Error transaction"); 
+          let t = new Transaction();
+            t.cart = "none";
+            t.create_time = "none";
+            t.id = data.paymentID;
+            t.state = "Invalid";
+            v.cancel(t).subscribe();
         }
       }, '#paypal-button');
     });
+    
   }
 
 

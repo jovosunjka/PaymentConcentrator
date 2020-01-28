@@ -8,6 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { saveTransactionService } from './services/saveTransactionService';
 import { HttpClientModule } from '@angular/common/http';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { ShowCreatedTransactionComponent } from './show-created-transaction/show-created-transaction.component';
 
 const routes: Routes = [
   { path: 'button/:transactionId', component: ButtonComponent },
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'subscription',
     component: SubscriptionsComponent
+  },
+  {
+    path: 'showCreatedTransaction',
+    component: ShowCreatedTransactionComponent
   }
 ]
 
@@ -26,7 +31,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ButtonComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    ShowCreatedTransactionComponent
   ],
   imports: [
     BrowserModule,

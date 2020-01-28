@@ -19,4 +19,8 @@ export class payService{
         return this.http.get<any>(this.base_url + "/createPay?username=" + ime);
     }
 
+    checkPay(transactionId: number){
+        return this.http.post<any>(this.base_url + "/checkPayment", transactionId);
+    }
+
 }

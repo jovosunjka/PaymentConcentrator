@@ -10,13 +10,28 @@ export class SubscriptionsComponent implements OnInit {
 
   planId: any;  
   subcripId: any;  
-  basicAuth = 'Bearer A21AAH8Uxu5pr43bAXwFvB3Ulr995aMTT5EQcVrqGIex4FIM7pwsvQZJlfvVSIxbQ43aa3OLDfi8A8QHSuqWY3UoPkTLVh76w';
+  username = 'ASy9frbU07oOFDNmyma5SMKbKKKed4w3HCtEgs3-tBB-aR8OR5Ug1bh3tiQVvIFEi5j0CTWsEXUv41tF';
+  password = 'EKWeZcuiWHSuTocRKFer9aforQxmhawEccihGDWxIwuTzD5XmL9_n-l5AwlJRNotaix9HYM4aBI0eXhf';
+  basicAuth = 'Bearer A21AAHqmfgvn5C7AWq1oqMjJZsSjzQpg-OMFQwMb9m19UiK70YKBUvrsA9WgwAovMuKh_-fM20M-Sj7kFuD17tMy53pI4T2Og';
   //basicAuth = 'Basic ASy9frbU07oOFDNmyma5SMKbKKKed4w3HCtEgs3-tBB-aR8OR5Ug1bh3tiQVvIFEi5j0CTWsEXUv41tF:EKWeZcuiWHSuTocRKFer9aforQxmhawEccihGDWxIwuTzD5XmL9_n-l5AwlJRNotaix9HYM4aBI0eXhf';
   @ViewChild('paypal', { static: false }) paypalElement: ElementRef;
   constructor() { }
 
   ngOnInit() {
-    
+    // const xhttp = new XMLHttpRequest();  
+    // xhttp.onreadystatechange = function () {  
+    //   if (this.readyState === 4 && this.status === 201) {  
+    //     console.log(JSON.parse(this.responseText));  
+    //     alert(JSON.stringify(this.responseText));  
+    //   }  
+    // };
+
+    //   xhttp.open('POST', 'https://api.sandbox.paypal.com/v1/oauth2/token');  
+    //   xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    //   xhttp.setRequestHeader('Content-Type', "application/json");
+    //   xhttp.setRequestHeader('Authorization', this.username + ':' + this.password);  
+    //   var params = 'grant_type=client_credentials'
+    //   xhttp.send(params);
   }
 
   getSubcriptionDetails() {  
@@ -25,7 +40,7 @@ export class SubscriptionsComponent implements OnInit {
       if (this.readyState === 4 && this.status === 201) {  
         console.log(JSON.parse(this.responseText));  
         alert(JSON.stringify(this.responseText));  
-      }  
+      } 
     };  
 
     this.planId = 'P-6KY570575L8166015LYVRHPY';

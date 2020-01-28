@@ -48,7 +48,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.anonymous().disable()
 				.cors()
 				.and()
-				.csrf().disable()
+				.headers().frameOptions().disable() // dok ovo nisam dodao, nisam mogao da pristupim h2-console
+				// u browseru zbog spring-boot-starter-security dependency-ja
+				.and()
+				.csrf().disable() // dok ovo nisam dodao, nisam mogao da pristupim h2-console
+				// u browseru zbog spring-boot-starter-security dependency-ja
 				.exceptionHandling()
 				.and()
 				.sessionManagement()

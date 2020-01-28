@@ -1,0 +1,23 @@
+<p>show-created-transaction </p>
+<table class="table table-hover table-bordered">
+    <tr class="table-primary">
+        <th>Merchant Order Id</th>
+        <th>cart</th>
+        <th>Timestamp</th>
+        <th>Status</th>
+    </tr>
+    <tr  class="table-info">
+      <td>
+        {{transaction.id}}
+      </td>
+      <td>
+        {{transaction.cart}}
+      </td>
+      <td>
+        {{transaction.create_time}}
+      </td>
+      <td>
+        {{transaction.state}}
+      </td>
+    </tr>
+  </table>

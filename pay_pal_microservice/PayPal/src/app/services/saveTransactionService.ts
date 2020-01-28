@@ -6,7 +6,7 @@ import { Transaction } from '../model/Transaction';
 @Injectable()
 export class saveTransactionService{
 
-    base_url = "https://localhost:8085/api/payment";
+    base_url = "https://localhost:8085/payment";
 
 
     constructor(private http: HttpClient){ }
@@ -14,7 +14,13 @@ export class saveTransactionService{
     save(t: Transaction): Observable<any>
     {
         console.log("Prosledjena transakcija na cuvanje u bazu")
-        return this.http.post(this.base_url + "/saveTransaction", t);
+        return this.http.post<any>(this.base_url + "/saveTransaction", t);
+    }
+
+    cancel(t: Transaction): Observable<any>
+    {
+        console.log("Prosledjena transakcija na cuvanje u bazu")
+        return this.http.post<any>(this.base_url + "/cancelTransaction", t);
     }
 
     allTransaction(): Observable<any>

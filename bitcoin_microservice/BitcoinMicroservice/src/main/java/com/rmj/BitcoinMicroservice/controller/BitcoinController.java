@@ -1,6 +1,7 @@
 package com.rmj.BitcoinMicroservice.controller;
 
 
+import java.lang.ProcessBuilder.Redirect;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.rmj.BitcoinMicroservice.dto.RedirectUrlDTO;
+import com.rmj.BitcoinMicroservice.models.CoinGateCallback;
 import com.rmj.BitcoinMicroservice.models.Order;
 import com.rmj.BitcoinMicroservice.models.PaymentResponse;
 import com.rmj.BitcoinMicroservice.repository.OrderRepository;
@@ -43,9 +45,9 @@ public class BitcoinController {
     @RequestMapping(path = "/createPay", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RedirectUrlDTO>  pay(@RequestParam String username) {
     	
-        String returnUrl = this.createPayment(username);
+    	RedirectUrlDTO redirectDto = this.createPayment(username);
         
-    	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(returnUrl), HttpStatus.OK);
+    	return new ResponseEntity<RedirectUrlDTO>(redirectDto, HttpStatus.OK);
     }
     
     @RequestMapping(path = "/allOrders", method = RequestMethod.GET)
@@ -54,7 +56,51 @@ public class BitcoinController {
     	return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
     }
     
-    public String createPayment(String username) {
+    @RequestMapping(path = "/successPayment", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity successPayment(@RequestBody CoinGateCallback callback) {
+    	
+    	return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(path = "/cancelPayment", method = RequestMethod.GET)
+    public ResponseEntity cancelPayment() {
+    	
+    	return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/checkPayment", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity checkPayment(@RequestBody Integer transactionId)
+    {
+    	PaymentResponse checkPay = new PaymentResponse();
+    	RestTemplate temp = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Token " + "1ptysoycHEj2P-zsExysyx6uGkEyje2C42tspmsc");
+		
+		
+		try {
+			//ResponseEntity<PaymentResponse> response = temp.getForEntity("https://api-sandbox.coingate.com/v2/orders/" + transactionId, headers, PaymentResponse.class);
+			ResponseEntity<PaymentResponse> entity = new RestTemplate().exchange("https://api-sandbox.coingate.com/v2/orders/" + transactionId, HttpMethod.GET, new HttpEntity<Object>(headers),PaymentResponse.class);
+			checkPay.setId(entity.getBody().getId());
+			checkPay.setStatus(entity.getBody().getStatus());
+		} catch (HttpStatusCodeException exception) {
+            System.out.println("Error bitcoin server");
+        }
+		
+		Order oldOrder = orderRepository.findById(checkPay.getId()).get();
+		if(!oldOrder.getStatus().equals(checkPay.getStatus())) {
+			oldOrder.setStatus(checkPay.getStatus());
+			orderRepository.save(oldOrder);
+		}else {
+			oldOrder.setStatus("Expired");
+			orderRepository.save(oldOrder);
+		}
+		
+    	System.out.println(transactionId);
+    	
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    
+    public RedirectUrlDTO createPayment(String username) {
     	Order ord = new Order();
 		RestTemplate temp = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -68,8 +114,9 @@ public class BitcoinController {
 		map.add("price_amount", "100005");
 		map.add("price_currency", "USD");
 		map.add("receive_currency", "USD");
-		map.add("cancel_url", "http://example.com/account/orders.");	//dodati odgovaraju endpoint na koji 
-		map.add("success_url", "http://example.com/account/orders.");
+		map.add("callback_url", "");
+		map.add("cancel_url", "");	//dodati odgovaraju endpoint na koji 
+		map.add("success_url", "");
 		//postoji i callback url opcija
 		
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
@@ -110,7 +157,7 @@ public class BitcoinController {
 		 * System.out.println("Error while checking bitcoin order!"); }
 		 */
 		 		
-        return returnUrl;
+        return new RedirectUrlDTO(returnUrl, ord.getId());
 	}
     
 }
