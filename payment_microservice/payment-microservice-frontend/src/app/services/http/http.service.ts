@@ -15,9 +15,10 @@ export class HttpService {
     return this.http.get<T[]>(this.baseUrl + relativeUrl);
   }
 
-  get<T>(relativeUrl: string): Observable<T> {
+  get<T>(relativeUrl: string, token: string): Observable<T> {
     // const params: HttpParams = new HttpParams().set('_id',id);
-    return this.http.get<T>(this.baseUrl + relativeUrl);
+    const headers: HttpHeaders = new HttpHeaders({'X-Auth-Token': token});
+    return this.http.get<T>(this.baseUrl + relativeUrl, { headers });
   }
 
   getById<T>(relativeUrl: string, id: number): Observable<T> {

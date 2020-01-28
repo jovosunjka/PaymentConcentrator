@@ -17,13 +17,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
     
-    @Column(name = "username")
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", unique = false, nullable = false)
     private String password;
    
     @ManyToMany(fetch = FetchType.EAGER)
@@ -32,9 +32,9 @@ public class User {
             @JoinColumn(name = "role_id", nullable = false, updatable = false) })
     private Set<Role> roles = new HashSet<Role>();
     
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "magazine_accounts", joinColumns = {
-            @JoinColumn(name = "magazine_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_accounts", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "payment_account_id", nullable = false, updatable = false) })
     private List<PaymentAccount> accounts = new ArrayList<PaymentAccount>();
 

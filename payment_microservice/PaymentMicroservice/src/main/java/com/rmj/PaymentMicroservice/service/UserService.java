@@ -1,14 +1,15 @@
 package com.rmj.PaymentMicroservice.service;
 
 
-import com.rmj.PaymentMicroservice.model.PaymentAccount;
+import com.rmj.PaymentMicroservice.dto.PaymentAccountDTO;
+import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
 import com.rmj.PaymentMicroservice.model.User;
 
 import java.util.List;
 
 public interface UserService {
 
-	User getLoggedUser() throws Exception;
+	User getLoggedUser() throws UserNotFoundException;
 	
     void save(User user) throws Exception;
 
@@ -18,6 +19,6 @@ public interface UserService {
 
     boolean exists(String username);
 
-	boolean register(String name, String username, String password, String repeatedPassword, List<PaymentAccount> accounts);
+	boolean register(String name, String username, String password, String repeatedPassword, List<PaymentAccountDTO> accountDTOs);
 
 }

@@ -28,8 +28,8 @@ public class BankServiceImpl implements BankService {
     public void OnStart()
     {
         add(11111111,1234567890,123,2500, "Igor Resman", "08/21");
-        add(22222222,987654321,432,90000, "Marko Mijatovic", "09/21");
-        add(33333333,1357902468,124,70000,"Jovo Sunjka", "10/21");
+        add(22222222,1354981238,432,90000, "Marko Mijatovic", "09/21");
+        add(33333333,1234502468,124,70000,"Jovo Sunjka", "10/21");
 
     }
 }

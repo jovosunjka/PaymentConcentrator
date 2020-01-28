@@ -4,6 +4,7 @@ import {HttpService} from '../services/http/http.service';
 import {ToastrService} from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { RedirectUrlDto } from '../model/redirect-url-dto';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-choose-payment',
@@ -11,6 +12,8 @@ import { RedirectUrlDto } from '../model/redirect-url-dto';
   styleUrls: ['./choose-payment.component.css']
 })
 export class ChoosePaymentComponent implements OnInit {
+
+  private token: string;
 
   paymentTypes: PaymentType[];
   chosenPaymentType: string;
@@ -28,6 +31,16 @@ export class ChoosePaymentComponent implements OnInit {
     if (this.route.snapshot.params.transactionId) {
       this.transactionId = this.route.snapshot.params.transactionId;
     }
+
+    // https://alligator.io/angular/query-parameters/
+    this.route.queryParams.pipe(
+      filter(params => params.token)
+    )
+    .subscribe(params => {
+        console.log(params);
+        this.token = params.token;
+      }
+    );
 
     this.getPaymentTypes();
   }
@@ -51,7 +64,7 @@ export class ChoosePaymentComponent implements OnInit {
 
   choosePayment() {
     const url = this.relativeUrlChooseForPayment + '?transactionId=' + this.transactionId + '&paymentType=' + this.chosenPaymentType;
-    this.httpService.get<RedirectUrlDto>(url).subscribe(
+    this.httpService.get<RedirectUrlDto>(url, this.token).subscribe(
       (redirectUrlDto: RedirectUrlDto) => {
         this.ngZone.runOutsideAngular(() => {
           window.location.href = redirectUrlDto.redirectUrl;
