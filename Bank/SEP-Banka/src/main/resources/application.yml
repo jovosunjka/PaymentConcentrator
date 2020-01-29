@@ -21,7 +21,7 @@ server:
     # for two way authentication, use value: need
 
 
-
+bin: 12345
 
 
 spring:

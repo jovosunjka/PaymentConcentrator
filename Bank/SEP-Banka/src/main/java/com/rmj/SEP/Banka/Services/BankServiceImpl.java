@@ -1,35 +1,88 @@
 package com.rmj.SEP.Banka.Services;
 
+import com.rmj.SEP.Banka.dto.BankAccountDTO;
+import com.rmj.SEP.Banka.dto.BankToPccDTO;
 import com.rmj.SEP.Banka.exceptions.AlredyExistException;
 import com.rmj.SEP.Banka.models.BankAccount;
 import com.rmj.SEP.Banka.repository.BankServiceInterface;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.data.domain.Example;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 public class BankServiceImpl implements BankService {
     @Autowired
     private BankServiceInterface serviceRepo;
-
-    @Override
-    public void add(int accountNumber, int cardNumber, int securityCode, int amount, String cardHolder,String expirationDate) {
-        BankAccount bankAccount = new BankAccount(accountNumber,cardNumber,securityCode,amount,cardHolder,expirationDate);
-
-        if(serviceRepo.exists((Example.of(bankAccount)))){
-            throw new AlredyExistException(String.format("There is already bank account with that number:" + bankAccount.getCardNumber()));
-        }
-        serviceRepo.save(bankAccount);
-    }
+    
+    @Value("${bin}")
+    private int bankBin;
+    
+    @Autowired
+	private RestTemplate restTemplate;
+    
+    
 
     @EventListener(ApplicationReadyEvent.class)
     public void OnStart()
     {
-        add(11111111,1234567890,123,2500, "Igor Resman", "08/21");
-        add(22222222,1354981238,432,90000, "Marko Mijatovic", "09/21");
-        add(33333333,1234502468,124,70000,"Jovo Sunjka", "10/21");
-
+        filter();
     }
+
+
+	@Override
+	public boolean checkBin(int cardBin) {
+		if(cardBin == bankBin)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public String redirectToPcc(Long transactionId, LocalDateTime timeStamp, BankAccountDTO user,int bin) {
+		
+		HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        BankToPccDTO bankToPccDTO = new BankToPccDTO(transactionId,timeStamp,user,bin);
+        HttpEntity<BankToPccDTO> httpEntity = new HttpEntity<BankToPccDTO>(bankToPccDTO,headers);
+        String pccUrl = "https://localhost:8088/api/pcc/check";
+        ResponseEntity<String> responseEntity = restTemplate.exchange(pccUrl,HttpMethod.POST,httpEntity,String.class);
+        
+		return null;
+	}
+
+	@Override
+	public BankAccount getBank(Long cardNumber) {
+		return serviceRepo.findByCardNumber(cardNumber)
+				.orElseThrow(()-> new RuntimeException("Bank account with card number " + cardNumber + " did not found"));
+	}
+
+
+	@Override
+	public void filter() {
+		
+		//NE ZNAM DA LI POSTOJI PRAKTICNIJE RESENJE AKO POSTOJI JOVO MENJAJ
+		List<BankAccount> accounts = serviceRepo.findAll();
+		
+		for(BankAccount a : accounts)
+		{
+			int accBin = (int)a.getCardNumber()/100000;
+			if(accBin != bankBin)
+				serviceRepo.delete(a);	
+		}
+	}
 }
