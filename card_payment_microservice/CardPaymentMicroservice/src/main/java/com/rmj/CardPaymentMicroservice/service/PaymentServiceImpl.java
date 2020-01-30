@@ -1,7 +1,10 @@
 package com.rmj.CardPaymentMicroservice.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.rmj.CardPaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.CardPaymentMicroservice.model.FormField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -26,11 +29,13 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
 	private TransactionService transactionService;
-	
+
+	@Autowired
+	private FormFieldService formFieldService;
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
-	
+
 	
 	@Override
 	public String getFrontendUrl() {
@@ -48,7 +53,6 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public String pay(Long transactionId, int cardNumber, int securityCode, String cardHolder, String expirationDate) {
 		
-		//dodati proveru brojeva kartice kupca i prodavca ako ne pripadaju istoj banci da se prebace na pcc
 		Transaction transaction = transactionService.getTransaction(transactionId);
 		transaction.setCardNumber("" + cardNumber);
 		transaction = transactionService.save(transaction);
@@ -58,7 +62,7 @@ public class PaymentServiceImpl implements PaymentService {
         
         BankAccountDTO bankAccountDTO = new BankAccountDTO(cardNumber, securityCode, transaction.getAmount(),cardHolder,expirationDate);
         HttpEntity<BankAccountDTO> httpEntity = new HttpEntity<BankAccountDTO>(bankAccountDTO, headers);
-        String bankUrl = "https://localhost:8080/api/bank/check";
+        String bankUrl = "https://localhost:8080/api/bank/check?transactionId="+ transactionId;
         ResponseEntity<String> responseEntity = restTemplate.exchange(bankUrl, HttpMethod.POST, httpEntity, String.class);
         
         String status;
@@ -71,5 +75,11 @@ public class PaymentServiceImpl implements PaymentService {
         HttpEntity<TransactionCompletedDTO> httpEntity2 = new HttpEntity<TransactionCompletedDTO>(new TransactionCompletedDTO(transaction.getMerchantOrderId(), status), headers);
     	ResponseEntity<Void> responseEntity2 = restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity2, Void.class);
         return transaction.getRedirectUrl();
+	}
+
+	@Override
+	public FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType() {
+		List<FormField> formFields = formFieldService.getFormFields();
+		return new FormFieldsForPaymentTypeDTO(formFields);
 	}
 }

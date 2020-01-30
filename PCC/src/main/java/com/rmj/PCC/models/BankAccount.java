@@ -1,4 +1,4 @@
-package com.rmj.SEP.Banka.models;
+package com.rmj.PCC.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bank_account")
 public class BankAccount {
 
 
@@ -18,19 +17,19 @@ public class BankAccount {
     @Column(name = "account_number", unique = true, nullable = false)
     private int accountNumber;
     
-    @Column(name = "card_number", unique = true, nullable = false)
+    @Column(name = "cardNumber", unique = true, nullable = false)
     private int cardNumber;
 
-    @Column(name = "security_code", unique = false, nullable = false)
+    @Column(name = "securityCode", unique = false, nullable = false)
     private int securityCode;
 
     @Column(name = "amount", unique = false, nullable = false)
     private double amount;
 
-    @Column(name = "card_holder", unique =  false, nullable = false)
+    @Column(name = "cardHolder", unique =  false, nullable = false)
     private String cardHolder;
     
-    @Column(name = "expiration_date", unique= false, nullable= false)
+    @Column(name = "expirationDate", unique= false, nullable= false)
     private String expirationDate;
 
     
@@ -123,3 +122,4 @@ public class BankAccount {
 	}
 
 }
+

@@ -16,14 +16,38 @@ public class Bank {
 
     @Column(name = "bin")
     private int bin;
+    
+    @Column(name ="redirect_url")
+    private String redirectUrl;
+    
+    public String getRedirectUrl() {
+		return redirectUrl;
+	}
+
+	public void setRedirectUrl(String redirectUrl) {
+		this.redirectUrl = redirectUrl;
+	}
+
+	public String getTransactionCompletedUrl() {
+		return transactionCompletedUrl;
+	}
+
+	public void setTransactionCompletedUrl(String transactionCompletedUrl) {
+		this.transactionCompletedUrl = transactionCompletedUrl;
+	}
+
+	@Column(name = "transaction_completed_url")
+    private String transactionCompletedUrl;
 
 
     public Bank(){}
 
-    public Bank(String name, int bin)
+    public Bank(String name, int bin, String redirect,String transactionCompleted)
     {
         this.name = name;
         this.bin = bin;
+        this.redirectUrl = redirect;
+        this.transactionCompletedUrl = transactionCompleted;
     }
 
     public Long getId() {

@@ -11,8 +11,9 @@ export class HttpService {
   constructor(private http: HttpClient, @Inject('BASE_API_URL') private baseUrl: string) {}
 
 
-  getAll<T>(relativeUrl: string): Observable<T[]> {
-    return this.http.get<T[]>(this.baseUrl + relativeUrl);
+  getAll<T>(relativeUrl: string, token: string): Observable<T[]> {
+    const headers: HttpHeaders = new HttpHeaders({'X-Auth-Token': token});
+    return this.http.get<T[]>(this.baseUrl + relativeUrl, { headers });
   }
 
   get<T>(relativeUrl: string, token: string): Observable<T> {

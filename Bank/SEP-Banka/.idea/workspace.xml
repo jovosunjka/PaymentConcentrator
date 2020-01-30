@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="2adbc2b9-aaec-492f-9932-af63c4a50b78" name="Default Changelist" comment="" />
-=======
     <list default="true" id="2adbc2b9-aaec-492f-9932-af63c4a50b78" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../pay_pal_microservice/PayPalMicroservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pay_pal_microservice/PayPalMicroservice/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
->>>>>>> 8832bb168480eef7c06b9c89b08be419c1452700
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,8 +16,6 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-<<<<<<< HEAD
-=======
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
@@ -66,7 +60,6 @@
       </file>
     </leaf>
   </component>
->>>>>>> 8832bb168480eef7c06b9c89b08be419c1452700
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
@@ -85,12 +78,6 @@
   </component>
   <component name="ProjectId" id="1Wvs1Inyl9aK2WUNAm6Mfjglwvq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-<<<<<<< HEAD
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-=======
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -145,7 +132,6 @@
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
->>>>>>> 8832bb168480eef7c06b9c89b08be419c1452700
   </component>
   <component name="PropertiesComponent">
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -200,11 +186,6 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="4353000" />
   </component>
-<<<<<<< HEAD
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-=======
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -281,7 +262,6 @@
       </provider>
     </entry>
   </component>
->>>>>>> 8832bb168480eef7c06b9c89b08be419c1452700
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
