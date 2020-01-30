@@ -31,6 +31,12 @@ public class BankServiceImpl implements BankService {
     @Value("${bin}")
     private int bankBin;
     
+    @Value("${redirect-url}")
+    private String redirectUrl;
+    
+    @Value("${response-url}")
+    private String responseUrl;
+    
     @Autowired
 	private RestTemplate restTemplate;
     
@@ -59,8 +65,7 @@ public class BankServiceImpl implements BankService {
         
         BankToPccDTO bankToPccDTO = new BankToPccDTO(transactionId,timeStamp,user,bin);
         HttpEntity<BankToPccDTO> httpEntity = new HttpEntity<BankToPccDTO>(bankToPccDTO,headers);
-        String pccUrl = "https://localhost:8088/api/pcc/check";
-        ResponseEntity<String> responseEntity = restTemplate.exchange(pccUrl,HttpMethod.POST,httpEntity,String.class);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(redirectUrl,HttpMethod.POST,httpEntity,String.class);
         
 		return null;
 	}

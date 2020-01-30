@@ -22,7 +22,8 @@ server:
 
 
 bin: 12345
-
+redirect-url: https://localhost:8088/api/pcc/check
+response-url: https://localhost:${server.port}/api/bank/response
 
 spring:
   application:
