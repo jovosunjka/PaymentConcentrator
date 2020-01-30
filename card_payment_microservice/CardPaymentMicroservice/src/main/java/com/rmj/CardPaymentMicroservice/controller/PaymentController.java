@@ -1,5 +1,6 @@
 package com.rmj.CardPaymentMicroservice.controller;
 
+import com.rmj.CardPaymentMicroservice.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -7,10 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import com.rmj.CardPaymentMicroservice.dto.BankAccountDTO;
-import com.rmj.CardPaymentMicroservice.dto.CardNumberAndPinDTO;
-import com.rmj.CardPaymentMicroservice.dto.PayDTO;
-import com.rmj.CardPaymentMicroservice.dto.RedirectUrlDTO;
 import com.rmj.CardPaymentMicroservice.service.PaymentService;
 
 @CrossOrigin
@@ -41,9 +38,14 @@ public class PaymentController {
 														@RequestBody CardNumberAndPinDTO cardNumberAndPinDTO)
 	{
 	
-	String frontendUrl = paymentService.pay(transactionId, cardNumberAndPinDTO.getCardNumber(), cardNumberAndPinDTO.getSecurityCode(),cardNumberAndPinDTO.getCardHolder(),cardNumberAndPinDTO.getExpirationDate());
-	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+	    String frontendUrl = paymentService.pay(transactionId, cardNumberAndPinDTO.getCardNumber(), cardNumberAndPinDTO.getSecurityCode(),cardNumberAndPinDTO.getCardHolder(),cardNumberAndPinDTO.getExpirationDate());
+	    return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
 	}
-	
+
+    @RequestMapping(value = "/form-fields-for-payment-type", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FormFieldsForPaymentTypeDTO> getFormFieldsForPaymentTypes() {
+        FormFieldsForPaymentTypeDTO formFieldsForPaymentTypeDTO = paymentService.getFormFieldsForPaymentType();
+        return new ResponseEntity<FormFieldsForPaymentTypeDTO>(formFieldsForPaymentTypeDTO, HttpStatus.OK);
+    }
 
 }

@@ -2,7 +2,10 @@
   <div>
     <label for="id_payment">Payment:</label>
     <select id="id_payment" [(ngModel)]="chosenPaymentType" name="chosenPaymentType">
-      <option  *ngFor="let paymentType of paymentTypes" [ngValue]="paymentType.name">{{paymentType.name}}</option>
+      <option  *ngFor="let paymentType of paymentTypes" [ngValue]="paymentType.name"
+              [disabled]="!paymentType.currentlyActivated">
+              {{paymentType.name}} {{paymentType.currentlyActivated ? '' : '(currently not activated)'}}
+      </option>
     </select>
   </div>
   <br/>

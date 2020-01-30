@@ -46,13 +46,14 @@ export class ChoosePaymentComponent implements OnInit {
   }
 
   getPaymentTypes() {
-    this.httpService.getAll(this.relativeUrlForPaymentTypes)
+    this.httpService.getAll(this.relativeUrlForPaymentTypes, this.token)
       .subscribe(
         (paymentTypes: PaymentType[]) => {
           this.paymentTypes = paymentTypes;
-          if (this.paymentTypes && this.paymentTypes.length > 0) {
-              this.chosenPaymentType = this.paymentTypes[0].name;
-          }
+          // this.paymentTypes.splice(2, 0, {name: '', currentlyActivated: false});
+          // if (this.paymentTypes && this.paymentTypes.length > 0) {
+              // this.chosenPaymentType = this.paymentTypes[0].name;
+          // }
           this.toastr.success('The payment types have been successfully delivered!');
         },
         (err) => {
@@ -63,6 +64,18 @@ export class ChoosePaymentComponent implements OnInit {
   }
 
   choosePayment() {
+    if (this.chosenPaymentType == null) {
+      this.toastr.error('chosenPaymentType == null');
+      return;
+    }
+
+    this.chosenPaymentType = this.chosenPaymentType.trim();
+
+    if (this.chosenPaymentType === '') {
+      this.toastr.error('The chosenPaymentType is empty tring');
+      return;
+    }
+
     const url = this.relativeUrlChooseForPayment + '?transactionId=' + this.transactionId + '&paymentType=' + this.chosenPaymentType;
     this.httpService.get<RedirectUrlDto>(url, this.token).subscribe(
       (redirectUrlDto: RedirectUrlDto) => {

@@ -1,7 +1,10 @@
 package com.rmj.CardPaymentMicroservice.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.rmj.CardPaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.CardPaymentMicroservice.model.FormField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -26,11 +29,13 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
 	private TransactionService transactionService;
-	
+
+	@Autowired
+	private FormFieldService formFieldService;
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
-	
+
 	
 	@Override
 	public String getFrontendUrl() {
@@ -70,5 +75,11 @@ public class PaymentServiceImpl implements PaymentService {
         HttpEntity<TransactionCompletedDTO> httpEntity2 = new HttpEntity<TransactionCompletedDTO>(new TransactionCompletedDTO(transaction.getMerchantOrderId(), status), headers);
     	ResponseEntity<Void> responseEntity2 = restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity2, Void.class);
         return transaction.getRedirectUrl();
+	}
+
+	@Override
+	public FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType() {
+		List<FormField> formFields = formFieldService.getFormFields();
+		return new FormFieldsForPaymentTypeDTO(formFields);
 	}
 }

@@ -2,16 +2,16 @@ package com.rmj.PaymentMicroservice.dto;
 
 public class PaymentTypeDTO {
     private String name;
-    private String url;
+    private boolean currentlyActivated;
 
 
     public PaymentTypeDTO() {
 
     }
 
-    public PaymentTypeDTO(String name, String url) {
+    public PaymentTypeDTO(String name, boolean currentlyActivated) {
         this.name = name;
-        this.url = url;
+        this.currentlyActivated = currentlyActivated;
     }
 
 
@@ -23,11 +23,7 @@ public class PaymentTypeDTO {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url;
-    }
+    public boolean isCurrentlyActivated() { return currentlyActivated; }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    public void setCurrentlyActivated(boolean currentlyActivated) { this.currentlyActivated = currentlyActivated; }
 }
