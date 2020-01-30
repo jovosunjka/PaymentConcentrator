@@ -1,5 +1,6 @@
 package com.rmj.BitcoinMicroservice.controller;
 
+import com.rmj.BitcoinMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import com.rmj.BitcoinMicroservice.dto.PayDTO;
 import com.rmj.BitcoinMicroservice.models.Currency;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,11 @@ public class FrontController {
                 payDTO.getTimestamp(), payDTO.getRedirectUrl(), payDTO.getCallbackUrl());
         String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId;
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/form-fields-for-payment-type", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FormFieldsForPaymentTypeDTO> getFormFieldsForPaymentTypes() {
+        FormFieldsForPaymentTypeDTO formFieldsForPaymentTypeDTO = paymentService.getFormFieldsForPaymentType();
+        return new ResponseEntity<FormFieldsForPaymentTypeDTO>(formFieldsForPaymentTypeDTO, HttpStatus.OK);
     }
 }

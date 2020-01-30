@@ -8,17 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.rmj.PaymentMicroservice.exception.NotFoundException;
+import com.rmj.PaymentMicroservice.exception.RequestTimeoutException;
 import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
 import com.rmj.PaymentMicroservice.model.*;
 import com.rmj.PaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -57,23 +54,17 @@ public class PaymentServiceImpl implements PaymentService {
 
     
     @Override
-    public List<PaymentTypeDTO> getPaymentTypes() {
-        // List<PaymentTypeDTO> paymentTypes = new ArrayList<PaymentTypeDTO>();
-        // paymentTypes.add(new PaymentTypeDTO("aaa", "aaa_url"));
-        // paymentTypes.add(new PaymentTypeDTO("aaa", "bbb_url"));
-        List<Application> applications = eurekaClient.getApplications().getRegisteredApplications();
-        if (applications.isEmpty()) {
-        	return Collections.emptyList();
-        }
+    public List<PaymentTypeDTO> getCurrentlyActivatedPaymentTypes(List<PaymentAccount> accounts) {
+        List<String> paymentTypeMicroserviceNames = getPaymentTypeNames();
         
-        return applications.stream()
-        				.filter(app -> app.getName().toLowerCase().startsWith("pt_"))
-        				.map(app -> new PaymentTypeDTO(app.getName(), 
-        										proxyServerUrl.concat("/").concat(app.getName().toLowerCase().concat("/"))))
+        List<String> paymentTypeNames = paymentTypeMicroserviceNames.stream()
+        				.map(name -> name.toLowerCase().replace("pt_", "")
+												.replace("-microservice", ""))
         				.collect(Collectors.toList());
-        // PeerAwareInstanceRegistry registry = EurekaServerContextHolder.getInstance().getServerContext().getRegistry();
-        // ResponseEntity<PaymentTypesDTO> responseEntity = restTemplate.getForEntity(microservicesUrl, PaymentTypesDTO.class);
-        // return responseEntity.getBody().getTypes();
+
+        return accounts.stream()
+				.map(account -> new PaymentTypeDTO(account.getType(), paymentTypeNames.contains(account.getType())))
+				.collect(Collectors.toList());
     }
 
 	@Override
@@ -106,16 +97,15 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public String getMicroserviceFrontendUrl(Long transactionId, String paymentType) throws UserNotFoundException, NotFoundException {
+	public String getMicroserviceFrontendUrl(Long transactionId, String paymentType) throws NotFoundException, RequestTimeoutException {
     	User loggedUser = userService.getLoggedUser();
-    	String pType = paymentType.replace("pt_", "").replace("-microservice", "");
     	PaymentAccount paymentAccount = loggedUser.getAccounts().stream()
-				.filter(a -> a.getType().equals(pType))
+				.filter(a -> a.getType().equals(paymentType))
 				.findFirst()
-				.orElseThrow(() -> new NotFoundException("Payment account (type=".concat(pType).concat(") not found!")));
+				.orElseThrow(() -> new NotFoundException("Payment account (type=".concat(paymentType).concat(") not found!")));
 
 		Transaction transaction = transactionService.getTransaction(transactionId);
-		String microserviceBackendUrl = proxyServerUrl.concat("/").concat(paymentType).concat("/payment/frontend-url");
+		String microserviceBackendUrl = proxyServerUrl.concat("/pt_").concat(paymentType).concat("-microservice/payment/frontend-url");
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("paymentAccountUsername", paymentAccount.getUsername());
@@ -124,6 +114,11 @@ public class PaymentServiceImpl implements PaymentService {
         		transaction.getMerchantTimestamp(), transaction.getRedirectUrl(), callbackUrl);
         HttpEntity<PayDTO> httpEntity = new HttpEntity<PayDTO>(payDTO, headers);
         ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(microserviceBackendUrl, HttpMethod.POST, httpEntity, RedirectUrlDTO.class);
+        HttpStatus statusCode = responseEntity.getStatusCode();
+
+        if (statusCode == HttpStatus.GATEWAY_TIMEOUT || statusCode == HttpStatus.REQUEST_TIMEOUT) {
+            throw new RequestTimeoutException();
+        }
 
         if (paymentAccount.getAccessToken() == null) {
         	paymentAccount = paymentAccountService.getPaymentAccount(paymentAccount.getId());
@@ -184,6 +179,13 @@ public class PaymentServiceImpl implements PaymentService {
 					return formFieldsForPaymentTypeDTO;
 				})
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public boolean loggedUserHasPaymentType(List<PaymentAccount> accounts, String paymentType) {
+		return accounts.stream()
+				.filter(acccount -> acccount.getType().equals(paymentType))
+				.count() > 0;
 	}
 
 }

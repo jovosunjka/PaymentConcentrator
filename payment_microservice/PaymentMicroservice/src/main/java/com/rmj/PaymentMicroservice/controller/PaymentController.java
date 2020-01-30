@@ -4,9 +4,12 @@ package com.rmj.PaymentMicroservice.controller;
 import com.rmj.PaymentMicroservice.dto.*;
 import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import com.rmj.PaymentMicroservice.exception.NotFoundException;
+import com.rmj.PaymentMicroservice.exception.RequestTimeoutException;
 import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
 import com.rmj.PaymentMicroservice.model.Transaction;
+import com.rmj.PaymentMicroservice.model.User;
 import com.rmj.PaymentMicroservice.service.PaymentService;
+import com.rmj.PaymentMicroservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,8 +25,8 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/payment")
 public class PaymentController {
 
-    //@Autowired
-    //private DiscoveryClient eurekaClient;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private PaymentService paymentService;
@@ -38,9 +41,17 @@ public class PaymentController {
         return new ResponseEntity<TransactionIdDTO>(new TransactionIdDTO(transaction.getId()), HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAuthority('PAY')")
     @RequestMapping(value = "/types", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PaymentTypeDTO>> getPaymentTypes() {
-        List<PaymentTypeDTO> paymentTypes = paymentService.getPaymentTypes();
+        User loggedUser = null;
+        try {
+            loggedUser = userService.getLoggedUser();
+        } catch (UserNotFoundException e) {
+            return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+        }
+
+        List<PaymentTypeDTO> paymentTypes = paymentService.getCurrentlyActivatedPaymentTypes(loggedUser.getAccounts());
         return new ResponseEntity<List<PaymentTypeDTO>>(paymentTypes, HttpStatus.OK);
     }
 
@@ -55,15 +66,39 @@ public class PaymentController {
     @RequestMapping(value = "/choose-payment", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity choosePayment(@RequestParam("transactionId") Long transactionId,
     															@RequestParam("paymentType") String paymentType) {
+        User loggedUser = null;
+        try {
+            loggedUser = userService.getLoggedUser();
+        } catch (UserNotFoundException e) {
+            return new ResponseEntity(HttpStatus.UNAUTHORIZED);
+        }
+
+        if (paymentType == null) {
+            return new ResponseEntity("paymentType == null".concat(paymentType).concat(" accpunt"),
+                    HttpStatus.BAD_REQUEST);
+        }
+
+        paymentType = paymentType.trim();
+
+        if (paymentType.equals("")) {
+            return new ResponseEntity("paymentType is empty string", HttpStatus.BAD_REQUEST);
+        }
+
     	paymentType = paymentType.toLowerCase();
+
+        if (!paymentService.loggedUserHasPaymentType(loggedUser.getAccounts(), paymentType)) {
+            return new ResponseEntity("The logged user has not ".concat(paymentType).concat(" account"),
+                    HttpStatus.BAD_REQUEST);
+        }
+
     	paymentService.saveChosenPayment(transactionId, paymentType);
         String frontendUrl = null;
         try {
             frontendUrl = paymentService.getMicroserviceFrontendUrl(transactionId, paymentType);
-        } catch (UserNotFoundException e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.UNAUTHORIZED);
         } catch (NotFoundException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        } catch (RequestTimeoutException e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.REQUEST_TIMEOUT);
         }
 
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);

@@ -1,0 +1,13 @@
+
+select {
+    color: blue;
+}
+
+select option {
+    color: blue;
+}
+
+select option[disabled] {
+    color: rgb(75, 62, 62) !important;
+    background: rgb(136, 132, 132);
+}
