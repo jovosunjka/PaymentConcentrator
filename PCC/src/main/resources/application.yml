@@ -2,7 +2,7 @@
 server:
   servlet:
     context-path: /api
-  port: 8080
+  port: 8088
   ssl:
     key-store: classpath:stores/keystore.p12
     key-store-password: pass348
@@ -21,7 +21,7 @@ server:
     # for two way authentication, use value: need
 
 
-bin: 12345
+
 
 
 spring:
@@ -36,6 +36,16 @@ spring:
     #korisno ako je konekcija dugo u idle stanju
     testWhileIdle: true
     validationQuery: SELECT 1
+    initialization-mode: always
+    jpa:
+      show-sql: true
+      hibernate:
+        #kreira tabele na osnovu anotacija @Entity svaki put kad se pokrene aplikacija
+        ddl-auto: create #create-drop
+        #bira najbolje konvencije imenovanja za tabele i polja u bazi
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    #optimizacija za h2 upite
+    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
   #Ukljucivanje konzole
   h2:
     console:
@@ -56,3 +66,4 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
 
 #konekcija na bazu je jdbc:h2:mem:myDb
+
