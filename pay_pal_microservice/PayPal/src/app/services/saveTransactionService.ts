@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Transaction } from '../model/Transaction';
 
@@ -29,6 +29,19 @@ export class saveTransactionService{
         return this.http.get(this.base_url + "/getAllTransaction");
     }
 
+    getSubscribeToken(){
+        const headers: HttpHeaders = new HttpHeaders(
+            {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "Authorization": "Basic QVN5OWZyYlUwN29PRkRObXltYTVTTUtiS0tLZWQ0dzNIQ3RFZ3MzLXRCQi1hUjhPUjVVZzFiaDN0aVFWdklGRWk1ajBDVFdzRVhVdjQxdEY6RUVrc2ZOZkpzU21BVWpXNDl3X05kdHBnNW1YQktiWUM3NHFyQ2REbkZDeWtoYXUxUUZkbkFoYjltbHdmTzhRRnhzcXM5M2V0T0tPU1F1MHE="
+            }
+          );
+ 
+        const body = new HttpParams()
+      .set("grant_type", "client_credentials");
+        
+        return this.http.post<any>("https://api.sandbox.paypal.com/v1/oauth2/token", body.toString(), {headers});
+    }
 
 
 }

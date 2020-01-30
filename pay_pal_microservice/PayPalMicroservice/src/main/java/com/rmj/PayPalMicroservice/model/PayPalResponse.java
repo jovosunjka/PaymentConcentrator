@@ -24,6 +24,17 @@ public class PayPalResponse {
 	
 	@Column(name = "state", unique = false, nullable = false)
 	private String state;
+	
+	@Column(name = "idPayment", unique = false, nullable = false)
+	private Long idPayment;
+
+	public Long getIdPayment() {
+		return idPayment;
+	}
+
+	public void setIdPayment(Long idPayment) {
+		this.idPayment = idPayment;
+	}
 
 	public PayPalResponse() {}
 	 

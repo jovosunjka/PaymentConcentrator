@@ -4,9 +4,15 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.rmj.PayPalMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.PayPalMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.PayPalMicroservice.model.FormField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,6 +31,9 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Autowired
 	private FormFieldService formFieldService;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 
 	
 	@Override
@@ -44,5 +53,17 @@ public class PaymentServiceImpl implements PaymentService {
 	public FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType() {
 		List<FormField> formFields = formFieldService.getFormFields();
 		return new FormFieldsForPaymentTypeDTO(formFields);
+	}
+	
+	@Override
+	public String pay(Long transactionId, String status) {
+		Transaction transaction = transactionService.getTransaction(transactionId);
+		
+		HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+		HttpEntity<TransactionCompletedDTO> httpEntity2 = new HttpEntity<TransactionCompletedDTO>(new TransactionCompletedDTO(transaction.getMerchantOrderId(), status), headers);
+    	ResponseEntity<Void> responseEntity2 = restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity2, Void.class);
+		return transaction.getRedirectUrl();
 	}
 }

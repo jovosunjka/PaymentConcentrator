@@ -3,4 +3,5 @@ export class Transaction{
     create_time: string;
     id: Int32Array;
     state: string;
+    idPayment: number;
 }
