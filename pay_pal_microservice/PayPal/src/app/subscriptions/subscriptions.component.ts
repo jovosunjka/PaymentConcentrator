@@ -1,5 +1,6 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, NgZone, Input } from '@angular/core';
 import { saveTransactionService } from '../services/saveTransactionService';
+import { Transaction } from '../model/Transaction';
 
 declare var paypal;
 @Component({
@@ -9,7 +10,9 @@ declare var paypal;
 })
 export class SubscriptionsComponent implements OnInit {
 
-  
+  @Input() transactionID: number;
+  @Input() amount: number;
+  @Input() currency: string;
   planId: any;  
   subcripId: any;  
   username = 'ASy9frbU07oOFDNmyma5SMKbKKKed4w3HCtEgs3-tBB-aR8OR5Ug1bh3tiQVvIFEi5j0CTWsEXUv41tF';
@@ -17,7 +20,7 @@ export class SubscriptionsComponent implements OnInit {
   basicAuth = 'Bearer A21AAGqCWCurh91hRoF8KRCB5g4Iva8DeKJvrJf8Ta7VZny2H0zOqY-FNZEbqi21j7lp8qKIbSkVQcD6Sa1DjXLHE-2fgZyJA';
   //basicAuth = 'Basic ASy9frbU07oOFDNmyma5SMKbKKKed4w3HCtEgs3-tBB-aR8OR5Ug1bh3tiQVvIFEi5j0CTWsEXUv41tF:EKWeZcuiWHSuTocRKFer9aforQxmhawEccihGDWxIwuTzD5XmL9_n-l5AwlJRNotaix9HYM4aBI0eXhf';
   @ViewChild(SubscriptionsComponent, {static: false}) paypalElement: ElementRef;
-  constructor(private service: saveTransactionService) { }
+  constructor(private service: saveTransactionService, private ngZone: NgZone) { }
 
   // ngOnInit() {
   // }
@@ -73,6 +76,14 @@ export class SubscriptionsComponent implements OnInit {
       //console.log(response.access_token);
       this.basicAuth = "Bearer " + response.access_token;
     })
+
+    var c = this.amount;  
+    if(this.currency == "RSD"){
+      c = Math.floor(c/106);
+    }else if(this.currency == "EUR"){
+      c = Math.round(c * 1.1);
+    }
+    console.log("Cena pretplate " + c + this.currency);
     
     const self = this;  
     this.planId = 'P-6KY570575L8166015LYVRHPY';  //Default Plan Id
@@ -80,20 +91,60 @@ export class SubscriptionsComponent implements OnInit {
     paypal.Buttons({  
       createSubscription: function (data, actions) {  
         return actions.subscription.create({  
-          'plan_id': self.planId,  
+          'plan_id': self.planId, 
+          "shipping_amount": {
+                  "currency_code": "USD",
+                  "value": c
+                }, 
         });  
       },  
       onApprove: function (data, actions) {  
         console.log(data);  
         alert('You have successfully created subscription ' + data.subscriptionID);  
         self.getSubcriptionDetails(data.subscriptionID);  
+        let t = new Transaction();
+            t.cart = "none";
+            t.create_time = Date.now().toString();
+            t.id = self.transactionID.toString();
+            t.idPayment = self.transactionID;
+            t.state = "SUBSCRIBE_COMPLETE";
+            self.service.save(t).subscribe((response) =>{
+              console.log(response);
+              self.ngZone.runOutsideAngular(() => {
+                window.location.href = response.redirectUrl;
+              });
+            });
       },  
       onCancel: function (data) {  
         // Show a cancel page, or return to cart  
+        let t = new Transaction();
+            t.cart = "none";
+            t.create_time = Date.now().toString();
+            t.id = self.transactionID.toString();
+            t.idPayment = self.transactionID;
+            t.state = "SUBSCRIBE_FAILE";
+            self.service.save(t).subscribe((response) =>{
+              console.log(response);
+              self.ngZone.runOutsideAngular(() => {
+                window.location.href = response.redirectUrl;
+              });
+            });
         console.log(data);  
       },  
       onError: function (err) {  
-        // Show an error page here, when an error occurs  
+        // Show an error page here, when an error occurs 
+        let t = new Transaction();
+            t.cart = "none";
+            t.create_time = Date.now().toString();
+            t.id = self.transactionID.toString();
+            t.idPayment = self.transactionID;
+            t.state = "SUBSCRIBE_FAILE";
+            self.service.save(t).subscribe((response) =>{
+              console.log(response);
+              self.ngZone.runOutsideAngular(() => {
+                window.location.href = response.redirectUrl;
+              });
+            }); 
         console.log(err);  
       }  
   

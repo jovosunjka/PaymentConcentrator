@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, HostListener } from '@angular/core';
 import { saveTransactionService } from '../services/saveTransactionService';
 import { Transaction } from '../model/Transaction';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ declare let paypal: any;
 })
 export class ButtonComponent implements OnInit {
 
+  obavljjenaTransakcija: boolean;
   private transactionId: number;
   private amount: number;
   private currency: string;
@@ -36,22 +37,6 @@ export class ButtonComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    //KADA SE UCITA KOMPONENTA UDJE U IF I NIKAD VISE
-    // if(window.closed){
-    //   let t = new Transaction();
-    //         t.idPayment = transactionLocal;
-    //         t.cart = "none";
-    //         t.create_time = "none";
-    //         t.id = new Int32Array(0);
-    //         t.state = "FAIL";
-    //         v.cancel(t).subscribe((response) =>{
-    //           console.log(response);
-    //           zone.runOutsideAngular(() => {
-    //             window.location.href = response.redirectUrl;
-                
-    //           });
-    //         });
-    // }
     var c = this.amount; //cena u dolarima
     var v = this.serviceSave;
     var router = this.routerRedirect;
@@ -61,7 +46,7 @@ export class ButtonComponent implements OnInit {
     }else if(this.currency == "EUR"){
       c = Math.round(c * 1.1);
     }
-
+    
     var transactionLocal = this.transactionId;
     var zone = this.ngZone;
     this.loadExternalScript("https://www.paypalobjects.com/api/checkout.js").then(() => {
@@ -116,7 +101,7 @@ export class ButtonComponent implements OnInit {
             t.create_time = "none";
             t.id = data.paymentID;
             t.state = "FAIL";
-            v.cancel(t).subscribe((response) =>{
+            v.save(t).subscribe((response) =>{
               console.log(response);
               zone.runOutsideAngular(() => {
                 window.location.href = response.redirectUrl;
@@ -132,7 +117,7 @@ export class ButtonComponent implements OnInit {
             t.create_time = "none";
             t.id = data.paymentID;
             t.state = "FAIL";
-            v.cancel(t).subscribe((response) =>{
+            v.save(t).subscribe((response) =>{
               console.log(response);
               zone.runOutsideAngular(() => {
                 window.location.href = response.redirectUrl;
@@ -149,5 +134,23 @@ export class ButtonComponent implements OnInit {
     this.serviceSave.allTransaction().subscribe();
   }
 
+  // @HostListener('window:unload', [ '$event' ])
+  // unloadHandler(event) {
+  //   alert("ugasen tab")
+  //   let t = new Transaction();
+  //           t.idPayment = this.transactionId;
+  //           t.cart = "none";
+  //           t.create_time = "none";
+  //           t.id = new Int32Array(0);
+  //           t.state = "FAIL";
+  //   //this.authenticationService.logout();
+
+  //   this.serviceSave.cancel(t).subscribe();
+  // }
+
+  // @HostListener('window:beforeunload', [ '$event' ])
+  // beforeUnloadHander(event) {
+  //   alert('window:beforeunload');
+  // }
   
 }

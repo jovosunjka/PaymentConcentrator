@@ -53,9 +53,13 @@ public class PaymentController {
     @RequestMapping(path = "/saveTransaction", method = RequestMethod.POST)
     public ResponseEntity<RedirectUrlDTO> saveTransaction(@RequestBody PayPalResponse executeTransaction)
     {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	Calendar cal = Calendar.getInstance();
+    	
+    	executeTransaction.setCreate_time(dateFormat.format(cal.getTime()).toString());
     	repository.save(executeTransaction);
     	String frontendUrl = paymentService.pay(executeTransaction.getIdPayment(), executeTransaction.getState());
-    	System.out.println("sacuvana paypal transakcija u bazu... url za redirect: " + frontendUrl);
+    	System.out.println("Sacuvana " + executeTransaction.getState() + " paypal transakcija u bazu... url za redirect: " + frontendUrl);
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
     
@@ -68,7 +72,7 @@ public class PaymentController {
     	executeTransaction.setCreate_time(dateFormat.format(cal.getTime()).toString());
     	repository.save(executeTransaction);
     	String frontendUrl = paymentService.pay(executeTransaction.getIdPayment(), executeTransaction.getState());
-    	System.out.println("sacuvana paypal transakcija u bazu");
+    	System.out.println("Sacuvana neuspesna paypal transakcija u bazu");
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
 

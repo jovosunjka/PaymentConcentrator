@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import com.rmj.PayPalMicroservice.service.TransactionService;
 import com.rmj.PayPalMicroservice.model.Currency;
 import com.rmj.PayPalMicroservice.model.Transaction;
+import com.rmj.PayPalMicroservice.model.TransactionStatus;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -58,6 +59,10 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public String pay(Long transactionId, String status) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
+		
+		TransactionStatus statusEnum = TransactionStatus.valueOf(status.toUpperCase());
+		transaction.setStatus(statusEnum);
+		transactionService.save(transaction);
 		
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
