@@ -26,12 +26,17 @@ import com.rmj.BitcoinMicroservice.models.CoinGateCallback;
 import com.rmj.BitcoinMicroservice.models.Order;
 import com.rmj.BitcoinMicroservice.models.PaymentResponse;
 import com.rmj.BitcoinMicroservice.repository.OrderRepository;
+import com.rmj.BitcoinMicroservice.service.PaymentService;
+
 
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/bitcoin")
 public class BitcoinController {
 
+	@Autowired
+	private PaymentService paymentService;
+	
 	@Autowired
 	private OrderRepository orderRepository;	
 
@@ -43,9 +48,9 @@ public class BitcoinController {
     
 
     @RequestMapping(path = "/createPay", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RedirectUrlDTO>  pay(@RequestParam String username) {
+    public ResponseEntity<RedirectUrlDTO>  pay(@RequestParam String currency, @RequestParam Integer amount) {
     	
-    	RedirectUrlDTO redirectDto = this.createPayment(username);
+    	RedirectUrlDTO redirectDto = this.createPayment(currency, amount);
         
     	return new ResponseEntity<RedirectUrlDTO>(redirectDto, HttpStatus.OK);
     }
@@ -68,18 +73,18 @@ public class BitcoinController {
     	return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/checkPayment", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity checkPayment(@RequestBody Integer transactionId)
+    @RequestMapping(value = "/checkPayment", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RedirectUrlDTO> checkPayment(@RequestParam Integer transactionId, @RequestParam Integer btId)
     {
     	PaymentResponse checkPay = new PaymentResponse();
     	RestTemplate temp = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Token " + "1ptysoycHEj2P-zsExysyx6uGkEyje2C42tspmsc");
-		
+		String status = "";
 		
 		try {
 			//ResponseEntity<PaymentResponse> response = temp.getForEntity("https://api-sandbox.coingate.com/v2/orders/" + transactionId, headers, PaymentResponse.class);
-			ResponseEntity<PaymentResponse> entity = new RestTemplate().exchange("https://api-sandbox.coingate.com/v2/orders/" + transactionId, HttpMethod.GET, new HttpEntity<Object>(headers),PaymentResponse.class);
+			ResponseEntity<PaymentResponse> entity = new RestTemplate().exchange("https://api-sandbox.coingate.com/v2/orders/" + btId, HttpMethod.GET, new HttpEntity<Object>(headers),PaymentResponse.class);
 			checkPay.setId(entity.getBody().getId());
 			checkPay.setStatus(entity.getBody().getStatus());
 		} catch (HttpStatusCodeException exception) {
@@ -90,29 +95,45 @@ public class BitcoinController {
 		if(!oldOrder.getStatus().equals(checkPay.getStatus())) {
 			oldOrder.setStatus(checkPay.getStatus());
 			orderRepository.save(oldOrder);
+			if(checkPay.getStatus().equals("paid")) {
+				status = "SUCCESS";				
+			}else {
+				status = "FAIL";
+			}
 		}else {
 			oldOrder.setStatus("Expired");
 			orderRepository.save(oldOrder);
+			status = "FAIL";
 		}
-		
-    	System.out.println(transactionId);
+		Long id = Long.valueOf(transactionId);
+		System.out.println(id);
+		String frontendUrl = paymentService.pay(id, status);
+				
+    	System.out.println(frontendUrl);
     	
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
     
-    public RedirectUrlDTO createPayment(String username) {
+    public RedirectUrlDTO createPayment(String currency, Integer amount) {
     	Order ord = new Order();
 		RestTemplate temp = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Token " + "1ptysoycHEj2P-zsExysyx6uGkEyje2C42tspmsc");
 
+		double cena = 0;
+		if(currency.equals("RSD")){
+			cena = Math.floor(amount/106);
+			amount = (int)Math.round(cena);
+			currency = "USD";
+	    }
+		System.out.println(amount);
 		String randomToken = UUID.randomUUID().toString();
 
 		MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
 		
 		map.add("order_id", "CGORDER-12345");
-		map.add("price_amount", "100005");
-		map.add("price_currency", "USD");
+		map.add("price_amount", amount.toString());
+		map.add("price_currency", currency);
 		map.add("receive_currency", "USD");
 		map.add("callback_url", "");
 		map.add("cancel_url", "");	//dodati odgovaraju endpoint na koji 

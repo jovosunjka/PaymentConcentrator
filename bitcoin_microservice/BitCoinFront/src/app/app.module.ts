@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes =[
-  { path: "payBitcoin/:transactionId", component: HomeComponent },
+  { path: "payBitcoin/:transactionId/:amount/:currency", component: HomeComponent },
   {
     path: '', // localhost:4200 redirect to localhost:4200/button
     component: HomeComponent,
