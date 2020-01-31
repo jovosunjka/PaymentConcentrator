@@ -17,6 +17,8 @@ export class ButtonComponent implements OnInit {
   private amount: number;
   private currency: string;
   transaction: Transaction;
+  private sendedTransaction: boolean;
+
   constructor(private serviceSave: saveTransactionService, private route: ActivatedRoute, private routerRedirect: Router, private ngZone: NgZone) { }
 
   ngOnInit() {
@@ -25,6 +27,7 @@ export class ButtonComponent implements OnInit {
       this.amount = this.route.snapshot.params.amount;
       this.currency = this.route.snapshot.params.currency;
     }
+    this.sendedTransaction = false;
   }
 
   private loadExternalScript(scriptUrl: string) {
@@ -40,7 +43,7 @@ export class ButtonComponent implements OnInit {
     var c = this.amount; //cena u dolarima
     var v = this.serviceSave;
     var router = this.routerRedirect;
-
+    const self = this;
     if(this.currency == "RSD"){
       c = Math.floor(c/106);
     }else if(this.currency == "EUR"){
@@ -74,6 +77,7 @@ export class ButtonComponent implements OnInit {
           return actions.payment.execute().then(function (payment) {
             console.log("prosledjeno na upis u bazu");
             console.log(payment);
+            self.sendedTransaction = true;
             // TODO
             // cart: "3VG18081MV5040101"
             // create_time: "2019-08-08T15:51:37Z"
@@ -94,7 +98,7 @@ export class ButtonComponent implements OnInit {
         },
         onCancel: function (data) {
           console.log("Cancel Transaction");
-          
+          self.sendedTransaction = true;
           let t = new Transaction();
             t.idPayment = transactionLocal;
             t.cart = "none";
@@ -111,6 +115,7 @@ export class ButtonComponent implements OnInit {
         },
         onError: function (data) {
           console.log("Error transaction"); 
+          self.sendedTransaction = true;
           let t = new Transaction();
             t.idPayment = transactionLocal;
             t.cart = "none";
@@ -126,7 +131,8 @@ export class ButtonComponent implements OnInit {
             });
         }
       }, '#paypal-button');
-    }); 
+    });
+    this.sendedTransaction = self.sendedTransaction; 
   }
 
 
@@ -134,6 +140,15 @@ export class ButtonComponent implements OnInit {
     this.serviceSave.allTransaction().subscribe();
   }
 
+  @HostListener('window:beforeunload', [ '$event' ])
+  beforeUnloadHander(event) {
+    console.log(JSON.stringify(event));
+    if(!this.sendedTransaction){
+      console.log(this.sendedTransaction);
+      this.serviceSave.cancelTransaction(this.transactionId).subscribe();
+    }
+    //alert('window:beforeunload');
+  }
   // @HostListener('window:unload', [ '$event' ])
   // unloadHandler(event) {
   //   alert("ugasen tab")

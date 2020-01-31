@@ -75,6 +75,15 @@ public class PaymentController {
     	System.out.println("Sacuvana neuspesna paypal transakcija u bazu");
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/cancelTransactionCloseTab", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RedirectUrlDTO> cancelTransactionCloseTab(@RequestParam Integer transactionId)
+    {
+    	Long id = Long.valueOf(transactionId);
+    	String status = "FAIL";
+    	String frontendUrl = paymentService.pay(id, status);
+    	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+    }
 
     @RequestMapping(path = "/getAllTransaction", method = RequestMethod.GET)
     public ResponseEntity getAllTransaction()

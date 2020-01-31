@@ -23,4 +23,8 @@ export class payService{
         return this.http.get<any>(this.base_url + "/checkPayment?transactionId=" + transactionId + "&" + "btId=" + bitcoinTransactionId);
     }
 
+    cancelTransaction(transactionId: number){
+        return this.http.get<any>(this.base_url + "/cancelTransaction?transactionId=" + transactionId);
+    }
+
 }

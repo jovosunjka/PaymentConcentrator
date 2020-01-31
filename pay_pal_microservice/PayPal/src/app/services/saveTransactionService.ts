@@ -43,5 +43,9 @@ export class saveTransactionService{
         return this.http.post<any>("https://api.sandbox.paypal.com/v1/oauth2/token", body.toString(), {headers});
     }
 
+    cancelTransaction(transactionId: number){
+      return this.http.get<any>(this.base_url + "/cancelTransactionCloseTab?transactionId=" + transactionId);
+    }
+
 
 }
