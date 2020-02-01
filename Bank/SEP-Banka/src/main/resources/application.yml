@@ -2,7 +2,7 @@
 server:
   servlet:
     context-path: /api
-  port: 8080 #8087
+  port: 8080
   ssl:
     key-store: classpath:stores/keystore.p12
     key-store-password: pass348
@@ -21,11 +21,13 @@ server:
     # for two way authentication, use value: need
 
 
-bin: 12345 #17951
+bank-name: Banka_intesa
+bin: 12345
 frontend.redirect-url: https://localhost:4203/registration
 redirect-url: https://localhost:8088/api/pcc/check
 pay-url: https://localhost:${server.port}/api/bank/pay
-response-url: https://localhost:${server.port}/api/bank/response
+request-url: https://localhost:${server.port}/api/bank/request
+transaction-completed-url: https://localhost:${server.port}/api/bank/response
 
 spring:
   application:

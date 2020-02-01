@@ -1,3 +1,0 @@
-INSERT INTO `bank` (`id`,`name`,`bin`,`redirect_url`,`transaction_completed_url`) VALUES(1,'Banka intesa',12345,'https://localhost:8080/api/bank/request','https://localhost:8080/api/bank/response');
-INSERT INTO `bank` (`id`,`name`,`bin`,`redirect_url`,`transaction_completed_url`) VALUES(2,'Vojvodjanska banka',13549,'https://localhost:8082/api/bank/request','https://localhost:8082/api/bank/response');
-INSERT INTO `bank` (`id`, `name`, `bin`,`redirect_url`,`transaction_completed_url`) VALUES(3,'Unicredit banka',17951,'https://localhost:8087/api/bank/request','https://localhost:8087/api/bank/response');

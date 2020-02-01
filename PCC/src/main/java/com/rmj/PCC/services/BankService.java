@@ -20,4 +20,6 @@ public interface BankService {
                          int acquirerBin, BankAccountDTO user);
 
     void sendTransactionCompletedDTO(TransactionCompletedDTO transactionCompletedDTO);
+
+    void saveBank(String name, int bin, String redirectUrl, String transactionCompletedUrl);
 }

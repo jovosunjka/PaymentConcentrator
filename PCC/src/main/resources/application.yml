@@ -36,7 +36,7 @@ spring:
     #korisno ako je konekcija dugo u idle stanju
     testWhileIdle: true
     validationQuery: SELECT 1
-    initialization-mode: always
+    #initialization-mode: always
     jpa:
       show-sql: true
       hibernate:

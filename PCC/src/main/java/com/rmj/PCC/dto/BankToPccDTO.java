@@ -71,6 +71,6 @@ public class BankToPccDTO {
 	public void setUser(BankAccountDTO user) {
 		this.user = user;
 	}
-	
+
 
 }

@@ -29,7 +29,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public List<Transaction> getTenTransactions() {
-		return transactionRepository.findTop10ByStatusOrderByTimestampAsc(TransactionStatus.PENDING);
+		return transactionRepository.findTop10ByStatusOrderByTimestampAsc(TransactionStatus.READY);
 	}
 
 	@Override

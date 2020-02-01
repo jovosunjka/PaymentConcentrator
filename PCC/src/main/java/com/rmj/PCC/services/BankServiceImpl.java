@@ -40,28 +40,28 @@ public class BankServiceImpl implements BankService {
     private boolean sleep = false;
 
 
-    @EventListener(ApplicationReadyEvent.class)
+    /*@EventListener(ApplicationReadyEvent.class)
     public void runOnApplicationReadyEvent() {
         processTransacctions();
-    }
+    }*/
 
     private void processTransacctions() {
         sleep = false;
-        while (true) {
+        //while (true) {
             System.out.println("Loading transactions ...");
             List<Transaction> tenTransactions = transactionService.getTenTransactions();
 
             if (tenTransactions.isEmpty()) {
                 sleep = true;
-                break;
+                //break;
             }
 
             System.out.println("Processing transactions ...");
             tenTransactions.stream()
                     .forEach(transaction -> {
                         try {
-                            transaction.setStatus(TransactionStatus.PENDING);
-                            transactionService.save(transaction);
+                            //transaction.setStatus(TransactionStatus.PENDING);
+                            //transactionService.save(transaction);
 
                             redirectToBank(transaction.getIssuerBank().getRedirectUrl(), transaction.getAcquirerOrderId(),
                                     transaction.getAcquirerBankTimestamp(), transaction.getAmount(), transaction.getCurrency(),
@@ -74,7 +74,7 @@ public class BankServiceImpl implements BankService {
                                     transaction.getAcquirerBank().getTransactionCompletedUrl());
                         }
                     });
-        }
+        //}
     }
 
     private void sendTransactionCompletedDTO(Long acquirerOrderId, LocalDateTime acquirerTimeStamp, Long issuerOrderId,
@@ -101,6 +101,11 @@ public class BankServiceImpl implements BankService {
 
         HttpEntity<TransactionCompletedDTO> httpEntity = new HttpEntity<TransactionCompletedDTO>(transactionCompletedDTO ,headers);
         restTemplate.exchange(transaction.getAcquirerBank().getTransactionCompletedUrl(), HttpMethod.PUT, httpEntity, Void.class);
+    }
+
+    @Override
+    public void saveBank(String name, int bin, String redirectUrl, String transactionCompletedUrl) {
+        bankRepository.save(new Bank(name, bin, redirectUrl, transactionCompletedUrl));
     }
 
     @Override
@@ -149,9 +154,9 @@ public class BankServiceImpl implements BankService {
                 user.getCardNumber(), user.getSecurityCode(), amount, currency, timeStamp, issuerBank, acquirerBank);
         transactionService.save(transaction);
 
-        if (sleep) {
+        //if (sleep) {
             processTransacctions();
-        }
+        //}
     }
 
     private int getBin(long cardNumber) {

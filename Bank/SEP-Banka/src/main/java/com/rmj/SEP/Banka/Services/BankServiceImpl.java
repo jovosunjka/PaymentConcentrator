@@ -26,10 +26,16 @@ public class BankServiceImpl implements BankService {
 
     @Autowired
     private BankAccountRepository bankAccountRepository;
-    
+
+	@Value("${bank-name}")
+    private String bankName;
+
     @Value("${bin}")
     private int bankBin;
-    
+
+    @Value("${request-url}")
+    private String requestUrl;
+
     @Value("${redirect-url}")
     private String redirectUrl;
 
@@ -39,8 +45,8 @@ public class BankServiceImpl implements BankService {
 	@Value("${server.port}")
 	private int serverPort;
     
-    @Value("${response-url}")
-    private String responseUrl;
+    @Value("${transaction-completed-url}")
+    private String transactionCompletedUrl;
     
     @Autowired
 	private RestTemplate restTemplate;
@@ -56,26 +62,27 @@ public class BankServiceImpl implements BankService {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void runOnApplicationReadyEvent() {
+		saveBankOnPCC();
 		removeBankAccountsThatNotBelongToThisBank();
-    	processTransacctions();
+    	//processTransacctions();
 	}
 
     private void processTransacctions() {
 		sleep = false;
-		while (true) {
+		//while (true) {
 			System.out.println("Loading transactions ...");
 			List<Transaction> tenTransactions = transactionService.getTenTransactions();
 
 			if (tenTransactions.isEmpty()) {
 				sleep = true;
-				break;
+				//break;
 			}
 
 			System.out.println("Processing transactions ...");
 			tenTransactions.stream()
 					.forEach(transaction -> {
-						transaction.setStatus(TransactionStatus.PENDING);
-						transactionService.save(transaction);
+						//transaction.setStatus(TransactionStatus.PENDING);
+						//transactionService.save(transaction);
 
 						int bin = getBin(transaction.getConsumerCardNumber());
 						boolean response = checkBin(bin);
@@ -87,7 +94,8 @@ public class BankServiceImpl implements BankService {
 							BankAccountDTO consumerDTO = new BankAccountDTO(transaction.getConsumerCardHolder(),
 									transaction.getConsumerExpDate(), transaction.getConsumerCardNumber(), transaction.getConsumerSecurityCode());
 							try {
-								redirectToPcc(transaction.getId(), transaction.getTimestamp(), transaction.getAmount(), transaction.getCurrency(), bin, consumerDTO);
+								redirectToPcc(transaction.getId(), transaction.getTimestamp(), transaction.getAmount(), transaction.getCurrency(),
+										bankBin, consumerDTO);
 							} catch (Exception e) {
 								transaction.setStatus(TransactionStatus.FAIL);
 								transactionService.save(transaction);
@@ -98,8 +106,19 @@ public class BankServiceImpl implements BankService {
 							}
 						}
 					});
-		}
+		//}
     }
+
+    private void saveBankOnPCC() {
+		String url = "https://localhost:8088/api/pcc/save-bank";
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		BankDTO bankDTO = new BankDTO(bankName, bankBin, requestUrl, transactionCompletedUrl);
+		HttpEntity<BankDTO> httpEntity =
+				new HttpEntity<BankDTO>(bankDTO ,headers);
+		restTemplate.exchange(url, HttpMethod.POST, httpEntity, Void.class);
+	}
 
 	private void removeBankAccountsThatNotBelongToThisBank() {
 
@@ -305,9 +324,9 @@ public class BankServiceImpl implements BankService {
 
 		transactionService.save(transaction);
 
-		if (sleep) {
+		//if (sleep) {
 			processTransacctions();
-		}
+		//}
 	}
 
 	@Override
@@ -318,9 +337,9 @@ public class BankServiceImpl implements BankService {
 				user.getExpDate(), user.getSecurityCode(), redirectUrl, callbackUrl);
 		transactionService.save(transaction);
 
-		if (sleep) {
+		//if (sleep) {
 			processTransacctions();
-		}
+		//}
 	}
 
 }
