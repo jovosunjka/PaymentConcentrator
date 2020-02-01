@@ -1,5 +1,9 @@
 package com.rmj.PayPalMicroservice.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import com.rmj.PayPalMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,8 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.rmj.PayPalMicroservice.dto.PayDTO;
 import com.rmj.PayPalMicroservice.dto.RedirectUrlDTO;
-import com.rmj.PayPalMicroservice.dto.transactionDTO;
-import com.rmj.PayPalMicroservice.repository.TransactionDTORepository;
+import com.rmj.PayPalMicroservice.model.PayPalResponse;
+import com.rmj.PayPalMicroservice.repository.PayPalResponseRepository;
 import com.rmj.PayPalMicroservice.repository.TransactionRepository;
 import com.rmj.PayPalMicroservice.service.PaymentService;
 
@@ -26,7 +30,7 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@Autowired
-	private TransactionDTORepository repository;
+	private PayPalResponseRepository repository;
 
 
     @PreAuthorize("hasAuthority('PAY')")
@@ -36,7 +40,7 @@ public class PaymentController {
     {
 		Long transactionId = paymentService.makeTransaction(payDTO.getMerchantOrderId(), payDTO.getAmount(), payDTO.getCurrency(),
 														payDTO.getTimestamp(), payDTO.getRedirectUrl(), payDTO.getCallbackUrl());
-		String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId;
+		String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId + "/" + payDTO.getAmount() + "/" + payDTO.getCurrency();
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
 	
@@ -47,11 +51,38 @@ public class PaymentController {
     }
     
     @RequestMapping(path = "/saveTransaction", method = RequestMethod.POST)
-    public ResponseEntity saveTransaction(@RequestBody transactionDTO executeTransaction)
+    public ResponseEntity<RedirectUrlDTO> saveTransaction(@RequestBody PayPalResponse executeTransaction)
     {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	Calendar cal = Calendar.getInstance();
+    	
+    	executeTransaction.setCreate_time(dateFormat.format(cal.getTime()).toString());
     	repository.save(executeTransaction);
-    	System.out.println("sacuvana paypal transakcija u bazu");
-        return new ResponseEntity(HttpStatus.OK);
+    	String frontendUrl = paymentService.pay(executeTransaction.getIdPayment(), executeTransaction.getState());
+    	System.out.println("Sacuvana " + executeTransaction.getState() + " paypal transakcija u bazu... url za redirect: " + frontendUrl);
+        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+    }
+    
+    @RequestMapping(path = "/cancelTransaction", method = RequestMethod.POST)
+    public ResponseEntity<RedirectUrlDTO> cancelTransaction(@RequestBody PayPalResponse executeTransaction)
+    {
+    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	Calendar cal = Calendar.getInstance();
+    	
+    	executeTransaction.setCreate_time(dateFormat.format(cal.getTime()).toString());
+    	repository.save(executeTransaction);
+    	String frontendUrl = paymentService.pay(executeTransaction.getIdPayment(), executeTransaction.getState());
+    	System.out.println("Sacuvana neuspesna paypal transakcija u bazu");
+        return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/cancelTransactionCloseTab", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<RedirectUrlDTO> cancelTransactionCloseTab(@RequestParam Integer transactionId)
+    {
+    	Long id = Long.valueOf(transactionId);
+    	String status = "FAIL";
+    	String frontendUrl = paymentService.pay(id, status);
+    	return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
 
     @RequestMapping(path = "/getAllTransaction", method = RequestMethod.GET)

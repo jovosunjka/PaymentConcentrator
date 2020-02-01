@@ -10,13 +10,21 @@ export class payService{
 
     constructor(private http: HttpClient){ }
 
-    pay(): Observable<any>
+    pay(currency: string, amount: number): Observable<any>
     {
         
-        var ime = "mijat";
+        //var ime = "mijat";
 
         console.log("Kreiranje transakcije");
-        return this.http.get<any>(this.base_url + "/createPay?username=" + ime);
+        return this.http.get<any>(this.base_url + "/createPay?currency=" + currency + "&" + "amount=" + amount);
+    }
+
+    checkPay(transactionId: number, bitcoinTransactionId){
+        return this.http.get<any>(this.base_url + "/checkPayment?transactionId=" + transactionId + "&" + "btId=" + bitcoinTransactionId);
+    }
+
+    cancelTransaction(transactionId: number){
+        return this.http.get<any>(this.base_url + "/cancelTransaction?transactionId=" + transactionId);
     }
 
 }

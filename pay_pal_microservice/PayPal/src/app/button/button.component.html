@@ -1,7 +1,5 @@
-<p class="paragraf_text">
-    Placajte paypal!
-</p>
 
-<h2 *ngIf="paypalLoad">Paypal button is loading</h2>
-<div id="paypal-button"></div>
+<div id="paypal-button"><p class="paragraf_text">Placajte paypal!</p></div>
+
+<div><app-subscriptions [transactionID]="transactionId" [amount]="amount" [currency]="currency"></app-subscriptions></div>
 <!-- <button (click)="all()">Proceed </button> -->

@@ -32,7 +32,7 @@ public class FrontController {
     {
         Long transactionId = paymentService.makeTransaction(payDTO.getMerchantOrderId(), payDTO.getAmount(), payDTO.getCurrency(),
                 payDTO.getTimestamp(), payDTO.getRedirectUrl(), payDTO.getCallbackUrl());
-        String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId;
+        String frontendUrl = paymentService.getFrontendUrl() + "/" + transactionId + "/" + payDTO.getAmount() + "/" + payDTO.getCurrency();
         return new ResponseEntity<RedirectUrlDTO>(new RedirectUrlDTO(frontendUrl), HttpStatus.OK);
     }
 

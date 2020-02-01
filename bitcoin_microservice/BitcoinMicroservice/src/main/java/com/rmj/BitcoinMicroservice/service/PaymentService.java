@@ -13,4 +13,6 @@ public interface PaymentService {
 						 String redirectUrl, String callbackUrl);
 
     FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType();
+    
+    String pay(Long transactionId, String status);
 }
