@@ -2,7 +2,77 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2adbc2b9-aaec-492f-9932-af63c4a50b78" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PayDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PccToBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedForCpmsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/TransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/dto/WebSocketMessageDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/messaging/Producer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/config/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/PccToBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/TransactionCompletedDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/repository/TransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/TransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/TransactionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/stores/keystore.p12" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/stores/truststore.p12" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayForBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedFromBankDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/BankServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/BankAccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/controllers/PccController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/controllers/PccController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankAccountDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankToPccDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankToPccDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/TransactionStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/auth-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../pay_pal_microservice/PayPalMicroservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pay_pal_microservice/PayPalMicroservice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../run_all_clients.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../run_all_clients.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../run_all_servers.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../run_all_servers.bat" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -13,38 +83,84 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+            <state relative-caret-position="340">
+              <caret line="31" column="97" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="97" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="126">
+              <caret line="218" selection-start-line="218" selection-end-line="218" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/SepBankaApplication.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Transaction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            <state relative-caret-position="1632">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
               <folding>
-                <element signature="e#249#250#0" expanded="true" />
-                <element signature="e#310#311#0" expanded="true" />
+                <element signature="e#3371#3372#0" expanded="true" />
+                <element signature="e#3458#3459#0" expanded="true" />
+                <element signature="e#3487#3488#0" expanded="true" />
+                <element signature="e#4517#4518#0" expanded="true" />
+                <element signature="e#4537#4538#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/config/WebSocketConfig.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/dto/WebSocketMessageDTO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -52,16 +168,70 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state relative-caret-position="68">
+              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>new Transaction</find>
+      <find>redirectToPcc</find>
+      <find>long</find>
+      <find>checkBin</find>
+      <find>redirectUrl</find>
+      <find>expDate</find>
+      <find>sendTransactionCompletedDtoToCPMS</find>
+      <find>processTransacctions</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Long</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/BankServiceInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/exceptions/InvalidBinException.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/BankAccountRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PccToBankDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedForCpmsDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankRedirectUrlDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/TransactionRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PayDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/messaging/Producer.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/dto/WebSocketMessageDTO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+      </list>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -69,6 +239,25 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="SEP-Banka" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="SEP-Banka" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="99" />
@@ -123,14 +312,122 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="Services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="websockets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="websockets" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="websockets" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="websockets" type="462c0819:PsiDirectoryNode" />
+              <item name="messaging" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SEP-Banka" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SEP-Banka" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="stores" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,10 +438,40 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.rmj.SEP.Banka.dto" />
+      <recent name="com.rmj.SEP.Banka.exceptions" />
+      <recent name="com.rmj.SEP.Banka.repository" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\Bank\SEP-Banka\src\main\java\com\rmj\SEP\Banka" />
+      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\Bank\SEP-Banka\src\main\java\com\rmj\SEP\Banka\Services" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="SepBankaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -180,17 +507,20 @@
       <workItem from="1577459182172" duration="3396000" />
       <workItem from="1579865092732" duration="755000" />
       <workItem from="1579958380935" duration="202000" />
+      <workItem from="1580418830331" duration="18388000" />
+      <workItem from="1580462210922" duration="41979000" />
+      <workItem from="1580523274162" duration="167000" />
+      <workItem from="1580524882624" duration="1358000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4353000" />
+    <option name="totallyTimeSpent" value="66245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25718608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -199,8 +529,43 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38134205" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36006546" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3797054" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.14069591" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38134205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -223,19 +588,90 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>79</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>307</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>242</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>161</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>170</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>217</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>223</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java</url>
+          <line>176</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/SepBankaApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -247,17 +683,290 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/config/SslConfig.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="-154">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/exceptions/InvalidBinException.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.3.RELEASE/spring-data-commons-2.2.3.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.3.RELEASE/spring-data-commons-2.2.3.RELEASE-sources.jar!/org/springframework/data/repository/PagingAndSortingRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="31" column="64" selection-start-line="31" selection-start-column="64" selection-end-line="31" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/BankAccountRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PccToBankDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Currency.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="18" column="117" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#1117#1118#0" expanded="true" />
+            <element signature="e#1139#1140#0" expanded="true" />
+            <element signature="e#1186#1187#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1322#1323#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedForCpmsDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#440#441#0" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#542#543#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#665#666#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+            <element signature="e#1153#1154#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="e#163#164#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/repository/TransactionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/PayDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2284#2285#0" expanded="true" />
+            <element signature="e#2318#2319#0" expanded="true" />
+            <element signature="e#2372#2373#0" expanded="true" />
+            <element signature="e#2418#2419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.2.RELEASE/spring-web-5.2.2.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="196" selection-start-line="196" selection-end-line="196" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="289">
+          <caret line="20" column="71" selection-start-line="20" selection-start-column="71" selection-end-line="20" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/com/sun/java_cup/internal/runtime/lr_parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="138" column="22" selection-start-line="138" selection-start-column="22" selection-end-line="138" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/TransactionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="31" column="97" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/models/Transaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#3371#3372#0" expanded="true" />
+            <element signature="e#3458#3459#0" expanded="true" />
+            <element signature="e#3487#3488#0" expanded="true" />
+            <element signature="e#4517#4518#0" expanded="true" />
+            <element signature="e#4537#4538#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/config/WebSocketConfig.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/dto/WebSocketMessageDTO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="202" selection-start-column="202" selection-end-column="202" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/websockets/messaging/Producer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+          <folding>
+            <element signature="e#615#616#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/controller/BankController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="218" selection-start-line="218" selection-end-line="218" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

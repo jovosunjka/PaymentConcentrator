@@ -12,11 +12,13 @@
       
     </form> -->
 
+    <p>Amount: &nbsp;&nbsp; {{amount}}</p>
+
     <form [formGroup]="userGroup" (ngSubmit)="register()">
       <p>CardNumber:</p><input Placeholder="cardNumber" type="number" formControlName="cardNumber"/> <br>
       <br><p >Security code:</p><input Placeholder="securityCode" type="number" formControlName="securityCode"/> <br>
       <br><p>Card holder:</p><input Placeholder="cardHolder" type="string" formControlName="cardHolder"/><br>
-      <br><p>Expiration date(M/Y)</p><input Placeholder="expirationDate" type="string" formControlName="expirationDate"/><br>
+      <br><p>Expiration date(M/Y)</p><input Placeholder="expirationDate" type="string" formControlName="expDate"/><br>
   </form>
   <br><button (click)="register()">Proceed </button><br>
 </div>

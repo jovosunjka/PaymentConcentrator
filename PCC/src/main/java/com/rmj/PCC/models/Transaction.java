@@ -1,15 +1,7 @@
 package com.rmj.PCC.models;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "transaction")
@@ -19,30 +11,44 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name = "merchant_order_id", unique = false, nullable = false)
-	private Long merchantOrderId;
-	
+	@Column(name = "acquirer_order_id", unique = false, nullable = false)
+	private Long acquirerOrderId;
+
+	@Column(name = "issuer_order_id", unique = false, nullable = true)
+	private Long issuerOrderId;
+
+	@Column(name = "consumer_card_holder", unique = false, nullable = true)
+	private String consumerCardHolder;
+
+	@Column(name = "consumer_exp_date", unique = false, nullable = true)
+	private String consumerExpDate;
+
+	@Column(name = "consumer_card_number", unique = false, nullable = true)
+	private long consumerCardNumber;
+
+	@Column(name = "consumer_security_code", unique = false, nullable = true)
+	private int consumerSecurityCode;
+
 	@Column(name = "amount", unique = false, nullable = false)
 	private double amount;
-    
+
 	@Column(name = "currency", unique = false, nullable = false)
-    @Enumerated(EnumType.ORDINAL)
-    private Currency currency;
-    
-    @Column(name = "merchant_timestamp", unique = false, nullable = false)
-    private LocalDateTime merchantTimestamp;
+	private Currency currency;
+
+    @Column(name = "acquirer_bank_timestamp", unique = false, nullable = false)
+    private LocalDateTime acquirerBankTimestamp;
+
+	@Column(name = "issuer_bank_timestamp", unique = false, nullable = true)
+	private LocalDateTime issuerBankTimestamp;
     
     @Column(name = "timestamp", unique = false, nullable = false)
     private LocalDateTime timestamp;
-    
-    @Column(name = "redirect_url", unique = false, nullable = false)
-    private String redirectUrl;
-    
-    @Column(name = "callback_url", unique = false, nullable = false)
-    private String callbackUrl;
-    
-    @Column(name = "payment_type", unique = false, nullable = true)
-    private String paymentType;
+
+	@ManyToOne
+	private Bank issuerBank;
+
+    @ManyToOne
+    private Bank acquirerBank;
 
 	@Column(name = "status", unique = false, nullable = false)
     @Enumerated(EnumType.ORDINAL)
@@ -52,17 +58,24 @@ public class Transaction {
 	public Transaction() {
 		
 	}
-	
-	public Transaction(Long merchantOrderId, double amount, Currency currency, LocalDateTime merchantTimestamp,
-					String redirectUrl, String callbackUrl) {
-		this.merchantOrderId = merchantOrderId;
+
+	public Transaction(Long acquirerOrderId, String consumerCardHolder, String consumerExpDate,
+					   long consumerCardNumber, int consumerSecurityCode, double amount, Currency currency,
+					   LocalDateTime acquirerBankTimestamp, Bank issuerBank, Bank acquirerBank) {
+		this.acquirerOrderId = acquirerOrderId;
+		this.issuerOrderId = null;
+		this.consumerCardHolder = consumerCardHolder;
+		this.consumerExpDate = consumerExpDate;
+		this.consumerCardNumber = consumerCardNumber;
+		this.consumerSecurityCode = consumerSecurityCode;
 		this.amount = amount;
 		this.currency = currency;
-		this.merchantTimestamp = merchantTimestamp;
+		this.acquirerBankTimestamp = acquirerBankTimestamp;
+		this.issuerBankTimestamp = null;
 		this.timestamp = LocalDateTime.now();
-		this.redirectUrl = redirectUrl;
-		this.callbackUrl = callbackUrl;
-		this.status = TransactionStatus.PENDING;
+		this.issuerBank = issuerBank;
+		this.acquirerBank = acquirerBank;
+		this.status = TransactionStatus.READY;
 	}
 
 	public Long getId() {
@@ -73,12 +86,52 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Long getMerchantOrderId() {
-		return merchantOrderId;
+	public Long getAcquirerOrderId() {
+		return acquirerOrderId;
 	}
 
-	public void setMerchantOrderId(Long merchantOrderId) {
-		this.merchantOrderId = merchantOrderId;
+	public void setAcquirerOrderId(Long acquirerOrderId) {
+		this.acquirerOrderId = acquirerOrderId;
+	}
+
+	public Long getIssuerOrderId() {
+		return issuerOrderId;
+	}
+
+	public void setIssuerOrderId(Long issuerOrderId) {
+		this.issuerOrderId = issuerOrderId;
+	}
+
+	public String getConsumerCardHolder() {
+		return consumerCardHolder;
+	}
+
+	public void setConsumerCardHolder(String consumerCardHolder) {
+		this.consumerCardHolder = consumerCardHolder;
+	}
+
+	public String getConsumerExpDate() {
+		return consumerExpDate;
+	}
+
+	public void setConsumerExpDate(String consumerExpDate) {
+		this.consumerExpDate = consumerExpDate;
+	}
+
+	public long getConsumerCardNumber() {
+		return consumerCardNumber;
+	}
+
+	public void setConsumerCardNumber(long consumerCardNumber) {
+		this.consumerCardNumber = consumerCardNumber;
+	}
+
+	public int getConsumerSecurityCode() {
+		return consumerSecurityCode;
+	}
+
+	public void setConsumerSecurityCode(int consumerSecurityCode) {
+		this.consumerSecurityCode = consumerSecurityCode;
 	}
 
 	public double getAmount() {
@@ -97,12 +150,20 @@ public class Transaction {
 		this.currency = currency;
 	}
 
-	public LocalDateTime getMerchantTimestamp() {
-		return merchantTimestamp;
+	public LocalDateTime getAcquirerBankTimestamp() {
+		return acquirerBankTimestamp;
 	}
 
-	public void setMerchantTimestamp(LocalDateTime merchantTimestamp) {
-		this.merchantTimestamp = merchantTimestamp;
+	public void setAcquirerBankTimestamp(LocalDateTime acquirerBankTimestamp) {
+		this.acquirerBankTimestamp = acquirerBankTimestamp;
+	}
+
+	public LocalDateTime getIssuerBankTimestamp() {
+		return issuerBankTimestamp;
+	}
+
+	public void setIssuerBankTimestamp(LocalDateTime issuerBankTimestamp) {
+		this.issuerBankTimestamp = issuerBankTimestamp;
 	}
 
 	public LocalDateTime getTimestamp() {
@@ -113,28 +174,20 @@ public class Transaction {
 		this.timestamp = timestamp;
 	}
 
-	public String getRedirectUrl() {
-		return redirectUrl;
+	public Bank getIssuerBank() {
+		return issuerBank;
 	}
 
-	public void setRedirectUrl(String redirectUrl) {
-		this.redirectUrl = redirectUrl;
+	public void setIssuerBank(Bank issuerBank) {
+		this.issuerBank = issuerBank;
 	}
 
-	public String getCallbackUrl() {
-		return callbackUrl;
+	public Bank getAcquirerBank() {
+		return acquirerBank;
 	}
 
-	public void setCallbackUrl(String callbackUrl) {
-		this.callbackUrl = callbackUrl;
-	}
-
-	public String getPaymentType() {
-		return paymentType;
-	}
-
-	public void setPaymentType(String paymentType) {
-		this.paymentType = paymentType;
+	public void setAcquirerBank(Bank acquirerBank) {
+		this.acquirerBank = acquirerBank;
 	}
 
 	public TransactionStatus getStatus() {
@@ -144,5 +197,4 @@ public class Transaction {
 	public void setStatus(TransactionStatus status) {
 		this.status = status;
 	}
-		
 }

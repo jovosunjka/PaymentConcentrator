@@ -1,34 +1,36 @@
 package com.rmj.CardPaymentMicroservice.dto;
 
 
+import com.rmj.CardPaymentMicroservice.model.TransactionStatus;
+
+import java.time.LocalDateTime;
 
 public class TransactionCompletedDTO {
-	private long merchantOrderId;
-	private String status;
- 
+	private Long merchantOrderId;
+	private TransactionStatus status;
+
 	public TransactionCompletedDTO() {
-		
+
 	}
 
-	public TransactionCompletedDTO(long merchantOrderId, String status) {
-		super();
+	public TransactionCompletedDTO(Long merchantOrderId, TransactionStatus status) {
 		this.merchantOrderId = merchantOrderId;
 		this.status = status;
 	}
 
-	public long getMerchantOrderId() {
+	public Long getMerchantOrderId() {
 		return merchantOrderId;
 	}
 
-	public void setMerchantOrderId(long merchantOrderId) {
+	public void setMerchantOrderId(Long merchantOrderId) {
 		this.merchantOrderId = merchantOrderId;
 	}
 
-	public String getStatus() {
+	public TransactionStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(TransactionStatus status) {
 		this.status = status;
 	}
 	

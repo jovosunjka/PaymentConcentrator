@@ -110,7 +110,8 @@ public class PaymentServiceImpl implements PaymentService {
         headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("paymentAccountUsername", paymentAccount.getUsername());
         String callbackUrl = transactionCompletedUrl;
-        PayDTO payDTO = new PayDTO(transaction.getMerchantOrderId(), transaction.getAmount(), transaction.getCurrency(),
+
+        PayDTO payDTO = new PayDTO(transaction.getId()/*transaction.getMerchantOrderId()*/, transaction.getAmount(), transaction.getCurrency(),
         		transaction.getMerchantTimestamp(), transaction.getRedirectUrl(), callbackUrl);
         HttpEntity<PayDTO> httpEntity = new HttpEntity<PayDTO>(payDTO, headers);
         ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(microserviceBackendUrl, HttpMethod.POST, httpEntity, RedirectUrlDTO.class);
@@ -124,7 +125,7 @@ public class PaymentServiceImpl implements PaymentService {
         	paymentAccount = paymentAccountService.getPaymentAccount(paymentAccount.getId());
         	// osvezavamo
 		}
-        return responseEntity.getBody().getRedirectUrl() + "?token=" + paymentAccount.getAccessToken();
+        return responseEntity.getBody().getRedirectUrl() + "&token=" + paymentAccount.getAccessToken();
 	}
 
 	@Override
@@ -143,12 +144,14 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	@Override
-	public List<Transaction> getTransactions(String[] transactionIds) {
+	public List<Transaction> getTransactions(String[] merchantOrderIds) {
 		ArrayList<Transaction> transactions = new ArrayList<Transaction>();
-		Arrays.stream(transactionIds)
-				.forEach(transactionId -> {
-					Transaction transaction = transactionService.getTransaction(Long.parseLong(transactionId));
-					transactions.add(transaction);
+		Arrays.stream(merchantOrderIds)
+				.forEach(merchantOrderId -> {
+					Transaction transaction = transactionService.getTransactionByMerchantOrderId(Long.parseLong(merchantOrderId));
+					if (transaction != null) {
+						transactions.add(transaction);
+					}
 				});
 		return transactions;
 	}

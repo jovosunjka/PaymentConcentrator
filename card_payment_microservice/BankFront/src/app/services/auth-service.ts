@@ -10,12 +10,12 @@ export class AuthHttpService
       
     }
 
-    check(transactionId: number, user: User): Observable<any>
+    check(transactionId: number, user: User, serverPort: number): Observable<any>
     {
         const headers: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
         console.log(user);
 
-        return this.http.post("https://localhost:8084/payment/pay?transactionId=" + transactionId,user,{headers}) as Observable<any>
+        return this.http.put("https://localhost:" +serverPort+ "/api/bank/pay/" + transactionId,user,{headers}) as Observable<any>;
 
     }
 

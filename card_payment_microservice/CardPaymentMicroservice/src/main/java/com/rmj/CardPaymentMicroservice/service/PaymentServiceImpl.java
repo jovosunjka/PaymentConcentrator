@@ -3,8 +3,9 @@ package com.rmj.CardPaymentMicroservice.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.rmj.CardPaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
+import com.rmj.CardPaymentMicroservice.dto.*;
 import com.rmj.CardPaymentMicroservice.model.FormField;
+import com.rmj.CardPaymentMicroservice.model.TransactionStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -16,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.rmj.CardPaymentMicroservice.dto.BankAccountDTO;
-import com.rmj.CardPaymentMicroservice.dto.TransactionCompletedDTO;
 import com.rmj.CardPaymentMicroservice.model.Currency;
 import com.rmj.CardPaymentMicroservice.model.Transaction;
 
@@ -26,6 +25,9 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Value("${frontend.url}")
 	private String frontendUrl;
+
+	@Value("${callback-url-sent-bank}")
+	private String callBackUrlSentBank;
 	
 	@Autowired
 	private TransactionService transactionService;
@@ -36,6 +38,7 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private RestTemplate restTemplate;
 
+
 	
 	@Override
 	public String getFrontendUrl() {
@@ -43,11 +46,27 @@ public class PaymentServiceImpl implements PaymentService {
 	}	
 
 	@Override
-	public Long makeTransaction(Long merchantOrderId, double amount, Currency currency, LocalDateTime timestamp,
+	public RedirectUrlDTO makeTransaction(String merchantId, String merchantPassword, Long merchantOrderId, double amount,
+										  Currency currency, LocalDateTime timestamp,
 			String redirectUrl, String callbackUrl) {
 		Transaction transaction = new Transaction(merchantOrderId, amount, currency, timestamp, redirectUrl, callbackUrl);
 		transaction = transactionService.save(transaction);
-		return transaction.getId();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+
+		PayForBankDTO payForBankDTO = new PayForBankDTO(merchantId, merchantPassword, transaction.getId(), amount, currency, timestamp,
+				callBackUrlSentBank, redirectUrl);
+		HttpEntity<PayForBankDTO> httpEntity = new HttpEntity<PayForBankDTO>(payForBankDTO, headers);
+		String bankUrl = "https://localhost:8080/api/bank/check";
+		ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(bankUrl, HttpMethod.POST, httpEntity,
+																								RedirectUrlDTO.class);
+
+		if (responseEntity.getStatusCode() != HttpStatus.OK) {
+			throw new RuntimeException("Paying on bank - error");
+		}
+
+		return  responseEntity.getBody();
 	}
 
 	@Override
@@ -63,19 +82,30 @@ public class PaymentServiceImpl implements PaymentService {
         BankAccountDTO bankAccountDTO = new BankAccountDTO(cardNumber, securityCode, transaction.getAmount(),cardHolder,expirationDate);
         HttpEntity<BankAccountDTO> httpEntity = new HttpEntity<BankAccountDTO>(bankAccountDTO, headers);
         String bankUrl = "https://localhost:8080/api/bank/check?transactionId="+ transactionId;
-        ResponseEntity<String> responseEntity = restTemplate.exchange(bankUrl, HttpMethod.POST, httpEntity, String.class);
-        
-        String status;
-        if (responseEntity.getStatusCode() == HttpStatus.OK && responseEntity.getBody().equals("Transaction is acceptable!")) {
-        	status = "success";
-        } else {
-        	status = "fail";
+        ResponseEntity<RedirectUrlDTO> responseEntity = restTemplate.exchange(bankUrl, HttpMethod.POST, httpEntity, RedirectUrlDTO.class);
+
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+        	throw new RuntimeException("Paying on bank - error");
         }
-        
-        HttpEntity<TransactionCompletedDTO> httpEntity2 = new HttpEntity<TransactionCompletedDTO>(new TransactionCompletedDTO(transaction.getMerchantOrderId(), status), headers);
-    	ResponseEntity<Void> responseEntity2 = restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity2, Void.class);
+
         return transaction.getRedirectUrl();
 	}
+
+    @Override
+    public void transactionCompleted(Long transactionId, Long acquirerOrderId, LocalDateTime acquirerTimeStamp,
+								TransactionStatus status) {
+        Transaction transaction = transactionService.getTransaction(transactionId);
+        transaction.setStatus(status);
+        transactionService.save(transaction);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        TransactionCompletedDTO transactionCompletedDTO = new TransactionCompletedDTO(transaction.getMerchantOrderId(), status);
+        HttpEntity<TransactionCompletedDTO> httpEntity =
+								new HttpEntity<TransactionCompletedDTO>(transactionCompletedDTO, headers);
+        restTemplate.exchange(transaction.getCallbackUrl(), HttpMethod.PUT, httpEntity, Void.class);
+    }
 
 	@Override
 	public FormFieldsForPaymentTypeDTO getFormFieldsForPaymentType() {

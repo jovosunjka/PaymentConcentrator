@@ -1,7 +1,10 @@
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (1,11111111,1234567890,123,2500,'Igor Resman','08/21');
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (2,22222222,1354981238,432,90000,'Marko Mijatovic','09/21');
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (3,33333333,1795177777,124,70000,'Jovo Sunjka','10/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (1,NULL,NULL,11111111,1234567890,123,2500,'Igor Resman','08/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (2,NULL,NULL,22222222,1354981621,432,90000,'Marko Mijatovic','09/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (3,NULL,NULL,33333333,1795177777,124,70000,'Jovo Sunjka','10/21');
 
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (4,44444444,1234589756,123,2500,'Magazine1','11/21');
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (5,55555555,1354981238,123,2500,'Magazine2','12/21');
-INSERT INTO `bank_account` (`id`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (6,66666666,1795188798,123,2500,'Magazine3','01/22');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (4,'magazine1_bank','magazine1_pass_bank',44444444,1234589756,123,2500,'Magazine1','11/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (5,'magazine2_bank','magazine2_pass_bank',55555555,1354981238,123,2600,'Magazine2','12/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (6,'magazine3_bank','magazine3_pass_bank',66666666,1795188798,123,2700,'Magazine3','01/22');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (7,'magazine4_bank','magazine4_pass_bank',77777777,1234576589,123,2800,'Magazine4','11/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (8,'magazine5_bank','magazine5_pass_bank',88888888,1354977777,123,2900,'Magazine5','12/21');
+INSERT INTO `bank_account` (`id`,`merchant_id`,`merchant_password`,`account_number`,`card_number`,`security_code`,`amount`,`card_holder`,`expiration_date`) VALUES (9,'magazine6_bank','magazine6_pass_bank',99999999,1795166666,123,3000,'Magazine6','01/22');

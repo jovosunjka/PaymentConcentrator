@@ -3,7 +3,8 @@ package com.rmj.SEP.Banka.dto;
 public class RedirectUrlDTO {
 	private String redirectUrl;
 	
-	public RedirectUrlDTO(String redirectUrl) {
+	public RedirectUrlDTO(String redirectUrl)
+    {
         this.redirectUrl = redirectUrl;
     }
 	
@@ -14,4 +15,5 @@ public class RedirectUrlDTO {
     public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
     }
+
 }

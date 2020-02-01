@@ -32,6 +32,12 @@ public class Transaction {
 	
 	@Column(name = "last_name", unique = false, nullable = true)
 	private String lastName;
+
+	@Column(name = "acquirer_order_id", unique = false, nullable = true)
+	private Long acquirerOrderId;
+
+	@Column(name = "acquirer_timestamp", unique = false, nullable = true)
+	private LocalDateTime acquirerTimestamp;
 	
 	@Column(name = "amount", unique = false, nullable = false)
 	private double amount;
@@ -69,6 +75,8 @@ public class Transaction {
 		this.currency = currency;
 		this.merchantTimestamp = merchantTimestamp;
 		this.timestamp = LocalDateTime.now();
+		this.acquirerOrderId = null;
+		this.acquirerTimestamp = null;
 		this.redirectUrl = redirectUrl;
 		this.callbackUrl = callbackUrl;
 		this.status = TransactionStatus.PENDING;

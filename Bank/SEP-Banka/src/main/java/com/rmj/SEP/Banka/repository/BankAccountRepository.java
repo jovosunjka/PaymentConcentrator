@@ -7,7 +7,9 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BankServiceInterface extends JpaRepository<BankAccount,Long> {
+public interface BankAccountRepository extends JpaRepository<BankAccount,Long> {
 	
 	Optional<BankAccount> findByCardNumber(Long cardNumber);
+
+	Optional<BankAccount> findByMerchantId(String merchantId);
 }

@@ -24,6 +24,11 @@ public class TransactionServiceImpl implements TransactionService {
 		return transactionRepository.findById(id).orElse(null);
 	}
 
+	@Override
+	public Transaction getTransactionByMerchantOrderId(Long merchantOrderId) {
+		return transactionRepository.findByMerchantOrderId(merchantOrderId).orElse(null);
+	}
+
 
    
 }

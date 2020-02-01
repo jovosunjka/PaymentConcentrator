@@ -1,25 +1,25 @@
 package com.rmj.SEP.Banka.dto;
 
 
+import com.rmj.SEP.Banka.models.Currency;
+
+import java.time.LocalDateTime;
+
 public class BankAccountDTO {
 	private String cardHolder;
 	private String expDate;
-    private int cardNumber;
+    private long cardNumber;
     private int securityCode;
-    private double amount;
-    
     
     public BankAccountDTO(){}
 
-    public BankAccountDTO(int cardNumber, int securityCode, double amount,String cardHolder,String expDate)
-    {
-        this.cardNumber = cardNumber;
-        this.securityCode = securityCode;
-        this.amount = amount;
+    public BankAccountDTO(String cardHolder, String expDate, long cardNumber, int securityCode) {
         this.cardHolder = cardHolder;
         this.expDate = expDate;
+        this.cardNumber = cardNumber;
+        this.securityCode = securityCode;
     }
-    
+
     public String getCardHolder()
     {
     	return cardHolder;
@@ -44,7 +44,7 @@ public class BankAccountDTO {
         return cardNumber;
     }
 
-    public void setAccNum(int cardNumber) {
+    public void setCardNumber(long cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -55,13 +55,4 @@ public class BankAccountDTO {
     public void setSecurityCode(int securityCode) {
         this.securityCode = securityCode;
     }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
 }

@@ -19,22 +19,6 @@ public class Bank {
     
     @Column(name ="redirect_url")
     private String redirectUrl;
-    
-    public String getRedirectUrl() {
-		return redirectUrl;
-	}
-
-	public void setRedirectUrl(String redirectUrl) {
-		this.redirectUrl = redirectUrl;
-	}
-
-	public String getTransactionCompletedUrl() {
-		return transactionCompletedUrl;
-	}
-
-	public void setTransactionCompletedUrl(String transactionCompletedUrl) {
-		this.transactionCompletedUrl = transactionCompletedUrl;
-	}
 
 	@Column(name = "transaction_completed_url")
     private String transactionCompletedUrl;
@@ -74,7 +58,21 @@ public class Bank {
         this.bin = bin;
     }
 
+    public String getRedirectUrl() {
+        return redirectUrl;
+    }
 
+    public void setRedirectUrl(String redirectUrl) {
+        this.redirectUrl = redirectUrl;
+    }
+
+    public String getTransactionCompletedUrl() {
+        return transactionCompletedUrl;
+    }
+
+    public void setTransactionCompletedUrl(String transactionCompletedUrl) {
+        this.transactionCompletedUrl = transactionCompletedUrl;
+    }
 
 
 }

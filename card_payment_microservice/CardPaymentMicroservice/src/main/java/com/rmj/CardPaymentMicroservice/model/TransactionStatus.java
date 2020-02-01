@@ -1,5 +1,5 @@
 package com.rmj.CardPaymentMicroservice.model;
 
 public enum TransactionStatus {
-	PENDING, SUCCESS, FAIL
+	PENDING, SUCCESS, FAIL, PAYMENT_INTERRUPTED
 }
