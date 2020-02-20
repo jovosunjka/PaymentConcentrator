@@ -3,8 +3,8 @@
 # Nakon ovog treba uneti password
 # Nakon unosa ispravnog password-a izvrsice se skripta
 
-group=SiemAgentGroup
-user=siem_agent
+group=AdminGroup
+user=admin
 path=./bez_veze
 
 if [ ! $(getent group $group) ]

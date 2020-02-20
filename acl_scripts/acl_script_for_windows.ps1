@@ -1,9 +1,9 @@
 # Ovu skriptutreba pokretati kao Administrator
 
-$group = "AdminGroup333"
+$group = "AdminGroup"
 $groupUsers = "Users"
 # $user = "admin1"
-$user = "admin3"
+$user = "admin"
 
 function Strings-Contains {
  foreach($name in $args[0]) {

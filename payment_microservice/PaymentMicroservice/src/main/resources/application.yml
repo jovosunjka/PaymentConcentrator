@@ -1,6 +1,6 @@
-
 transaction-completed.url:  https://${eureka.instance.hostName}:${server.port}/payment/transaction-completed
 proxy-server.url: https://localhost:8762
+scientific-paper-plans: ${proxy-server.url}/pt_paypal-microservice/payment/scientific-paper-plans
 
 attribute-encryptor:
   algorithm: AES
