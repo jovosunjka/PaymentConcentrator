@@ -20,11 +20,11 @@ public class SslConfig {
     @Value("${server.ssl.key-store-password}")
     private char[] keyStorePassword;
 
-//     @Value("${server.ssl.trust-store}")
-//     private Resource trustStore;
-//
-//     @Value("${server.ssl.trust-store-password}")
-//     private char[] trustStorePassword;
+    @Value("${server.ssl.trust-store}")
+    private Resource trustStore;
+
+    @Value("${server.ssl.trust-store-password}")
+    private char[] trustStorePassword;
 
 
     @Bean
@@ -40,8 +40,8 @@ public class SslConfig {
         System.out.println("*********************** initialize ssl context bean with keystore {} ");
         return new SSLContextBuilder()
                 .loadKeyMaterial(keyStore.getFile(), keyStorePassword, keyStorePassword)
-                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                //.loadTrustMaterial(trustStore.getFile(), trustStorePassword)
+                //.loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                .loadTrustMaterial(trustStore.getFile(), trustStorePassword)
                 .build();
     }
 

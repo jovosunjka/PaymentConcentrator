@@ -24,11 +24,11 @@ public class RestTemplateConfig {
     @Value("${server.ssl.key-store-password}")
     private char[] keyStorePassword;
 
-    // @Value("${server.ssl.trust-store}")
-    // private Resource trustStore;
+    @Value("${server.ssl.trust-store}")
+     private Resource trustStore;
 
-    // @Value("${server.ssl.trust-store-password}")
-    // private char[] trustStorePassword;
+     @Value("${server.ssl.trust-store-password}")
+     private char[] trustStorePassword;
 
 
     @Bean
@@ -40,8 +40,8 @@ public class RestTemplateConfig {
 
         SSLContext sslContext = SSLContextBuilder.create()
                 .loadKeyMaterial(keyStore.getFile(), keyStorePassword, keyStorePassword)
-                .loadTrustMaterial(null, new TrustSelfSignedStrategy())
-                // .loadTrustMaterial(trustStore.getFile(), trustStorePassword)
+                //.loadTrustMaterial(null, new TrustSelfSignedStrategy())
+                .loadTrustMaterial(trustStore.getFile(), trustStorePassword)
                 .build();
 
         HttpClient client = HttpClients.custom().setSSLContext(sslContext).build();

@@ -15,6 +15,8 @@ import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
 import org.passay.PasswordGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -45,6 +47,20 @@ public class UserServiceImpl implements UserService {
 
 	private static PasswordGenerator passwordGenerator = new PasswordGenerator();
 
+
+	/*@EventListener(ApplicationReadyEvent.class)
+	public void writeEntitiesInDBWithEncryptedSomeAttributes() {
+		userRepository.save(new User("Admin","admin", "$2y$12$TxHOkrOHJBW39ZuH0hxE0e8Jfk53XEQI66R9KXrmaIgZn.SdRKYei", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine1","magazine1", "$2y$12$aO9J/cE8XdZAQ3VWPu5nneHeRPIklTo53pHCnheYsVz7gjA1fAUIa", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine2","magazine2", "$2y$12$FMTUbM2zAOXIdRaJKGC8we/pr7qAVz2XEG1l/RKMvIrfTJ8aYCf3S", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine3","magazine3", "$2y$12$V7WT28jfRij5c7tMaKqir.2gIytNBhP0cgehYDzHs1A5ct1tT3Yvy", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine4","magazine4", "$2y$12$sVnSKgibZD2JbgaSIPdCWO2FUPiV8wasotmvFCAbSJakW327ZP77S", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine5","magazine5", "$2y$12$vKbakU5ZxjA3oikG1p4m9ufRh/Tkmgppn7RnkJ7S4zBpVEeNypLBO", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine6","magazine6", "$2y$12$jHTppI44NNwzLFv3JOgcmuqo8wxCkHq9aW/YKK3.T96McX1LPp5SC", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine7","magazine7", "$2y$12$RS5k3aTzBmmAFU1Ct20T0eShFNah7V2orakxbLZarbTQVx/1/vUim", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine8","magazine8", "$2y$12$zKna0dLdcfFKVlxxIXYHQuefuqZpEWuOUxLk9eJn5Dzva3gfANNQO", new ArrayList<PaymentAccount>()));
+		userRepository.save(new User("Magazine9","magazine9", "$2y$12$ofIF6vC/IVAJqnR9lalGUe5EfpWlhk2Wq6VmPGXmb44T3GEuzrHRa", new ArrayList<PaymentAccount>()));
+	}*/
 
 	@Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 	@Override

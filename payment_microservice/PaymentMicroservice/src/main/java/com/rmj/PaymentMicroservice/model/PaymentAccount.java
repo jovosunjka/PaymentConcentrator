@@ -1,5 +1,7 @@
 package com.rmj.PaymentMicroservice.model;
 
+import com.rmj.PaymentMicroservice.security.AttributeEncryptor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,12 +16,15 @@ public class PaymentAccount {
     @Column(name = "type", unique = false, nullable = false)
     private String type; // card payment, paypal, bitcoin, ...
 
+    @Convert(converter = AttributeEncryptor.class)
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @Convert(converter = AttributeEncryptor.class)
     @Column(name = "password", unique = false, nullable = false)
     private String password;
 
+    @Convert(converter = AttributeEncryptor.class)
     @Column(name = "access_token", unique = true, nullable = true)
     private String accessToken; //jwt token
 

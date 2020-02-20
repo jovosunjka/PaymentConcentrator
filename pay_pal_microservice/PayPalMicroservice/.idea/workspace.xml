@@ -5,73 +5,316 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6876aab-8faa-4194-8920-65e203e0a111" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/TransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/TransactionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/PayDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/PccToBankDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/TransactionCompletedForCpmsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/repository/TransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/websockets/config/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/websockets/dto/WebSocketMessageDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/websockets/messaging/Producer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/config/RestTemplateConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/PccToBankDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/TransactionCompletedDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/repository/TransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/TransactionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/TransactionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/stores/keystore.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/stores/truststore.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayForBankDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedFromBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/CardPaymentMicroserviceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/SslConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/BankAccountDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/CardNumberAndPinDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/FormFieldDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/FormFieldsForPaymentTypeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/LoginUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayForBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationResultDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationResultDTOs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationUserDTOs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TokenDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedFromBankDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/AlreadyExistsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/MyExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/NotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/FormField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Property.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/FormFieldRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/TransactionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/AuthenticationTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/FormFieldService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/FormFieldServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/TransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/TransactionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/src/test/java/com/rmj/CardPaymentMicroservice/CardPaymentMicroserviceApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/create_certificate_keystores_and_truststores.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/create_certificate_keystores_and_truststores.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Plan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/security/AttributeEncryptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/not_encrypted_data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/CertificateExpiryCheck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/PkiMicroserviceApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/config/RestTemplateConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/config/SslConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/controller/CertificateController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/controller/RbacController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/AddPermissonToRoleDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/CertificateRevocationRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/CertificateRevocationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/CertificateSigningRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/LoginUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/RegistrationResultDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/RegistrationResultDTOs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/RegistrationUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/RegistrationUserDTOs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/TokenDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/TrustStoreConfigDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/ftp/FtpsConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/ftp/FtpsSessionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/ftp/MyGateway.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/ApplicationAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/Certificate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/CertificateType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/ChangedTrustStoreConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/FtpApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/IssuerData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/OrganizationalUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/Permission.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/SubjectData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/ApplicationAddressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/CertificateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/FtpApplicationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/PermissionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/security/AuthenticationTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/security/TokenUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/ApplicationAddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/ApplicationAddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/CertificateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/CertificateServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/FtpApplicationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/FtpApplicationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/RbacService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/RbacServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/RoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/certificate/CertificateGeneratorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/certificate/CertificateGeneratorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/certificate/CertificateReaderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/certificate/CertificateReaderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/keystore/KeyStoreReaderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/keystore/KeyStoreReaderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/keystore/KeyStoreWriterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/java/com/rmj/PkiMicroservice/service/keystore/KeyStoreWriterServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/data.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/stores/create_certificate_keystores_and_truststores.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/stores/keystore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/stores/payment_concentrator_root_ca_main.cer" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/main/resources/stores/truststore.jks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../pki_microservice/PkiMicroservice/src/test/java/com/rmj/PkiMicroservice/PkiApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/.gitignore~870f842cc388c6cc56ce8427d008148ce01efc8b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/.gitignore~HEAD" beforeDir="false" afterPath="$PROJECT_DIR$/../../CardPaymentMicroservice/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/Services/BankServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/controller/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/controller/BankController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/BankAccountDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/BankToPccDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/dto/RedirectUrlDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/models/TransactionStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/repository/BankServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/repository/BankAccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/java/com/rmj/SEP/Banka/config/RestTemplateConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/controllers/PccController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/controllers/PccController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankAccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankAccountDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankToPccDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/dto/BankToPccDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/models/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/java/com/rmj/PCC/services/BankServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../PCC/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../PCC/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/auth-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/stores/acquirer_bank.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Bank/SEP-Banka/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/eureka_server.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../EurekaServer/src/main/resources/stores/truststore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/ZuulHttpClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/java/com/rmj/ProxyServer/config/ZuulHttpClientConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/proxy_server.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ProxyServer/src/main/resources/stores/truststore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/bitcoin_microservice_frontend.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/bitcoin_microservice_frontend_certificate.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/bitcoin_microservice_frontend_certificate.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/bitcoin_microservice_frontend_private_key.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/bitcoin_microservice_frontend_private_key.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/keystore password.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/keystore password.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitCoinFront/ssl/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/RestTemplateConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SecurityConfig.java~870f842cc388c6cc56ce8427d008148ce01efc8b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SecurityConfig.java~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/java/com/rmj/BitcoinMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/stores/bitcoin_microservice.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcoin_microservice/BitcoinMicroservice/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/browserslist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/e2e/protractor.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/e2e/src/app.e2e-spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/e2e/src/app.po.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/e2e/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/karma.conf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/User.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/registration/registration.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/auth-service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/web-socket/web-socket.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/app/services/web-socket/web-socket.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/environments/environment.prod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/environments/environment.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/polyfills.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/src/test.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/card_payment_microservice_frontend.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/card_payment_microservice_frontend_certificate.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/card_payment_microservice_frontend_private_key.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/keystore password.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/ssl/komande_za_prevodjenje.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/tsconfig.spec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/BankFront/tslint.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/CardPaymentMicroserviceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/RestTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/config/SslConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/PaymentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/BankAccountDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/CardNumberAndPinDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/FormFieldDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/FormFieldsForPaymentTypeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/LoginUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/PayForBankDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RedirectUrlDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationResultDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationResultDTOs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/RegistrationUserDTOs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TokenDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/dto/TransactionCompletedFromBankDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/AlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/MyExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/exception/NotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Currency.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/FormField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Permission.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Property.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/TransactionStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/FormFieldRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/RoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/TransactionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/AuthenticationTokenFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/security/TokenUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/FormFieldService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/FormFieldServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/PaymentServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/RoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/RoleServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/TransactionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/TransactionServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/java/com/rmj/CardPaymentMicroservice/service/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/stores/card_payment_microservice.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../card_payment_microservice/CardPaymentMicroservice/src/test/java/com/rmj/CardPaymentMicroservice/CardPaymentMicroserviceApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/repository/TransactionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/TransactionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SecurityConfig.java~870f842cc388c6cc56ce8427d008148ce01efc8b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SecurityConfig.java~HEAD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stores/paypal_microservice.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stores/truststore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/config/RestTemplateInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/config/RestTemplateInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/PaymentAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/PaymentAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/PaymentAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/java/com/rmj/PaymentMicroservice/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/stores/keystore.jks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/stores/keystore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/stores/payment_microservice.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/PaymentMicroservice/src/main/resources/stores/truststore.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../payment_microservice/payment-microservice-frontend/proxy.config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../run_all_clients.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../run_all_clients.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../run_all_servers.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../run_all_servers.bat" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -90,98 +333,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Product.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1445">
+              <caret line="85" column="60" selection-start-line="85" selection-start-column="60" selection-end-line="85" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+            <state relative-caret-position="646">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Property.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="561">
+              <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/PaymentServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+            <state relative-caret-position="612">
+              <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/AuthenticationTokenFilter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/UserDetailsServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="62" column="77" selection-start-line="62" selection-start-column="77" selection-end-line="62" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
+            <state relative-caret-position="952">
               <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Permission.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Plan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -189,7 +417,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/dto/RegistrationUserDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="340">
               <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -223,7 +451,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/AlreadyExistsException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PayPalController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/dto/FormFieldsForPaymentTypesDTO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/repository/FormFieldRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/PaymentService.java" />
@@ -253,10 +480,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/security/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/UserDetailsServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Plan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Product.java" />
       </list>
     </option>
   </component>
@@ -279,6 +510,11 @@
           <item name="PayPalMicroservice" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="PayPalMicroservice" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
       </expand>
       <select />
     </treeState>
@@ -295,8 +531,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -422,7 +658,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/dto" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/stores" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -442,11 +678,11 @@
       <recent name="com.rmj.PayPalMicroservice.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\resources\stores" />
+      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice\model" />
       <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice\dto" />
       <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice\security" />
       <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice\service" />
-      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\resources" />
-      <recent name="C:\payment_concentrator_workspace\PaymentConcentrator\pay_pal_microservice\PayPalMicroservice\src\main\java\com\rmj\PayPalMicroservice\model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -500,17 +736,22 @@
       <workItem from="1580396581592" duration="1214000" />
       <workItem from="1580421957475" duration="1682000" />
       <workItem from="1580504066928" duration="531000" />
+      <workItem from="1580550288961" duration="1535000" />
+      <workItem from="1581706184536" duration="2264000" />
+      <workItem from="1581760764957" duration="7540000" />
+      <workItem from="1581938658223" duration="2075000" />
+      <workItem from="1581950176865" duration="205000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89002000" />
+    <option name="totallyTimeSpent" value="102621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4961637" visible="true" weight="0.28895614" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4961637" visible="true" weight="0.21255673" />
       <window_info id="Structure" order="1" sideWeight="0.502455" side_tool="true" weight="0.2647504" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -603,29 +844,8 @@
         <state relative-caret-position="-612" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/NotFoundException.java">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/exception/MyExceptionHandler.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -635,13 +855,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/dto/FormFieldsForPaymentTypesDTO.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/FormFieldsForPaymentType.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/repository/TransactionDTORepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="85" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/repository/TransactionDTORepository.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/repository/FormFieldRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -695,9 +909,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/PaymentAccount.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -790,13 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="83" column="22" lean-forward="true" selection-start-line="83" selection-start-column="22" selection-end-line="83" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -821,17 +1025,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Property.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="53" column="49" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="49" />
+        <state relative-caret-position="306">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/service/PaymentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <caret line="29" column="14" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -885,9 +1089,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/controller/PaymentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="59" column="8" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="85" column="60" selection-start-line="85" selection-start-column="60" selection-end-line="85" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/SslConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/config/RestTemplateConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="49" column="27" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/PayPalMicroserviceApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Permission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/dto/RegistrationUserDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="340">
           <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -895,24 +1155,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Plan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="34" column="26" lean-forward="true" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+        <state relative-caret-position="289">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Property.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rmj/PayPalMicroservice/model/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="56" column="66" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+        <state relative-caret-position="59">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
         </state>
       </provider>
     </entry>

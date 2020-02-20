@@ -1,0 +1,50 @@
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://localhost:8761/eureka
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+  instance:
+    hostName: localhost
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    securePort: ${server.port}
+    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/info
+    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/${spring.application.name}/health
+    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+    preferIpAddress: true
+
+
+server:
+  #servlet:
+  #context-path: /api
+  port: 8089
+  ssl:
+    key-store: classpath:stores/keystore.jks
+    key-store-password: key_store_pass
+    key-store-type: JKS
+    key-alias: payment_microservice
+    trust-store: classpath:stores/truststore.jks
+    trust-store-password: trust_store_pass
+    trust-store-type: JKS
+    protocol: TLS
+    enabled-protocols: TLSv1.2
+    ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+    # Za definisanje ovoga, treba prethodno iskoristi kod u PkiApplication klasi, koja izlistava sve podrzane
+    # chipers u Javi instaliranoj na nasem racunaru
+    # Kod je pronadjen na: https://stackoverflow.com/questions/48934210/java-ssl-error-cannot-support-tls-ecdhe-rsa-with-aes-256-gcm-sha384
+    client-auth: want
+    # for two way authentication, use value: need
+
+
+
+
+spring:
+  application.name: pt_new-payment-microservice # stavljamo prefiks "pt_" (pt = payment type) da bismo znali razlikovati mikroservise
+  # koji se odnose na tipove placanja od ostalih mikorservisa
+

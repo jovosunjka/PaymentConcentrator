@@ -1,0 +1,14 @@
+
+<h1>
+  PKI
+  <span> 
+    <h3>
+    <a *ngIf="authenticationService.isLoggedIn()" class="btn btn-secondary btn-lg" [routerLinkActive]="['active']" href="#" [routerLink]="['/login']" (click)="authenticationService.logout()">
+        Log out
+    </a>
+  </h3>
+</span>
+</h1>
+
+
+<router-outlet></router-outlet>

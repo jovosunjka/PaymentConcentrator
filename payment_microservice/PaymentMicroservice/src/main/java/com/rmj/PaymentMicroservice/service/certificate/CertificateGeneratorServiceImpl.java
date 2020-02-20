@@ -53,9 +53,6 @@ import com.rmj.PaymentMicroservice.model.certificate.SubjectData;
 
 @Service
 public class CertificateGeneratorServiceImpl implements CertificateGeneratorService {
-	
-	//@Value("${server.ssl.key-store-2}")
-	//private Resource keyStoreResource;
 
 	@Value("${server.ssl.key-alias}")
 	private String alias;

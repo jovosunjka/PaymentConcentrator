@@ -1,15 +1,10 @@
 package com.rmj.PaymentMicroservice.model;
 
+import com.rmj.PaymentMicroservice.security.AttributeEncryptor;
+
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "transaction")
@@ -18,7 +13,7 @@ public class Transaction {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
+
 	@Column(name = "merchant_order_id", unique = false, nullable = false)
 	private Long merchantOrderId;
 	

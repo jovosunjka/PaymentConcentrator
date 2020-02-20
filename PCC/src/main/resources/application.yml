@@ -4,13 +4,13 @@ server:
     context-path: /api
   port: 8088
   ssl:
-    key-store: classpath:stores/keystore.p12
-    key-store-password: pass613
-    key-store-type: PKCS12
+    key-store: classpath:stores/keystore.jks
+    key-store-password: key_store_pass
+    key-store-type: JKS
     key-alias: pcc
-    # trust-store: classpath:stores/truststore.p12
-    # trust-store-password: pass157
-    # trust-store-type: PKCS12
+    trust-store: classpath:stores/truststore.jks
+    trust-store-password: trust_store_pass
+    trust-store-type: JKS
     protocol: TLS
     enabled-protocols: TLSv1.2
     ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256

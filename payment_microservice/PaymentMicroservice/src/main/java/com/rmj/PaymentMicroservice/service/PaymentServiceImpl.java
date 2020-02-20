@@ -125,7 +125,11 @@ public class PaymentServiceImpl implements PaymentService {
         	paymentAccount = paymentAccountService.getPaymentAccount(paymentAccount.getId());
         	// osvezavamo
 		}
-        return responseEntity.getBody().getRedirectUrl() + "&token=" + paymentAccount.getAccessToken();
+        String url = responseEntity.getBody().getRedirectUrl();
+        if (url == null) {
+        	url = "https://localhost:8081_science_center_1/transactions_page";
+		}
+        return url + "&token=" + paymentAccount.getAccessToken();
 	}
 
 	@Override

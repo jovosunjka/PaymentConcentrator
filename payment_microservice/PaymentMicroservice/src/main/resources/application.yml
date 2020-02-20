@@ -2,6 +2,15 @@
 transaction-completed.url:  https://${eureka.instance.hostName}:${server.port}/payment/transaction-completed
 proxy-server.url: https://localhost:8762
 
+attribute-encryptor:
+  algorithm: AES
+  password: abcdfg0123456789
+                        # AES-128
+                        # PASSWORD mora imati 16 karaktera, jer 1 byte = 1 char (karakter),
+                        # pa sledi 16 bytes = 128 bits, a AES-128 zahteva kljuc od 128 bita
+                        # najbolje bi bilo da se ovaj password nigde ne cuva, nego da ga pamti neki glavni i odgovorni,
+                        # i da ga unese prilikom pokretanja ovog microservice-a
+
 token:
    header: X-Auth-Token
    secret: myXAuthSecret
@@ -35,14 +44,13 @@ server:
     #context-path: /${spring.application.name} #/api
   port: 8083
   ssl:
-    key-store-2: classpath:stores/keystore.jks
-    key-store: classpath:stores/keystore.p12
-    key-store-password: pass258
-    key-store-type: PKCS12
+    key-store: classpath:stores/keystore.jks
+    key-store-password: key_store_pass
+    key-store-type: JKS
     key-alias: payment_microservice
-    trust-store: classpath:stores/truststore.p12
-    trust-store-password: pass456
-    trust-store-type: PKCS12
+    trust-store: classpath:stores/truststore.jks
+    trust-store-password: trust_store_pass
+    trust-store-type: JKS
     protocol: TLS
     enabled-protocols: TLSv1.2
     ciphers: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256

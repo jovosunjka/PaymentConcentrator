@@ -1,5 +1,7 @@
 package com.rmj.PaymentMicroservice.model;
 
+import com.rmj.PaymentMicroservice.security.AttributeEncryptor;
+
 import javax.persistence.*;
 
 import java.util.ArrayList;
@@ -17,12 +19,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Convert(converter = AttributeEncryptor.class) // iako ovaj atribut nije nesto posebno bitan, ne zelimo da
+                                                    // potencijalni kradljivac podataka zna koje usere (name-ove user-a) imamo
     @Column(name = "name", unique = true, nullable = false)
     private String name;
-    
+
+    @Convert(converter = AttributeEncryptor.class)
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    //@Convert(converter = AttributeEncryptor.class) za password necemo koristiti enkriptovanje, jer se vec koristi hash-ovanje
     @Column(name = "password", unique = false, nullable = false)
     private String password;
    
