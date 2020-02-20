@@ -2,7 +2,6 @@ package com.rmj.PaymentMicroservice.controller;
 
 
 import com.rmj.PaymentMicroservice.dto.*;
-import com.rmj.PaymentMicroservice.dto.FormFieldsForPaymentTypeDTO;
 import com.rmj.PaymentMicroservice.exception.NotFoundException;
 import com.rmj.PaymentMicroservice.exception.RequestTimeoutException;
 import com.rmj.PaymentMicroservice.exception.UserNotFoundException;
@@ -118,5 +117,17 @@ public class PaymentController {
     				.map(t -> new TransactionDTO(t))
     				.collect(Collectors.toList());
     	return new ResponseEntity<TransactionDTOs>(new TransactionDTOs(transactionDTOs), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value ="/paper-plans", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity paperPlans(@RequestBody ProductDTO productDTO) {
+        
+        try {
+			paymentService.paperPlans(productDTO);
+			return new ResponseEntity(HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+			
     }
 }

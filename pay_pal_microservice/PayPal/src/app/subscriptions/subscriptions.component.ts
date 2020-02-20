@@ -105,9 +105,9 @@ export class SubscriptionsComponent implements OnInit {
         let t = new Transaction();
             t.cart = "none";
             t.create_time = Date.now().toString();
-            t.id = self.transactionID.toString();
+            t.id = data.subscriptionID;
             t.idPayment = self.transactionID;
-            t.state = "SUBSCRIBE_COMPLETE";
+            t.state = "SUCCESS";
             self.service.save(t).subscribe((response) =>{
               console.log(response);
               self.ngZone.runOutsideAngular(() => {
@@ -122,7 +122,7 @@ export class SubscriptionsComponent implements OnInit {
             t.create_time = Date.now().toString();
             t.id = self.transactionID.toString();
             t.idPayment = self.transactionID;
-            t.state = "SUBSCRIBE_FAILE";
+            t.state = "FAIL";
             self.service.save(t).subscribe((response) =>{
               console.log(response);
               self.ngZone.runOutsideAngular(() => {
@@ -138,7 +138,7 @@ export class SubscriptionsComponent implements OnInit {
             t.create_time = Date.now().toString();
             t.id = self.transactionID.toString();
             t.idPayment = self.transactionID;
-            t.state = "SUBSCRIBE_FAILE";
+            t.state = "FAIL";
             self.service.save(t).subscribe((response) =>{
               console.log(response);
               self.ngZone.runOutsideAngular(() => {

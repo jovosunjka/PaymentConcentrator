@@ -59,11 +59,10 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public String pay(Long transactionId, String status) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
-		
 		TransactionStatus statusEnum = TransactionStatus.valueOf(status.toUpperCase());
 		transaction.setStatus(statusEnum);
 		transactionService.save(transaction);
-		
+
 		HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         

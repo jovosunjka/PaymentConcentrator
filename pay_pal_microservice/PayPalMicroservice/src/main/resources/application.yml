@@ -13,9 +13,9 @@ eureka:
     nonSecurePortEnabled: false
     securePortEnabled: true
     securePort: ${server.port}
-    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/info
-    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/health
-    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/
+    statusPageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/info
+    healthCheckUrl: https://${eureka.instance.hostName}:${eureka.instance.securePort}/${spring.application.name}/health
+    homePageUrl: https://${eureka.instance.hostname}:${eureka.instance.securePort}/${spring.application.name}/
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
     preferIpAddress: true

@@ -23,11 +23,16 @@ import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
 import com.rmj.PaymentMicroservice.dto.PayDTO;
 import com.rmj.PaymentMicroservice.dto.PaymentTypeDTO;
+import com.rmj.PaymentMicroservice.dto.PlanDTO;
+import com.rmj.PaymentMicroservice.dto.ProductDTO;
 import com.rmj.PaymentMicroservice.dto.RedirectUrlDTO;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
     
+	@Value("${scientific-paper-plans}")
+    private String pmScientificPaperPlansPayPalUrl;
+	
 	@Value("${proxy-server.url}")
 	private String proxyServerUrl;
 	
@@ -131,6 +136,10 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public void transactionCompleted(long transactionId, String status) {
 		Transaction transaction = transactionService.getTransaction(transactionId);
+    	if(transaction != null && transaction.getStatus().equals(TransactionStatus.SUCCESS)) {
+    		return;
+    	}
+    	
 		TransactionStatus statusEnum = TransactionStatus.valueOf(status.toUpperCase());
 		transaction.setStatus(statusEnum);
 		transactionService.save(transaction);
@@ -189,6 +198,33 @@ public class PaymentServiceImpl implements PaymentService {
 		return accounts.stream()
 				.filter(acccount -> acccount.getType().equals(paymentType))
 				.count() > 0;
+	}
+
+	@Override
+	public void paperPlans(ProductDTO productDTO) {
+		User loggedUser = userService.getLoggedUser();
+    	PaymentAccount paymentAccount = loggedUser.getAccounts().stream()
+				.filter(a -> a.getType().equals("paypal"))
+				.findFirst()
+				.orElseGet(null);
+    	
+    	if(loggedUser == null) {
+    		return;
+    	}
+				//.orElseThrow(() -> new NotFoundException("Payment account (type=paypal) not found!"));
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("paymentAccountUsername", paymentAccount.getUsername());
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<ProductDTO> httpEntity = new HttpEntity<ProductDTO>(productDTO, headers);
+        
+        //TODO NE POGADJA PAYPAL MS!!!! https://localhost:8085/payment/scientific-paper-plans
+        ResponseEntity<Void> responseEntity = restTemplate.exchange(pmScientificPaperPlansPayPalUrl , HttpMethod.POST, httpEntity, Void.class);
+
+        if (responseEntity.getStatusCode() != HttpStatus.OK) {
+            System.out.println("Plalns sending error!");
+            throw new RuntimeException("Plalns sending error!");
+        }
 	}
 
 }

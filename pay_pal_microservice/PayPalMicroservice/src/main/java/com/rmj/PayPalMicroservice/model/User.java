@@ -28,13 +28,21 @@ public class User {
             @JoinColumn(name = "role_id", nullable = false, updatable = false) })
     private Set<Role> roles = new HashSet<Role>();
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_properties", joinColumns = {
             @JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = {
             @JoinColumn(name = "property_id", nullable = false, updatable = false) })
     private List<Property> properties;
+    
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_products", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+            @JoinColumn(name = "product_id", nullable = false, updatable = false) })
+    private Set<Product> products = new HashSet<Product>();
 
-    @Column(name = "currency", unique = false, nullable = false)
+    
+
+	@Column(name = "currency", unique = false, nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private Currency currency;
 
@@ -85,5 +93,21 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+    public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
+
+	public Product getProduct(String name) {
+		Product product = products.stream()
+							.filter(p -> p.getName()
+							.equals(name))
+							.findFirst().orElse(null);
+		return product;
+	}
 
 }

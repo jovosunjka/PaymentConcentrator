@@ -18,7 +18,7 @@ export class ButtonComponent implements OnInit {
   private currency: string;
   transaction: Transaction;
   private sendedTransaction: boolean;
-
+  private payedWithPayPal: boolean;
   constructor(private serviceSave: saveTransactionService, private route: ActivatedRoute, private routerRedirect: Router, private ngZone: NgZone) { }
 
   ngOnInit() {
@@ -28,6 +28,7 @@ export class ButtonComponent implements OnInit {
       this.currency = this.route.snapshot.params.currency;
     }
     this.sendedTransaction = false;
+    this.payedWithPayPal = false;
   }
 
   private loadExternalScript(scriptUrl: string) {
@@ -43,7 +44,7 @@ export class ButtonComponent implements OnInit {
     var c = this.amount; //cena u dolarima
     var v = this.serviceSave;
     var router = this.routerRedirect;
-    const self = this;
+    var self = this;
     if(this.currency == "RSD"){
       c = Math.floor(c/106);
     }else if(this.currency == "EUR"){
@@ -82,6 +83,7 @@ export class ButtonComponent implements OnInit {
             // cart: "3VG18081MV5040101"
             // create_time: "2019-08-08T15:51:37Z"
             // id: "PAYID-LVGEKCQ1NP00636Y1192210E"
+            self.payedWithPayPal = true;
             let t = new Transaction();
             t.cart = payment.cart;
             t.create_time = payment.create_time;
@@ -105,13 +107,15 @@ export class ButtonComponent implements OnInit {
             t.create_time = "none";
             t.id = data.paymentID;
             t.state = "FAIL";
-            v.save(t).subscribe((response) =>{
-              console.log(response);
-              zone.runOutsideAngular(() => {
-                window.location.href = response.redirectUrl;
-                
+            if(self.payedWithPayPal){
+              v.save(t).subscribe((response) =>{
+                console.log(response);
+                zone.runOutsideAngular(() => {
+                  window.location.href = response.redirectUrl;
+                  
+                });
               });
-            });
+            }
         },
         onError: function (data) {
           console.log("Error transaction"); 
@@ -122,22 +126,30 @@ export class ButtonComponent implements OnInit {
             t.create_time = "none";
             t.id = data.paymentID;
             t.state = "FAIL";
-            v.save(t).subscribe((response) =>{
-              console.log(response);
-              zone.runOutsideAngular(() => {
-                window.location.href = response.redirectUrl;
-                
+            if(self.payedWithPayPal){
+              v.save(t).subscribe((response) =>{
+                console.log(response);
+                zone.runOutsideAngular(() => {
+                  window.location.href = response.redirectUrl;
+                  
+                });
               });
-            });
+            }
         }
       }, '#paypal-button');
     });
-    this.sendedTransaction = self.sendedTransaction; 
+    this.sendedTransaction = self.sendedTransaction;
+    this.payedWithPayPal = self.payedWithPayPal;
+    //alert(this.payedWithPayPal);
   }
 
 
   all(){
     this.serviceSave.allTransaction().subscribe();
+  }
+
+  subscribeComponent(){
+    this.routerRedirect.navigate(['subscription/:transactionID='+ this.transactionId]);
   }
 
   @HostListener('window:beforeunload', [ '$event' ])
